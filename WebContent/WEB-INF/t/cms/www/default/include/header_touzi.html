@@ -1,0 +1,112 @@
+<!---头部开始--->
+<header class="zjxq_header">
+    <!---头部1--->
+	<div class="zjxq_hs_inner">
+    	<div class="juzhongchicun zjxq_hs_s" >
+        	<ul class="zjxq_hs_sul">
+            	<li><a href="${base}/search/" target="_blank">大数据搜索引擎</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li>
+        		<li><a href="${base}/renwuzhuanfang.htm" target="_blank">大数据人物专访</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li>
+                <li><a href="${base}/huodongtuijian.htm" target="_blank">大数据行业活动</a></li>
+       	    </ul>
+        </div>
+    </div>
+    <!---头部2--->
+    <div class="zjxq_z">
+    <div class="zjxq_hs_z juzhongchicun">
+       <div class="logo">
+       		<a href="http://www.datayuan.cn/" title="数据猿"><h1><div style="position: absolute;z-index:-1">数据猿</div><div style="z-index:100;height:100px;"><img src="/r/cms/www/default/images/logo.png" alt="数据猿"></div></h1></a>
+       </div> 
+       <div class="logo_2">
+        	<a href="http://www.datayuan.cn/"><img src="/r/cms/www/default/images/logojuji_03.jpg"></a>
+       </div>
+       <div class="header_biaodan">
+       		<form action="${base}/search" target="_blank" id="searchForm">
+			 	<input name="q" class="in-text" value="${oldq!'大数据时代'}" type="text" onfocus="if(this.value=='大数据时代')this.value=''"  onkeypress="qkeypress()" onblur="if(this.value=='')this.value='大数据时代'"  maxlength="50" autocomplete="off" />
+			 	<!-- <input type="submit" class="headericon-header-search search-icon" data-stat-click="sousuo" value="" style="cursor:auto;" / > -->
+			 	<button type="submit" class="search-icon" type="button"></button>
+			 </form>
+       </div>
+    </div>
+    </div>
+</header>
+<!---头部结束--->
+
+<!---导航开始--->
+<nav class="juzhongchicunnav">
+	<div class="zjxq_nav1111">
+		<ul class="zjxq_nav juzhongchicun">
+	    	<li><a href="http://www.datayuan.cn/" class="head-a-underline" onclick="getHeadClick(this)">资讯</a></li>
+	    	<li><a href="${base}/indexRanking.htm" onclick="getHeadClick(this)">指数</a></li>
+	    	<li><a href="${base}/huodongtuijian.htm" onclick="getHeadClick(this)">活动</a></li>
+	    	<li class="zjxq_navhd"><a href="${base}/huodongtuijian.htm" onclick="getHeadClick(this)">投融资</a></li>
+	    </ul>
+    </div>
+    <div class="juzhongchicun" style="display:none;">
+		<div class="zjxq_mzhuodivs" style="display:none;"><img src="/${res}/images/zjxq-mian1_03.jpg"/></div>
+	    <div class="zjxq_m1">
+	          <div class="zjxq_m1_inner">
+	        	<ul class="zjxq_m11" >
+	            	<li><a href="/">综合</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/expert.htm">专家</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/renwuzhuanfang.htm">专访</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/xuetang.htm">学堂</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/baogao.htm">报告</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/anli.htm">案例</a></li><li>&nbsp;|&nbsp;</li>
+	            </ul>
+	            <div class="zjxq_m1img"><p>大数据+</p></div>
+	        	<ul>
+	            	<li><a href="${base}/s/nengyuan.htm">能源</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/huanbao.htm">环保</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/yingxiao.htm">营销</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/jinrong.htm">金融</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/zhengxin.htm">征信</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/yiliao.htm">医疗</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/lingshou.htm">零售</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/jiaotong.htm">交通</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/tongxin.htm">通信</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/huyu.htm">互娱</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/nongye.htm">农业</a></li><li>&nbsp;|&nbsp;</li>
+	            	<li><a href="${base}/s/zhengfu.htm">政府</a></li>
+	            </ul>
+	          </div>
+	    </div>
+    </div>
+</nav>
+<!---导航结束--->
+<script type="text/javascript">
+ 	$(function(){
+ 		$(".zjxq_nav1111").children("ul").children("li").each(function(k,v){
+ 			$(v).hover(function(){
+ 				$(this).addClass("zjxq_navhd");
+ 				$(this).siblings().removeClass("zjxq_navhd");
+ 				if (k != 0 && k!=3){
+ 					$(this).parent().parent().siblings("div").css("display","none");
+ 				}else{
+ 					$(this).parent().parent().siblings("div").css("display","block");
+ 				}
+ 			},function(){
+ 				$(this).parent().children("li:eq(2)").addClass("zjxq_navhd");
+ 				$(this).parent().children("li:not(:eq(2))").removeClass("zjxq_navhd");
+ 				if (k != 0){
+ 					$(this).parent().parent().siblings("div").css("display","none");
+ 				}else{
+ 					$(this).parent().parent().siblings("div").hover(function(){},function(){
+ 						$(this).css("display","none");
+ 					});
+ 				}
+ 			});
+ 		});
+ 		
+ 		//根据域名判断二级标题添加颜色
+ 		domainUrl = window.location.href; 
+ 		if ("http://www.datayuan.cn/" == domainUrl){		//首页
+ 			$(".zjxq_m11").children("li").eq(0).children("a").css("color","#f39300");
+ 		}else if ("http://www.datayuan.cn/expert.htm" == domainUrl){	//专家
+ 			$(".zjxq_m11").children("li").eq(2).children("a").css("color","#f39300");
+ 		}else if ("http://www.datayuan.cn/renwuzhuanfang.htm" == domainUrl){		//专访
+ 			$(".zjxq_m11").children("li").eq(4).children("a").css("color","#f39300");
+ 		}else if ("http://www.datayuan.cn/xuetang.htm" == domainUrl){	//学堂
+ 			$(".zjxq_m11").children("li").eq(6).children("a").css("color","#f39300");
+ 		}
+ 	});
+ </script>

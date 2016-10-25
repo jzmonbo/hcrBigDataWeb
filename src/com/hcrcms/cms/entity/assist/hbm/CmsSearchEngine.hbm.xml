@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.assist">
+	<class name="CmsSearchEngine" table="jc_search_engine">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="searchId" type="integer" column="search_id"><generator class="identity"/></id>
+		<property name="category" column="category" type="java.lang.Integer" not-null="true" length="11"/>
+		<property name="company" column="company" type="java.lang.String" not-null="true" length="100"/>
+		<property name="url" column="url" type="java.lang.String" not-null="false" length="100"/>
+		<property name="bdss" column="bdss" type="java.lang.String" not-null="false"/>
+		<property name="bdtb" column="bdtb" type="java.lang.String" not-null="false"/>
+		<property name="bdzsWhole" column="bdzs_whole" type="java.lang.String" not-null="false"/>
+		<property name="bdzsMobile" column="bdzs_mobile" type="java.lang.String" not-null="false"/>
+		<property name="sgss" column="sgss" type="java.lang.String" not-null="false"/>
+		<property name="sgwxss" column="sgwxss" type="java.lang.String" not-null="false"/>
+		<property name="hs" column="hs" type="java.lang.String" not-null="false"/>
+		<property name="alexa" column="alexa" type="java.lang.String" not-null="false"/>
+		<property name="wbss" column="wbss" type="java.lang.String" not-null="false"/>
+		<property name="bdssxw" column="bdssxw" type="java.lang.String" not-null="false"/>
+		<property name="sgssxw" column="sgssxw" type="java.lang.String" not-null="false"/>
+		<property name="hsxw" column="hsxw" type="java.lang.String" not-null="false"/>
+		<property name="total" column="total" type="java.lang.String" not-null="false"/>
+		<property name="nowrank" column="nowrank" type="java.lang.Integer" not-null="false"/>
+		<property name="previousRank" column="previous_rank" type="java.lang.Integer" not-null="false"/>
+		<property name="companyLogo" column="companyLogo" type="java.lang.String" not-null="false"/>
+		<property name="companyDesc" column="companyDesc" type="java.lang.String" not-null="false"/>
+		<property name="companyKeyword" column="companyKeyword" type="java.lang.String" not-null="false"/>
+	</class>
+</hibernate-mapping>

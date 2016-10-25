@@ -1,0 +1,2020 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>大数据指数排行榜--数据猿</title>
+<meta name="Keywords" content="大数据指数排行榜"/>
+<meta name="Description" content="大数据指数排行榜" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css"/>
+<link href="${resSys}/jqueryUI/jquery.ui.css" rel="stylesheet" type="text/css"/>
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/jqueryUI/jquery-ui.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<script src="${resSys}/autoshoulu.js" type="text/javascript"></script>
+<script src="${resSys}/tongji.js" type="text/javascript"></script>
+<link href="/${res}/css/generate.css" rel="stylesheet" type="text/css" />
+<script src="${resSys}/generate.js" type="text/javascript"></script>
+<link href="/${res}/css/styleComm.css" rel="stylesheet" type="text/css" />
+
+<!-- <link href="/${res}/css/html5.css" rel="stylesheet" type="text/css"/> -->
+<script src="/${res}/js/indexshow.js" type="text/javascript"></script>
+<script src="/${res}/js/imgFlip.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+    
+    <!---排行榜开始--->
+    <div class="Number_banner">
+    	<img src="/${res}/images/data-p.png" width="100%" height="450px" />
+        <div class="Number_banner_a">
+        	<div class="slogan">大数据应用企业指数排名</div>
+            <div class="N_b_ul" style=" margin-top:30px;padding-left:55px;">
+            	<a href="#tongxun" class="a1 this" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img1.png" /></span><span style="display:block;" class="nav_banner">通讯</span></a>
+                <a href="#lingshoushang" class="a2" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img2.png" /></span><span class="nav_banner">零售商</span></a>
+                <a href="#lingshouzhichi" class="a3" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img3.png" /></span><span class="nav_banner">零售支持</span></a>
+                <a href="#wangshanggouwu" class="a4" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img4.png" /></span><span class="nav_banner">网上购物</span></a>
+                <a href="#yiliao" class="a5" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img5.png" /></span><span class="nav_banner">医疗</span></a>
+                <a href="#yingxiao" class="a6" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img6.png" /></span><span class="nav_banner">营销</span></a>
+                <a href="#lvxing" class="a7" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img7.png" /></span><span class="nav_banner">旅行</span></a>
+                <a href="#dilixinxi" class="a8" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img8.png" /></span><span class="nav_banner">地理信息</span></a>
+                <a href="#yingshi" class="a9" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img9.png" /></span><span class="nav_banner">影视</span></a>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="N_b_ul">
+            	<a href="#yuedu" class="a10" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img10.png" /></span><span class="nav_banner">阅读</span></a>
+                <a href="#zhengxin" class="a11" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img11.png" /></span><span class="nav_banner">征信</span></a>
+                <a href="#jinrongfuwu" class="a12" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img12.png" /></span><span class="nav_banner">金融服务</span></a>
+                <a href="#zhifu" class="a13" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img13.png" /></span><span class="nav_banner">支付</span></a>
+                <a href="#zhengfujigou" class="a14" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img14.png" /></span><span class="nav_banner">政府机构</span></a>
+                <a href="#zhengfufuwushang" class="a15" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img15.png" /></span><span class="nav_banner">政府服务商</span></a>
+                <a href="#nongye" class="a16" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img16.png" /></span><span class="nav_banner">农业</span></a>
+                <a href="#zhizaoye" class="a17" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img17.png" /></span><span class="nav_banner">制造业</span></a>
+                <a href="#chuxing" class="a18" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img18.png" /></span><span class="nav_banner">出行</span></a>
+                <a href="#jiaotongzhichi" class="a19" onmouseover="lioverBanner(this)" onmouseout="lioutBanner(this)"><span class="nav_img"><img src="/${res}/images/b-img19.png" /></span><span class="nav_banner">交通支持</span></a>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mainbody-div" style="margin-top:0;background:#fff;width:1075px;padding:20px 15px 0;">
+    	<!--通讯开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon1.png" />&nbsp;通讯</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="tongxun" style="cursor:default;">通讯</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list301 as l301]
+                    		[#if l301_index+1 lte 10]
+                    			[#if l301_index+1 lte 3]
+                    				[#if (l301.nowrank-l301.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l301_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l301_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l301.nowrank-l301.previousRank) lte 0]
+                    					<li><span class="spana">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l301_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l301_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l301.companyLogo}" />
+						                            <span class="txtspan">${l301.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l301.nowrank-l301.previousRank) lte 0]
+                   					<li style="display:none"><span class="spana">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l301.companyLogo}" />
+				                            <span class="txtspan">${l301.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none"><span class="spana">${l301_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l301.company}</a><span class="spanc">${l301.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l301.companyLogo}" />
+				                            <span class="txtspan">${l301.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list] 
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--通讯结束-->
+        
+        <!--今日上榜开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3">今日上榜</h3>
+            <div class="Number_b_con">
+            	[#list contents as content]
+            	[#if content.classify == '1']
+            	<div class="Number_b_con_t">
+                	<div class="Number_b_con_t_l">
+                			<div class="Number_b_con_t_l_t Number_p">
+	                        	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+	                        	<img src="${content.bigPictureImg}" width="135px" height="145px" />
+	                        </div>
+                		[#elseif content.classify == '2']
+                			<div class="Number_b_con_t_l_b Number_p">
+	                        	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+	                        	<img src="${content.bigPictureImg}" width="135px" height="145px" />
+	                        </div>
+                	</div>
+                	[#elseif content.classify == '3']
+                    <div class="Number_b_con_t_r Number_p">
+                    	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+                    	<img src="${content.bigPictureImg}" width="180px" height="300px" />
+                	</div>
+                </div>
+                [#elseif content.classify == '4']
+                <div class="Number_b_con_c Number_p">
+                	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+                	<img src="${content.bigPictureImg}" width="324px" height="131px" />
+                </div>
+                <div class="Number_b_con_b">
+                	[#elseif content.classify == '5']
+                	<div class="Number_b_con_b_l Number_p">
+                    	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+                    	<img src="${content.bigPictureImg}" width="180px" height="190px" />
+                	</div>
+                	[#elseif content.classify == '6']
+                    <div class="Number_b_con_b_r Number_p">
+                    	<p><a href="${content.url}" target="_blank">${content.shortTitle}</a></p>
+                    	<img src="${content.bigPictureImg}" width="135px" height="190px" />
+                	</div>
+                </div>
+                [/#if]
+                [/#list]
+            </div>
+        </div>
+        <!--今日上榜结束-->
+        
+        <!--锚点导航开始-->       
+    	<div class="Number_a">
+        	<ul class="Number_a_con_b_ul Number_c">
+                <li class="li_j"><a href="#tongxun" class="clia morea">更多</a><span class="spanc1">通讯</span><a href="#tongxun" class="clia">通讯</a></li>
+                <li><a href="#lingshoushang" class="clia morea">更多</a><span class="spanc1">零售</span><a href="#lingshoushang" class="clia">零售商</a><a href="#lingshouzhichi" class="clia">零售支持</a><a href="#wangshanggouwu" class="clia">网上购物</a></li>
+                <li class="li_j"><a href="#yiliao" class="clia morea">更多</a><span class="spanc1">医疗</span><a href="#yiliao" class="clia">医疗</a></li>
+                <li><a href="#yingxiao" class="clia morea">更多</a><span class="spanc1">营销</span><a href="#yingxiao" class="clia">营销</a></li>
+                <li class="li_j"><a href="#lvxing" class="clia morea">更多</a><span class="spanc1">旅行</span><a href="#lvxing" class="clia">旅行</a></li>
+                <li><a href="#dilixinxi" class="clia morea">更多</a><span class="spanc1">地理信息</span><a href="#dilixinxi" class="clia">地理信息</a></li>
+                <li class="li_j"><a href="#yingshi" class="clia morea">更多</a><span class="spanc1">互娱</span><a href="#yingshi" class="clia">影视</a><a href="#yuedu" class="clia">阅读</a></li>
+                <li><a href="#zhengxin" class="clia morea">更多</a><span class="spanc1">金融</span><a href="#zhangxin" class="clia">征信</a><a href="#jinrongfuwu" class="clia">金融服务</a><a href="#zhifu" class="clia">支付</a></li>
+                <li class="li_j"><a href="#zhengfujigou" class="clia morea">更多</a><span class="spanc1">公共服务</span><a href="#zhengfujigou" class="clia">政府机构</a><a href="#zhengfufuwushang" class="clia">政府服务商</a></li>
+                <li><a href="#nongye" class="clia morea">更多</a><span class="spanc1">农业</span><a href="#nongye" class="clia">农业</a></li>
+                <li class="li_j"><a href="#zhizaoye" class="clia morea">更多</a><span class="spanc1">制造业</span><a href="#zhizaoye" class="clia">制造业</a></li>
+                <li><a href="#chuxing" class="clia morea">更多</a><span class="spanc1">交通出行</span><a href="#chuxing" class="clia">出行</a><a href="#jiaotongzhichi" class="clia">交通支持</a></li>
+                <li class="b_a_li"><a href="#tongxun" class="b_a">完整榜单></a></li>
+            </ul>
+        </div>
+        <!--锚点导航结束-->
+        
+        <!--零售开始-->       
+    	<div class="Number_a" style="width:1070px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon2.png" />&nbsp;零售</h3>
+            <!--零售商开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="lingshoushang" style="cursor:default;">零售商</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                		<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                		[#list list101 as l101]
+                    		[#if l101_index+1 lte 10]
+                    			[#if l101_index+1 lte 3]
+                    				[#if (l101.nowrank-l101.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l101.nowrank-l101.previousRank) lte 0]
+                    					<li><span class="spana">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l101.companyLogo}" />
+						                            <span class="txtspan">${l101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l101.nowrank-l101.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l101.companyLogo}" />
+				                            <span class="txtspan">${l101.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l101.company}</a><span class="spanc">${l101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l101.companyLogo}" />
+				                            <span class="txtspan">${l101.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--零售商结束-->
+            
+            <!--零售支持开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="lingshouzhichi" style="cursor:default;">零售支持</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list102 as l102]
+                    		[#if l102_index+1 lte 10]
+                    			[#if l102_index+1 lte 3]
+                    				[#if (l102.nowrank-l102.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l102_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l102_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l102.nowrank-l102.previousRank) lte 0]
+                    					<li><span class="spana">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l102_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l102_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l102.companyLogo}" />
+						                            <span class="txtspan">${l102.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l102.nowrank-l102.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l102.companyLogo}" />
+				                            <span class="txtspan">${l102.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l102_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l102.company}</a><span class="spanc">${l102.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l102.companyLogo}" />
+				                            <span class="txtspan">${l102.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--零售支持结束-->
+            
+            <!--网上购物开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="wangshanggouwu" style="cursor:default;">网上购物</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list103 as l103]
+                    		[#if l103_index+1 lte 10]
+                    			[#if l103_index+1 lte 3]
+                    				[#if (l103.nowrank-l103.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l103_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l103_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l103.nowrank-l103.previousRank) lte 0]
+                    					<li><span class="spana">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l103_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l103_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l103.companyLogo}" />
+						                            <span class="txtspan">${l103.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l103.nowrank-l103.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l103.companyLogo}" />
+				                            <span class="txtspan">${l103.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l103_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l103.company}</a><span class="spanc">${l103.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l103.companyLogo}" />
+				                            <span class="txtspan">${l103.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--网上购物结束-->
+        </div>
+        <!--零售结束-->
+        
+        <!--医疗开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon3.png" />&nbsp;医疗</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="yiliao" style="cursor:default;">医疗</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list201 as l201]
+                    		[#if l201_index+1 lte 10]
+                    			[#if l201_index+1 lte 3]
+                    				[#if (l201.nowrank-l201.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l201.nowrank-l201.previousRank) lte 0]
+                    					<li><span class="spana">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l201.companyLogo}" />
+						                            <span class="txtspan">${l201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l201.nowrank-l201.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l201.companyLogo}" />
+				                            <span class="txtspan">${l201.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l201.company}</a><span class="spanc">${l201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l201.companyLogo}" />
+				                            <span class="txtspan">${l201.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--医疗结束-->
+        
+        <!--营销开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon4.png" />&nbsp;营销</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="yingxiao" style="cursor:default;">营销</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list501 as l501]
+                    		[#if l501_index+1 lte 10]
+                    			[#if l501_index+1 lte 3]
+                    				[#if (l501.nowrank-l501.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l501_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l501_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l501.nowrank-l501.previousRank) lte 0]
+                    					<li><span class="spana">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l501_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l501_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l501.companyLogo}" />
+						                            <span class="txtspan">${l501.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l501.nowrank-l501.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l501.companyLogo}" />
+				                            <span class="txtspan">${l501.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l501_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l501.company}</a><span class="spanc">${l501.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l501.companyLogo}" />
+				                            <span class="txtspan">${l501.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--营销结束-->
+        
+        <!--旅行开始-->       
+    	<div class="Number_a">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon5.png" />&nbsp;旅行</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="lvxing" style="cursor:default;">旅行</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list701 as l701]
+                    		[#if l701_index+1 lte 10]
+                    			[#if l701_index+1 lte 3]
+                    				[#if (l701.nowrank-l701.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l701_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l701_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l701.nowrank-l701.previousRank) lte 0]
+                    					<li><span class="spana">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l701_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l701_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l701.companyLogo}" />
+						                            <span class="txtspan">${l701.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l701.nowrank-l701.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l701.companyLogo}" />
+				                            <span class="txtspan">${l701.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l701_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l701.company}</a><span class="spanc">${l701.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l701.companyLogo}" />
+				                            <span class="txtspan">${l701.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--旅行结束-->
+        
+        <!--地理信息开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon6.png" />&nbsp;地理信息</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="dilixinxi" style="cursor:default;">地理信息</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list901 as l901]
+                    		[#if l901_index+1 lte 10]
+                    			[#if l901_index+1 lte 3]
+                    				[#if (l901.nowrank-l901.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l901_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l901_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l901.nowrank-l901.previousRank) lte 0]
+                    					<li><span class="spana">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l901_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l901_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l901.companyLogo}" />
+						                            <span class="txtspan">${l901.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l901.nowrank-l901.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l901.companyLogo}" />
+				                            <span class="txtspan">${l901.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l901_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l901.company}</a><span class="spanc">${l901.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l901.companyLogo}" />
+				                            <span class="txtspan">${l901.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--地理信息结束-->
+        
+        <!--互娱开始-->       
+    	<div class="Number_a" style="width:706px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon7.png" />&nbsp;互娱</h3>
+            <!--影视开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="yingshi" style="cursor:default;">影视</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list801 as l801]
+                    		[#if l801_index+1 lte 10]
+                    			[#if l801_index+1 lte 3]
+                    				[#if (l801.nowrank-l801.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l801_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l801_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l801.nowrank-l801.previousRank) lte 0]
+                    					<li><span class="spana">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l801_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l801_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l801.companyLogo}" />
+						                            <span class="txtspan">${l801.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l801.nowrank-l801.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l801.companyLogo}" />
+				                            <span class="txtspan">${l801.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l801_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l801.company}</a><span class="spanc">${l801.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l801.companyLogo}" />
+				                            <span class="txtspan">${l801.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--影视结束-->
+            
+            <!--阅读开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="yuedu" style="cursor:default;">阅读</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list802 as l802]
+                    		[#if l802_index+1 lte 10]
+                    			[#if l802_index+1 lte 3]
+                    				[#if (l802.nowrank-l802.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l802_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l802_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l802.nowrank-l802.previousRank) lte 0]
+                    					<li><span class="spana">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l802_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l802_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l802.companyLogo}" />
+						                            <span class="txtspan">${l802.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l802.nowrank-l802.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l802.companyLogo}" />
+				                            <span class="txtspan">${l802.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l802_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l802.company}</a><span class="spanc">${l802.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l802.companyLogo}" />
+				                            <span class="txtspan">${l802.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--阅读结束-->            
+        </div>
+        <!--互娱结束-->
+        
+        <!--金融开始-->       
+    	<div class="Number_a" style="width:1070px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon8.png" />&nbsp;金融</h3>
+            <!--征信开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="zhengxin" style="cursor:default;">征信</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list401 as l401]
+                    		[#if l401_index+1 lte 10]
+                    			[#if l401_index+1 lte 3]
+                    				[#if (l401.nowrank-l401.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l401_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l401_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l401.nowrank-l401.previousRank) lte 0]
+                    					<li><span class="spana">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l401_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l401_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l401.companyLogo}" />
+						                            <span class="txtspan">${l401.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l401.nowrank-l401.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l401.companyLogo}" />
+				                            <span class="txtspan">${l401.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l401_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l401.company}</a><span class="spanc">${l401.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l401.companyLogo}" />
+				                            <span class="txtspan">${l401.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--征信结束-->
+            
+            <!--金融服务开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="jinrongfuwu" style="cursor:default;">金融服务</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list403 as l403]
+                    		[#if l403_index+1 lte 10]
+                    			[#if l403_index+1 lte 3]
+                    				[#if (l403.nowrank-l403.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l403_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l403_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l403.nowrank-l403.previousRank) lte 0]
+                    					<li><span class="spana">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l403_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l403_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l403.companyLogo}" />
+						                            <span class="txtspan">${l403.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l403.nowrank-l403.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l403.companyLogo}" />
+				                            <span class="txtspan">${l403.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l403_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l403.company}</a><span class="spanc">${l403.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l403.companyLogo}" />
+				                            <span class="txtspan">${l403.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--金融服务结束-->
+            
+            <!--支付开始-->
+            <div class="Number_a_con N_cona_f">
+            	<h3 class="Number_a_con_h3"><a name="zhifu" style="cursor:default;">支付</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list402 as l402]
+                    		[#if l402_index+1 lte 10]
+                    			[#if l402_index+1 lte 3]
+                    				[#if (l402.nowrank-l402.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l402_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l402_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l402.nowrank-l402.previousRank) lte 0]
+                    					<li><span class="spana">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l402_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l402_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l402.companyLogo}" />
+						                            <span class="txtspan">${l402.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l402.nowrank-l402.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l402.companyLogo}" />
+				                            <span class="txtspan">${l402.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l402_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l402.company}</a><span class="spanc">${l402.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l402.companyLogo}" />
+				                            <span class="txtspan">${l402.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--支付结束-->
+        </div>
+        <!--金融结束-->
+        
+        <!--公共服务开始-->       
+    	<div class="Number_a" style="margin-right:16px;width:706px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon9.png" />&nbsp;公共服务</h3>
+            <!--政府机构开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="zhengfujigou" style="cursor:default;">政府机构</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list1201 as l1201]
+                    		[#if l1201_index+1 lte 10]
+                    			[#if l1201_index+1 lte 3]
+                    				[#if (l1201.nowrank-l1201.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l1201.nowrank-l1201.previousRank) lte 0]
+                    					<li><span class="spana">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1201_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1201.companyLogo}" />
+						                            <span class="txtspan">${l1201.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l1201.nowrank-l1201.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1201.companyLogo}" />
+				                            <span class="txtspan">${l1201.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l1201_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1201.company}</a><span class="spanc">${l1201.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1201.companyLogo}" />
+				                            <span class="txtspan">${l1201.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--政府机构结束-->
+            
+            <!--政府服务商开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="zhengfufuwushang" style="cursor:default;">政府服务商</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list1202 as l1202]
+                    		[#if l1202_index+1 lte 10]
+                    			[#if l1202_index+1 lte 3]
+                    				[#if (l1202.nowrank-l1202.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1202_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1202_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l1202.nowrank-l1202.previousRank) lte 0]
+                    					<li><span class="spana">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1202_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1202_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1202.companyLogo}" />
+						                            <span class="txtspan">${l1202.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l1202.nowrank-l1202.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1202.companyLogo}" />
+				                            <span class="txtspan">${l1202.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l1202_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1202.company}</a><span class="spanc">${l1202.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1202.companyLogo}" />
+				                            <span class="txtspan">${l1202.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--政府服务商结束-->            
+        </div>
+        <!--公共服务结束-->
+        
+        <!--农业开始-->       
+    	<div class="Number_a">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon10.png" />&nbsp;农业</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="nongye" style="cursor:default;">农业</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list1001 as l1001]
+                    		[#if l1001_index+1 lte 10]
+                    			[#if l1001_index+1 lte 3]
+                    				[#if (l1001.nowrank-l1001.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1001_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1001_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l1001.nowrank-l1001.previousRank) lte 0]
+                    					<li><span class="spana">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1001_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1001_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1001.companyLogo}" />
+						                            <span class="txtspan">${l1001.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l1001.nowrank-l1001.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1001.companyLogo}" />
+				                            <span class="txtspan">${l1001.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l1001_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1001.company}</a><span class="spanc">${l1001.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1001.companyLogo}" />
+				                            <span class="txtspan">${l1001.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--农业结束-->
+        
+        <!--制造业开始-->       
+    	<div class="Number_a" style="margin-right:16px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon11.png" />&nbsp;制造业</h3>
+            <div class="Number_a_con">
+            	<h3 class="Number_a_con_h3"><a name="zhizaoye" style="cursor:default;">制造业</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list1101 as l1101]
+                    		[#if l1101_index+1 lte 10]
+                    			[#if l1101_index+1 lte 3]
+                    				[#if (l1101.nowrank-l1101.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l1101.nowrank-l1101.previousRank) lte 0]
+                    					<li><span class="spana">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l1101_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l1101.companyLogo}" />
+						                            <span class="txtspan">${l1101.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l1101.nowrank-l1101.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1101.companyLogo}" />
+				                            <span class="txtspan">${l1001.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l1101_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l1101.company}</a><span class="spanc">${l1101.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l1101.companyLogo}" />
+				                            <span class="txtspan">${l1101.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--制造业结束-->
+        
+        <!--交通出行开始-->       
+    	<div class="Number_a" style="width:706px;">
+        	<h3 class="Number_a_h3"><img src="/${res}/images/n_icon12.png" style="" />&nbsp;交通出行</h3>
+            <!--出行开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="chuxing" style="cursor:default;">出行</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list601 as l601]
+                    		[#if l601_index+1 lte 10]
+                    			[#if l601_index+1 lte 3]
+                    				[#if (l601.nowrank-l601.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l601_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l601_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l601.nowrank-l601.previousRank) lte 0]
+                    					<li><span class="spana">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l601_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l601_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l601.companyLogo}" />
+						                            <span class="txtspan">${l601.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l601.nowrank-l601.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l601.companyLogo}" />
+				                            <span class="txtspan">${l601.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l601_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l601.company}</a><span class="spanc">${l601.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l601.companyLogo}" />
+				                            <span class="txtspan">${l601.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--出行结束-->
+            
+            <!--交通支持开始-->
+            <div class="Number_a_con N_cona_fa">
+            	<h3 class="Number_a_con_h3"><a name="jiaotongzhichi" style="cursor:default;">交通支持</a></h3>
+                <div class="Number_a_con_b">
+                	<ul class="Number_a_con_b_ul">
+                    	<li class="tit_li"><span class="span_l">排名</span><span class="span_c">企业</span><span class="span_r">指数趋势</span></li>
+                    	[#list list602 as l602]
+                    		[#if l602_index+1 lte 10]
+                    			[#if l602_index+1 lte 3]
+                    				[#if (l602.nowrank-l602.previousRank) lte 0]
+                    					<li><span class="spana spanaa">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l602_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana spanaa">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l602_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[#else]
+                    				[#if (l602.nowrank-l602.previousRank) lte 0]
+                    					<li><span class="spana">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l602_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[#else]
+                    					<li><span class="spana">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                    						[#if l602_index+1 == 1]
+												<div class="Number_a_con_b_ul_div">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>                 				
+			                    			[#else]
+			                    				<div class="Number_a_con_b_ul_div" style="display:none">
+						                        	<img src="${l602.companyLogo}" />
+						                            <span class="txtspan">${l602.companyDesc}</span>
+						                        </div>
+			                    			[/#if]
+                    					</li>
+                    				[/#if]
+                    			[/#if]
+                    		[#else]
+                    			[#if (l602.nowrank-l602.previousRank) lte 0]
+                   					<li style="display:none;"><span class="spana">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/t.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l602.companyLogo}" />
+				                            <span class="txtspan">${l602.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[#else]
+                   					<li style="display:none;"><span class="spana">${l602_index+1}</span><a href="javascript:void(0);" class="lia" onclick="openCompany(this)">${l602.company}</a><span class="spanc">${l602.total}&nbsp;<img src="/${res}/images/b.png" /></span><span class="spanb" onclick="openCompany(this)">详</span>
+                   						<div class="Number_a_con_b_ul_div" style="display:none">
+				                        	<img src="${l602.companyLogo}" />
+				                            <span class="txtspan">${l602.companyDesc}</span>
+				                        </div>
+                   					</li>
+                   				[/#if]
+                    		[/#if]
+                    	[/#list]
+                        <!-- <li class="b_a_li"><a href="javascript:void(0);" class="b_a" onclick="openCompany(this);return false;">完整榜单></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--交通支持结束-->            
+        </div>
+        <!--交通出行结束-->
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---排行榜结束--->
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="javascript:void(0);" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="${base}/r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='${base}/r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='${base}/r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    [#include "../include/footer.html"/]
+    <!---底部版权部分结束--->
+</body>
+</html>
+<script type="text/javascript">
+	/*function liover(lia){
+		$(lia).parent().parent().children("li").each(function(){
+			$(this).children("div").css("display","none");
+		});
+		$(lia).siblings("div").css('display','block');
+	}
+	
+	function liout(lia){
+		$(lia).parent().parent().children("li").each(function(){
+			$(this).children("div").css("display","none");
+		});
+		$(lia).siblings("div").css('display','none');
+		//思路:判断鼠标位置是否在ul层外面,如果是显示第一个li企业图片
+		mouseLocaltion(lia);
+	}
+	
+	
+	function lioutUl(lia){
+		$(lia).children("div").children("div").children("ul").children(":eq(1)").children("div").css("display","block");
+	}
+	
+	function mouseLocaltion(lia){
+		var wx = window.event.clientX;
+		var wy = window.event.clientY;
+		var d_left = $(lia).parent().parent().offset().left; 
+	    var d_top = $(lia).parent().parent().offset().top; 
+	    var d_width = $(lia).parent().parent().outerWidth(true);
+	    var d_height = $(lia).parent().parent().outerHeight(true);
+		//alert("wx="+wx+",wy="+wy+",left="+d_left+",d_top="+d_top+",d_width="+d_width+",d_height="+d_height);
+		if(wx < d_left || wy < d_top || wx > (d_left + d_width) || wy > (d_top + d_height)){
+			$(lia).parent().parent().children(":eq(1)").children("div").css("display","block");
+		}
+		
+	}*/
+	
+	function lioverBanner(lia){
+		$(lia).children(".nav_img").css('display','none');
+		$(lia).children(".nav_banner").css('display','block');
+	}
+	
+	function lioutBanner(lia){
+		$(lia).children(".nav_img").css('display','block');
+		$(lia).children(".nav_banner").css('display','none');
+	}
+	
+	function openCompany(lia){
+		$(lia).parent().parent().children("li").each(function(){
+			$(this).children("div").css("display","none");
+		});
+		$(lia).siblings("div").css('display','block');
+	}
+</script>

@@ -1,0 +1,14 @@
+<!---头部开始--->
+<header class="mui-bar mui-bar-nav" style="background:#f39300;">
+	<!-- <a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
+	<a id="back" class="mui-icon"><img src="/${res}/images/towardLeft.png" width="30" height="30" ></a>
+	<h1 id="title" class="mui-title">聚焦数据<span style="font-family:'Times New Roman'">&nbsp;&nbsp;</span>改变生活</h1>
+</header>
+<!---头部结束--->
+<script type="text/javascript">
+	document.getElementById('back').addEventListener('tap',function(){
+		//window.history.back();
+		window.history.back(-1);
+		//window.location=document.referrer;
+	});
+</script>

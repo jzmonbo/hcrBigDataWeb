@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 活动介绍 */
+.zoujinali_article{background:#ededed;}
+
+.zoujinali_article1shangbj{background:url(../images/bjbjbjbj_02.jpg) no-repeat center top;height:3628px;padding-bottom:462px;}
+.zoujinali_article1js_top{text-align:center;padding-top:45px;}
+.zoujinali_article1js_t1{width:80px;height:3px;background:#f39a00;margin:0 auto;}
+.zoujinali_article1js_top h3{font-size:22px;color:#f39a00;line-height:40px;}
+.zoujinali_article1js_top p{font-size:15px;color:#f39a00;text-transform:uppercase;letter-spacing:10px;}
+.zoujinali_article1js{height:372px;}
+
+.zoujinali_article1js_bot{width:918px;margin:0 auto;margin-top:20px;}
+.zoujinali_article1js_right{float:left;padding-left:15px;}
+.zoujinali_article1js_right p{font-size:16px;color:#393939;line-height:24px;text-indent:30px;}
+.zoujinali_article1js_right .p{padding-top:20px;}
+.zoujinali_article1js_left{float:left;padding-right:15px;}
+
+.zoujinali_article1js_rightxia{margin-top:20px;}
+.zoujinali_article1js_rightp{float:left;}
+.zoujinali_article1js_rightp a{font-size:20px;color:#f39a00;line-height:60px;}
+.zoujinali_article1js_rightxia1{float:right;}
+ /*-----------------------------------------------------------------活动介绍结束-------*/
+	.rw-con-div2{width:260px;}
+	.xt-con-div2{ width:260px;position:relative;}
+    .xt-con-div2 a img{ display:inline-block; width:260px;height:106px;}
+    .xt-con-div2 .h3{ padding:0 2%; width:96%; height:40px;line-height:40px;background:rgba(0,0,0,0.4); position:absolute; bottom:5px;}
+    .xt-con-div2 .h3 a{ font-size:12px; color:#fff; font-weight:normal;font-family:"微软雅黑";}
+	
+	.zoujinali_article1fx{height:374px;}
+	.zoujinali_article1fx_bot{margin-top:20px;}
+	.zoujinali_article1fx_left{float:left;margin-right:15px;}
+	.zoujinali_article1fx_bot_left{width:550px;height:220px;float:left;}/*=====右=== */
+	
+	.rw-con-div3{width:530px;}
+	.xt-con-div3{ width:530px;position:relative;}
+    .xt-con-div3 a img{ display:inline-block; width:530px;}
+    .xt-con-div3 .h3{ padding:0 2%; width:96%; height:40px;line-height:40px;background:rgba(0,0,0,0.4); position:absolute; bottom:5px;}
+    .xt-con-div3 .h3 a{ font-size:12px; color:#fff; font-weight:normal;font-family:"微软雅黑";}
+	
+	.zoujinali_article1fx_right{float:right;}
+	.zoujinali_article1fx_bot_right{width:550px;float:right;}/*=====左=== */
+  /*----------------------------------------------------------------阿里云分享专家结束---------*/
+    
+    .zoujinali_article1cft{margin-top:480px;height:540px;}
+	.zoujinali_article1cft .zoujinali_article1js_top .zoujinali_article1js_t1{background:#fff;}
+	.zoujinali_article1cft .zoujinali_article1js_top h3{color:#fff;}
+	.zoujinali_article1cft .zoujinali_article1js_top p{color:#fff;}	
+	
+	.zoujinali_article1cftbot{height:auto;margin-top:30px;}
+	.zoujinali_article1cftbotleft{height:310px;width:550px;float:left;}
+	.zoujinali_article1cftbotleft1{float:left;margin-right:15px;}	
+	.zoujinali_article1cftbotleft1 p{display:block;width:260px;}	
+	.zoujinali_article1cftbotleft1 p a{color:#ededed;font-size:12px;line-height:25px;}		
+	.zoujinali_article1cftbotleft1 p a:hover{color:#fff;}	
+
+	.zoujinali_article1cftbotleft12{height:310px;width:550px;float:right}
+	.zoujinali_article1cftbotleft2{float:left;margin-left:15px;}	
+	.zoujinali_article1cftbotleft2 p{display:block;width:260px;}	
+	.zoujinali_article1cftbotleft2 p a{color:#ededed;font-size:12px;line-height:25px;}		
+	.zoujinali_article1cftbotleft2 p a:hover{color:#fff;}
+  /*----------------------------------------------------------------现场人物采访结束---------*/
+  	
+	.zoujinali_article1bdbot{background:#fff;height:325px;}
+	.zoujinali_article1bdbotbj{background:url(../images/zoujinali_article1bdbotbj1_03.jpg) no-repeat center center;height:325px;}
+	
+	.zoujinali_article1bdbotbj{margin-top:15px;}
+    .zoujinali_article1bdbotbjul {display:block;width:500px;padding-left:50px;float:left;}
+	.zoujinali_article1bdbotbj .zoujinali_article1bdbotbjul li{list-style:disc;padding-left:20px;color:#6a6a6a;font-size:8px;
+	line-height:40px;width:520px;border-bottom:1px #000 dashed;;text-align:center;width:430px;}
+	.zoujinali_article1bdbotbj .zoujinali_article1bdbotbjul li a{font-size:14px;color:#6a6a6a;}
+	.zoujinali_article1bdbotbj .zoujinali_article1bdbotbjul li a:hover{color:#000;}	
+	
+	.zoujinali_article1bd	h5{text-align:center;color:#f39a00;font-size:18px;line-height:70px;}
+	.zoujinali_article1bdhdjj{width:1000px;height:405;margin:0 auto;}
+  /*----------------------------------------------------------------中欧风采结束---------*/
+	
+	.zoujinali_articlezofc_bot1{width:135px;height:200px;background:#e0e0e0;border-radius:10px;text-align:center;padding-top:20px;float:left;margin-right:20px;margin-top:40px;}
+	.zoujinali_articlezofc_bot11{width:104px;height:104px;background:#f39a00;border-radius:50px;margin:0 auto;}
+	.zoujinali_articlezofc_bot1 h5{font-size:14px;font-weight:bold;color:#676767;line-height:20px;padding-top:10px;}
+	.zoujinali_articlezofc_bot1 p{font-size:13px;color:#717171;line-height:18px;}
+	
+	.zoujinali_articlecpz .zoujinali_artic_inner{clear:both;}
+	
+	.zoujinali_articlecpzbot{margin-top:20px;}
+	.zoujinali_articlecpzbot1{width:240px;height:150px;background:#f39a00;float:left;margin-right:15px;}
+	.zoujinali_articlecpzbot1 p{text-align:center;}
+	.zoujinali_articlecpzbot1 p a{line-height:150px;color:#fff;font-size:24px;font-weight:bold;}
+	.zoujinali_articlecpzbot1 p a:hover{color:#424242;}
+	.zoujinali_articlecpzbot_nei{width:775px;margin:0 auto;height:170px;}
+  /*----------------------------------------------------------------产品展结束---------*/
+	.zjxq_footer_zjallxr{border-bottom:1px #fff solid;height:110px;}
+	.zjxq_footer_zjallxrnei{width:212px;border-right:1px #fff dotted;padding-top:10px;float:left;margin-right:60px;}
+	.zjxq_footer_zjallxrnei h3{color:#fff;font-size:20px;line-height:35px;}
+	.zjxq_footer_zjallxrnei p{font-size:15px;line-height:25px;color:#fff;}	
+	.zjxq_footer_zjallxrp {width:888px;padding-top:10px;}	
+	.zjxq_footer_zjallxrp p{font-size:15px;line-height:30px;color:#fff;}	
+  /*----------------------------------------------------------------联系人结束---------*/
+		
+		

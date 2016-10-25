@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="applicable-device" content="mobile">
+	
+    <title>活动推荐-数据猿</title>
+    <meta name="Keywords" content="活动推荐-数据猿"/>
+	<meta name="Description" content="活动推荐-数据猿" />
+    <script src="${resSys}/jquery.js" type="text/javascript"></script>
+    <script src="/${res}/muijs/mui.min.js"></script>
+    <link href="/${res}/muicss/mui.min.css" rel="stylesheet"/>
+    <link href="/${res}/css/styleMobileComm.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/${res}/css/zhuanjia.css" rel="stylesheet" type="text/css" />
+	<link href="/${res}/css/zoujinali.css" rel="stylesheet" type="text/css" /> -->
+    <!--标准mui.css-->
+	<!--App自定义的css-->
+	<link rel="stylesheet" type="text/css" href="/${res}/muicss/app.css" />
+	<script src="${resSys}/tongji.js" type="text/javascript"></script>
+	<style type="text/css">
+		.des {
+			margin: .5em 0;
+		}
+		.des>li {
+			font-size: 14px;
+			color: #8f8f94;
+		}
+	</style>
+	<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			p {
+				/*text-indent: 22px;*/
+			}
+			/*span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}*/
+			.mui-off-canvas-right {
+				color: #fff;
+			}
+			.title {
+				margin: 0px 10px 10px;
+				font-size: 30px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			input {
+				color: #000;
+			}
+		</style>
+	<!-- 
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    bp.src = '//push.zhanzhang.baidu.com/push.js';
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+	 -->
+</head>
+<body>
+	<!--侧滑菜单容器-->
+	<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+		<!--菜单部分-->
+		<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted"></ul>
+
+		<aside id="offCanvasSide" class="mui-off-canvas-right">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<div class="mui-scroll" style="margin-top:20px;">
+					<div class="title">--精彩栏目--</div>
+					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+						<li class="mui-table-view-cell">
+							<a id="dsj_twenty" href="${base}/jingPinHuoDongCategoryDetail.htm?c=1&stepLength=100">| 大数据24小时</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_zzkan" href="${base}/jingPinHuoDongCategoryDetail.htm?c=2&stepLength=100">| 大数据周周看</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_trzi" href="${base}/jingPinHuoDongCategoryDetail.htm?c=3&stepLength=100">| 投融资周报-月报-季报</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_djzylu" href="${base}/jingPinHuoDongCategoryDetail.htm?c=4&stepLength=100">| 大咖周语录</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_zphui" href="${base}/jingPinHuoDongCategoryDetail.htm?c=5&stepLength=100">| 大数据周聘汇</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_mzybshu" href="${base}/jingPinHuoDongCategoryDetail.htm?c=6&stepLength=100">| 每周一本书</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="dsj_hdyugao" href="${base}/jingPinHuoDongCategoryDetail.htm?c=7&stepLength=100">| 大数据活动季度预告</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</aside>
+
+		<div class="mui-inner-wrap">
+			[#include "../include/header_huodong.html"/]
+			<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+				<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<input type="hidden" id="maxLengthId" name="maxLengthId" value="${maxLengthId!}" />
+						<input type="hidden" id="minLengthId" name="minLengthId" value="${minLengthId!}" />
+				    	[#if puTongSports??]
+				     		<ul class="mui-table-view">
+				     			<!-- <ul class="mui-table-view mui-table-view-chevron"></ul> -->
+								<div id="slider" class="mui-slider">
+								[#list puTongSports as a]
+									<li class="mui-table-view-cell mui-media">
+										<a href="${a.url}" target="_blank" style="font-size:18px;">${a.shortTitle}</a>
+										<div class="nametime">
+							              	<ul>
+							                  	<li>
+							                  		[#if a.contentExt.tagConent??]
+							                  			[#list a.contentExt.tagConent?split(" ") as tags]
+							                  				[#if tags_index+1<2]
+							                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+							                  				[/#if]
+							                  			[/#list]
+							                  		[#else]
+							                  			
+							                  		[/#if]
+							                  	</li>
+							                  </ul>
+							              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+							              </div>
+										<div>
+											<a href="${a.url}">
+												[#if a.contentMobileImg??]
+								              		<img src="${a.contentMobileImg}" width="100%" alt="${a.shortTitle}">
+								              	[#else]
+								              		<img src="res/common/img/theme/nopicture.png" width="100%" alt="${a.shortTitle}" />
+								              	[/#if]
+											</a>
+										</div>
+									</li>
+						        [/#list]
+							</ul>
+				        [/#if]
+				        <div id="morediv" class="morediv">
+					       	<a href="javascript:void(0);">加载更多>></a>
+					    </div>
+						[#include "../include/company.html"/]
+					</div>
+				</div>
+			</div>
+			<!-- off-canvas backdrop -->
+			<div class="mui-off-canvas-backdrop"></div>
+		</div>
+	</div>
+	
+	[#include "../include/footer.html"/]
+</body>
+	<script>
+		mui.init({
+			gestureConfig:{
+			   tap: true, //默认为true
+			   doubletap: true, //默认为false
+			   longtap: true, //默认为false
+			   swipe: true, //默认为true
+			   drag: true, //默认为true
+			   hold:false,//默认为false，不监听
+			   release:false//默认为false，不监听
+			},
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				}
+				/*up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}*/
+			},
+			swipeBack: false
+		});
+		
+		//绑定A标签超链接tag事件
+		window.onload = function(){
+			//绑定搜索图标
+			document.getElementById('searchImg').addEventListener('tap',function(){
+				searchKeyword(this);
+			});
+			
+			//绑定大图
+			var banners = $(".mui-slider-item").children("a");
+			for (var j=0;j<banners.length;j++){
+				banners[j].addEventListener('tap',function(){
+					openCustURI(this.getAttribute("href"));
+				});
+			}
+			//绑定文章
+			var els = $(".mui-table-view-cell.mui-media").children("a");
+			for (var i=0;i<els.length;i++){
+				els[i].addEventListener('tap',function(){
+					openCustURI(this.getAttribute("href"));
+				});
+			}
+			var elsImg = $(".mui-table-view-cell.mui-media");
+			for (var k=0;k<elsImg.length;k++){
+				var elsImgDiv = $(elsImg.get(k)).children("div:last").children("a");
+				elsImgDiv[0].addEventListener('tap',function(){
+					openCustURI(this.getAttribute("href"));
+				});
+			}
+			//绑定加载更多
+			var loadmore = $("#morediv").children("a");
+			loadmore[0].addEventListener('tap',function(){
+				loadMore();
+			});
+			
+			//绑定页头资讯
+			var iZixun = $("#index_zixun");
+			iZixun[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//绑定页头指数
+			var iZhishu = $("#index_zhishu");
+			iZhishu[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//绑定活动
+			var iHuodong = $("#index_huodong");
+			iHuodong[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//****** 绑定侧滑菜单精品活动  *******
+			//大数据24小时
+			var dsj_twenty = $("#dsj_twenty");
+			dsj_twenty[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//大数据周周看
+			var dsj_zzkan = $("#dsj_zzkan");
+			dsj_zzkan[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//投融次周报-月报-季报
+			var dsj_trzi = $("#dsj_trzi");
+			dsj_trzi[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//大咖周语录
+			var dsj_djzylu = $("#dsj_djzylu");
+			dsj_djzylu[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//大数据周聘汇
+			var dsj_zphui = $("#dsj_zphui");
+			dsj_zphui[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//每周一本书
+			var dsj_mzybshu = $("#dsj_mzybshu");
+			dsj_mzybshu[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			//大数据活动季度报告
+			var dsj_hdyugao = $("#dsj_hdyugao");
+			dsj_hdyugao[0].addEventListener('tap',function(){
+				openCustURI(this.getAttribute("href"));
+			});
+			
+			mui.plusReady(function(){
+				plus.nativeUI.closeWaiting();
+				mui.currentWebview.show();
+			});
+		}
+		
+		function openCustURI(vurl){
+			mui.openWindow({
+				url:vurl,
+				show:{
+					autoShow:true,
+					//aniShow:'slide-in-right',
+					//duration:400
+				},
+				waiting:{autoShow:false,title:'正在加载...'}});
+		}
+		
+		function reBindURI(){
+			try{
+				var els = $(".mui-table-view-cell").children("a");
+				for (var i=0;i<els.length;i++){
+					els[i].addEventListener('tap',function(){
+						openCustURI(this.getAttribute("href"));
+					});
+				}
+				var elsImg = $(".mui-table-view-cell.mui-media");
+				for (var k=0;k<elsImg.length;k++){
+					var elsImgDiv = $(elsImg.get(k)).children("div:last").children("a");
+					elsImgDiv[0].addEventListener('tap',function(){
+						openCustURI(this.getAttribute("href"));
+					});
+				}
+			}catch(e){
+				alert(e.message);
+			}
+		}
+		
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+			setTimeout(function() {
+				var table = document.body.querySelectorAll('.mui-table-view')[1];
+				var maxLengthId = document.getElementById("maxLengthId").value;
+				mui.ajax('${base}/loadMobileDownSport.htm',{
+					data:{
+						maxLengthId : maxLengthId,
+						articleLength : 10
+					},
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						var articleItem = parseInt(data['articleItem']);
+						if (articleItem > 0){
+							var tableDiv = $(table).children("div");							//思路:先找到ul下div，先把div去掉，把最新文章加到前面，然后再把div加回到最前面
+							$(table).children("div").remove();
+							for (var i=1;i<=articleItem;i++){
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell mui-media';
+								li.innerHTML = data[""+i];
+								table.insertBefore(li, table.firstChild);
+							}
+							$(table).before(tableDiv);
+							mui.toast("更新文章"+articleItem+"条!");
+							reBindURI();
+							document.getElementById("maxLengthId").value = data['maxid'];
+						}else{
+							mui.toast("没有最新文章了!");
+						}
+						mui('#pullrefresh').pullRefresh().scrollTo(0,0,0);
+					}
+				});
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+			}, 1500);
+
+		}
+		
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+				var table = document.body.querySelector('.mui-table-view');
+				var minLengthId = document.getElementById("minLengthId").value;
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(minLengthId==1);
+				mui.ajax('${base}/loadMobileUpArticle.htm',{
+					data:{
+						minLengthId : minLengthId,
+						articleLength : 30
+					},
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						var articleItem = parseInt(data['articleItem']);
+						if (articleItem > 0){
+							for (var i=1;i<=articleItem;i++){
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell mui-media';
+								li.innerHTML = data[""+i];
+								table.appendChild(li);
+							}
+							reBindURI();
+							document.getElementById("minLengthId").value = data['minid'];
+						}else{
+							mui.toast("没有最新文章了!");
+						}
+					}
+				});
+			}, 1500);
+		}
+		
+		/**
+		*	更多加载内容
+		*/
+		function loadMore(){
+			//var table = document.body.querySelector('.mui-table-view');
+			var table = document.querySelectorAll('ul.mui-table-view')[2];
+			var minLengthId = document.getElementById("minLengthId").value;
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh(minLengthId==1);
+			mui.ajax('${base}/loadMobileUpSport.htm',{
+				data:{
+					minLengthId : minLengthId,
+					articleLength : 30
+				},
+				dataType:'json',//服务器返回json格式数据
+				type:'post',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				success:function(data){
+					var articleItem = parseInt(data['articleItem']);
+					if (articleItem > 0){
+						for (var i=1;i<=articleItem;i++){
+							var li = document.createElement('li');
+							li.className = 'mui-table-view-cell mui-media';
+							li.innerHTML = data[""+i];
+							table.appendChild(li);
+						}
+						reBindURI();
+						document.getElementById("minLengthId").value = data['minid'];
+					}else{
+						mui.toast("没有最新文章了!");
+					}
+				}
+			});
+		}
+	</script>
+</html>

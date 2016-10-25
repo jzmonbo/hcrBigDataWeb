@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="tplMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="0"/>
+		<property name="basenames" value="#{propertyUtils.getList('messages.tpl.')}"/>
+	</bean>
+	<!--标签-->
+	<bean id="cms_pagination" class="com.hcrcms.cms.action.directive.PaginationDirective"/>
+	<bean id="cms_channel_list" class="com.hcrcms.cms.action.directive.ChannelListDirective"/>
+	<bean id="cms_channel_page" class="com.hcrcms.cms.action.directive.ChannelPageDirective"/>
+	<bean id="cms_channel" class="com.hcrcms.cms.action.directive.ChannelDirective"/>
+	<bean id="cms_content" class="com.hcrcms.cms.action.directive.ContentDirective"/>
+	<bean id="cms_content_list" class="com.hcrcms.cms.action.directive.ContentListDirective"/>
+	<bean id="cms_content_page" class="com.hcrcms.cms.action.directive.ContentPageDirective"/>
+	<bean id="cms_tag_list" class="com.hcrcms.cms.action.directive.ContentTagListDirective"/>
+	<bean id="cms_tag_page" class="com.hcrcms.cms.action.directive.ContentTagPageDirective"/>
+	<bean id="cms_topic_list" class="com.hcrcms.cms.action.directive.CmsTopicListDirective"/>
+	<bean id="cms_topic_page" class="com.hcrcms.cms.action.directive.CmsTopicPageDirective"/>
+	<bean id="cms_comment_list" class="com.hcrcms.cms.action.directive.CmsCommentListDirective"/>
+	<bean id="cms_comment_page" class="com.hcrcms.cms.action.directive.CmsCommentPageDirective"/>
+	<bean id="cms_guestbook_ctg_list" class="com.hcrcms.cms.action.directive.CmsGuestbookCtgListDirective"/>
+	<bean id="cms_guestbook_list" class="com.hcrcms.cms.action.directive.CmsGuestbookListDirective"/>
+	<bean id="cms_guestbook_page" class="com.hcrcms.cms.action.directive.CmsGuestbookPageDirective"/>
+	<bean id="cms_vote" class="com.hcrcms.cms.action.directive.CmsVoteDirective"/>
+	<bean id="cms_friendlink_ctg_list" class="com.hcrcms.cms.action.directive.CmsFriendlinkCtgListDirective"/>
+	<bean id="cms_friendlink_list" class="com.hcrcms.cms.action.directive.CmsFriendlinkListDirective"/>
+	<bean id="cms_lucene_list" class="com.hcrcms.cms.lucene.LuceneDirectiveList"/>
+	<bean id="cms_lucene_page" class="com.hcrcms.cms.lucene.LuceneDirectivePage"/>
+	<bean id="cms_advertising" class="com.hcrcms.cms.action.directive.CmsAdvertisingDirective"/>
+	<bean id="cms_vote_list" class="com.hcrcms.cms.action.directive.CmsVoteListDirective"/>
+	<bean id="cms_model" class="com.hcrcms.cms.action.directive.CmsModelDirective"/>
+	<bean id="cms_score_group" class="com.hcrcms.cms.action.directive.ScoreGroupDirective"/>
+	<bean id="cms_expert_list" class="com.hcrcms.cms.action.directive.ExpertListDirective" />
+	<bean id="cms_innerlink_list" class="com.hcrcms.cms.action.directive.InnerLinkListDirective" />
+	<bean id="cms_tags_list" class="com.hcrcms.cms.action.directive.CmsTagsListDirective" />
+	<bean id="cms_boutique_list" class="com.hcrcms.cms.action.directive.BoutiqueColumnDirective" />
+	
+	<!--后台权限标签-->
+	<bean id="cms_perm" class="com.hcrcms.cms.web.PermistionDirective"/>
+	
+	<!--SERVICE-->
+	<bean id="contentCountCache" class="com.hcrcms.cms.service.ContentCountCacheImpl"/>
+	<bean id="channelCountCache" class="com.hcrcms.cms.service.ChannelCountCacheImpl"/>
+	<bean id="cmsSiteFlowCache" class="com.hcrcms.cms.service.CmsSiteFlowCacheImpl"/>
+	<bean id="weixinTokenCache" class="com.hcrcms.cms.service.WeixinTokenCacheImpl"/>
+	<bean id="acquisitionSvc" class="com.hcrcms.cms.service.AcquisitionSvcImpl"/>
+	<bean id="luceneContentSvc" class="com.hcrcms.cms.lucene.LuceneContentSvcImpl"/>
+	<bean id="searchWordsCache" class="com.hcrcms.cms.service.SearchWordsCacheImpl"/>
+	<bean id="imageSvc" class="com.hcrcms.cms.service.ImageSvcImpl"/>
+	<bean id="staticPageSvc" class="com.hcrcms.cms.staticpage.StaticPageSvcImpl">
+		<property name="tplMessageSource" ref="tplMessageSource"/>
+		<property name="freeMarkerConfigurer">
+			<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+				<!--获取标签配置-->
+				<property name="freemarkerVariables" value="#{propertyUtils.getBeanMap('directive.')}"/>
+				<property name="templateLoaderPath" value=""/>
+				<property name="freemarkerSettings">
+					<props>
+						<prop key="tag_syntax">auto_detect</prop>
+						<prop key="template_update_delay">5</prop>
+						<prop key="defaultEncoding">UTF-8</prop>
+						<prop key="url_escaping_charset">UTF-8</prop>
+						<prop key="locale">zh_CN</prop>
+						<prop key="boolean_format">true,false</prop>
+						<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+						<prop key="date_format">yyyy-MM-dd</prop>
+						<prop key="time_format">HH:mm:ss</prop>
+						<prop key="number_format">0.######</prop>
+						<prop key="whitespace_stripping">true</prop>
+						<prop key="auto_import">/WEB-INF/ftl/hcr/index.ftl as p,/WEB-INF/ftl/spring.ftl as s</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="cmsStatistSvc" class="com.hcrcms.cms.statistic.CmsStatisticSvcImpl"/>
+	
+	<!--LISTENER-->
+	<bean id="contentLuceneListener" class="com.hcrcms.cms.lucene.ContentLuceneListener"/>
+	<bean id="contentStaticPageListener" class="com.hcrcms.cms.staticpage.ContentStaticPageListener"/>
+	
+	<!--MANAGER-->
+	<bean id="channelMng" class="com.hcrcms.cms.manager.main.impl.ChannelMngImpl">
+		<property name="deleteCheckerList">
+			<list>
+				<ref bean="contentMng"/>
+				<ref bean="cmsTopicMng"/>
+				<ref bean="cmsAcquisitionMng"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="channelExtMng" class="com.hcrcms.cms.manager.main.impl.ChannelExtMngImpl"/>
+	<bean id="channelTxtMng" class="com.hcrcms.cms.manager.main.impl.ChannelTxtMngImpl"/>
+	<bean id="channelCountMng" class="com.hcrcms.cms.manager.main.impl.ChannelCountMngImpl"/>
+	<bean id="contentMng" class="com.hcrcms.cms.manager.main.impl.ContentMngImpl">
+		<property name="listenerList">
+			<list>
+				<ref bean="contentLuceneListener"/>
+				<ref bean="contentStaticPageListener"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="contentTagMng" class="com.hcrcms.cms.manager.main.impl.ContentTagMngImpl"/>
+	<bean id="contentTypeMng" class="com.hcrcms.cms.manager.main.impl.ContentTypeMngImpl"/>
+	<bean id="contentExtMng" class="com.hcrcms.cms.manager.main.impl.ContentExtMngImpl"/>
+	<bean id="contentTxtMng" class="com.hcrcms.cms.manager.main.impl.ContentTxtMngImpl"/>
+	<bean id="contentCountMng" class="com.hcrcms.cms.manager.main.impl.ContentCountMngImpl"/>
+	<bean id="contentCheckMng" class="com.hcrcms.cms.manager.main.impl.ContentCheckMngImpl"/>
+	<bean id="cmsModelMng" class="com.hcrcms.cms.manager.main.impl.CmsModelMngImpl"/>
+	<bean id="cmsModelItemMng" class="com.hcrcms.cms.manager.main.impl.CmsModelItemMngImpl"/>
+	<bean id="cmsTopicMng" class="com.hcrcms.cms.manager.main.impl.CmsTopicMngImpl"/>
+	<bean id="cmsThirdAccountMng" class="com.hcrcms.cms.manager.main.impl.CmsThirdAccountMngImpl"/>
+	<bean id="weiXinSvc" class="com.hcrcms.cms.service.WeiXinSvcImpl"/>
+	
+	
+	<bean id="cmsAcquisitionMng" class="com.hcrcms.cms.manager.assist.impl.CmsAcquisitionMngImpl"/>
+	<bean id="cmsAcquisitionHistoryMng" class="com.hcrcms.cms.manager.assist.impl.CmsAcquisitionHistoryMngImpl"/>
+	<bean id="cmsAcquisitionTempMng" class="com.hcrcms.cms.manager.assist.impl.CmsAcquisitionTempMngImpl"/>
+	<bean id="cmsCommentMng" class="com.hcrcms.cms.manager.assist.impl.CmsCommentMngImpl"/>
+	<bean id="cmsCommentExtMng" class="com.hcrcms.cms.manager.assist.impl.CmsCommentExtMngImpl"/>
+	<bean id="cmsKeywordMng" class="com.hcrcms.cms.manager.assist.impl.CmsKeywordMngImpl"/>
+	<bean id="cmsSensitivityMng" class="com.hcrcms.cms.manager.assist.impl.CmsSensitivityMngImpl"/>
+	<bean id="cmsResourceMng" class="com.hcrcms.cms.manager.assist.impl.CmsResourceMngImpl"/>
+	<bean id="cmsGuestbookCtgMng" class="com.hcrcms.cms.manager.assist.impl.CmsGuestbookCtgMngImpl"/>
+	<bean id="cmsGuestbookExtMng" class="com.hcrcms.cms.manager.assist.impl.CmsGuestbookExtMngImpl"/>
+	<bean id="cmsGuestbookMng" class="com.hcrcms.cms.manager.assist.impl.CmsGuestbookMngImpl"/>	
+	<bean id="cmsVoteTopicMng" class="com.hcrcms.cms.manager.assist.impl.CmsVoteTopicMngImpl"/>
+	<bean id="cmsVoteItemMng" class="com.hcrcms.cms.manager.assist.impl.CmsVoteItemMngImpl"/>
+	<bean id="cmsVoteRecordMng" class="com.hcrcms.cms.manager.assist.impl.CmsVoteRecordMngImpl"/>
+	<bean id="cmsFriendlinkCtgMng" class="com.hcrcms.cms.manager.assist.impl.CmsFriendlinkCtgMngImpl"/>
+	<bean id="cmsFriendlinkMng" class="com.hcrcms.cms.manager.assist.impl.CmsFriendlinkMngImpl"/>
+	<bean id="cmsAdvertisingSpaceMng" class="com.hcrcms.cms.manager.assist.impl.CmsAdvertisingSpaceMngImpl"/>
+	<bean id="cmsAdvertisingMng" class="com.hcrcms.cms.manager.assist.impl.CmsAdvertisingMngImpl"/>
+	<bean id="cmsMessageMng" class="com.hcrcms.cms.manager.assist.impl.CmsMessageMngImpl"/>
+	<bean id="cmsReceiverMessageMng" class="com.hcrcms.cms.manager.assist.impl.CmsReceiverMessageMngImpl"/>
+	
+	<bean id="cmsMysqlDataBackMng" class="com.hcrcms.cms.manager.assist.impl.CmsMysqlDataBackMngImpl"/>
+	
+	<bean id="cmsFileMngImpl" class="com.hcrcms.cms.manager.assist.impl.CmsFileMngImpl"/>
+	<bean id="cmsWorkLoadStatisticSvc" class="com.hcrcms.cms.statistic.workload.CmsWorkLoadStatisticSvcImpl"/>
+	<bean id="cmsVoteReplyMng" class="com.hcrcms.cms.manager.assist.impl.CmsVoteReplyMngImpl"/>
+	<bean id="cmsVoteSubTopicMng" class="com.hcrcms.cms.manager.assist.impl.CmsVoteSubTopicMngImpl"/>
+	<bean id="cmsJobApplyMng" class="com.hcrcms.cms.manager.assist.impl.CmsJobApplyMngImpl"/>
+	<bean id="cmsTaskMng" class="com.hcrcms.cms.manager.assist.impl.CmsTaskMngImpl"/>
+	<bean id="cmsOriginMng" class="com.hcrcms.cms.manager.assist.impl.CmsOriginMngImpl"/>
+	<bean id="cmsSearchWordsMng" class="com.hcrcms.cms.manager.assist.impl.CmsSearchWordsMngImpl"/>
+	<bean id="cmsPlugMng" class="com.hcrcms.cms.manager.assist.impl.CmsPlugMngImpl"/>
+	<bean id="cmsSiteAccessMng" class="com.hcrcms.cms.manager.assist.impl.CmsSiteAccessMngImpl"/>
+	<bean id="cmsSiteAccessPagesMng" class="com.hcrcms.cms.manager.assist.impl.CmsSiteAccessPagesMngImpl"/>
+	<bean id="cmsSiteAccessStatisticMng" class="com.hcrcms.cms.manager.assist.impl.CmsSiteAccessStatisticMngImpl"/>
+	<bean id="cmsSiteAccessCountMng" class="com.hcrcms.cms.manager.assist.impl.CmsSiteAccessCountMngImpl"/>
+	<bean id="cmsUserMenuMng" class="com.hcrcms.cms.manager.assist.impl.CmsUserMenuMngImpl"/>
+	<bean id="cmsDirectiveTplMng" class="com.hcrcms.cms.manager.assist.impl.CmsDirectiveTplMngImpl"/>
+	<bean id="cmsScoreGroupMng" class="com.hcrcms.cms.manager.assist.impl.CmsScoreGroupMngImpl"/>
+	<bean id="cmsScoreItemMng" class="com.hcrcms.cms.manager.assist.impl.CmsScoreItemMngImpl"/>
+	<bean id="cmsScoreRecordMng" class="com.hcrcms.cms.manager.assist.impl.CmsScoreRecordMngImpl"/>
+	<bean id="expertMng" class="com.hcrcms.cms.manager.main.impl.ExpertMngImpl" />
+	<bean id="cmsIpAddressMng" class="com.hcrcms.cms.manager.assist.impl.CmsIpAddressMngImpl" />
+	<bean id="cmsHotSpotNavigationMng" class="com.hcrcms.cms.manager.main.impl.HotSpotNavigationMngImpl" />
+	<bean id="cmsSpecialTopicMng" class="com.hcrcms.cms.manager.main.impl.CmsSpecialTopicMngImpl" />
+	<bean id="cmsSpecialTopicContentMng" class="com.hcrcms.cms.manager.main.impl.CmsSpecialTopicContentMngImpl" />
+	<bean id="cmsSearchEngineMng" class="com.hcrcms.cms.manager.assist.impl.CmsSearchEngineMngImpl" />
+	<bean id="cmsSearchEngineHistoryMng" class="com.hcrcms.cms.manager.assist.impl.CmsSearchEngineHistoryMngImpl" />
+	<bean id="cmsSearchEngineLogMng" class="com.hcrcms.cms.manager.assist.impl.CmsSearchEngineLogMngImpl" />
+	<bean id="cmsSearchEngineBaseMng" class="com.hcrcms.cms.manager.assist.impl.CmsSearchEngineBaseMngImpl" />
+	<bean id="topLinkMng" class="com.hcrcms.cms.manager.main.impl.TopLinkMngImpl" />
+	<bean id="siteRightLinkMng" class="com.hcrcms.cms.manager.main.impl.SiteRightLinkMngImpl" />
+	<bean id="contentWordsMng" class="com.hcrcms.cms.manager.main.impl.ContentWordsMngImpl" />
+	<bean id="articleTopLinkMng" class="com.hcrcms.cms.manager.main.impl.ArticleTopLinkMngImpl" />
+	<bean id="articleBottomLinkMng" class="com.hcrcms.cms.manager.main.impl.ArticleBottomLinkMngImpl" />
+	<bean id="tagsMng" class="com.hcrcms.cms.manager.main.impl.TagsMngImpl" />
+	<bean id="enterpriseMng" class="com.hcrcms.cms.manager.assist.impl.CmsTopicEnterpriseMngImpl" />
+	<bean id="topicReportMng" class="com.hcrcms.cms.manager.assist.impl.CmsTopicReportMngImpl" />
+	<bean id="boutiqueColumnMng" class="com.hcrcms.cms.manager.main.impl.BoutiqueColumnMngImpl" />
+	<bean id="keywordRelationMng" class="com.hcrcms.cms.manager.main.impl.KeywordRelationMngImpl" />
+	<!--DAO-->
+	<bean id="channelDao" class="com.hcrcms.cms.dao.main.impl.ChannelDaoImpl"/>
+	<bean id="channelExtDao" class="com.hcrcms.cms.dao.main.impl.ChannelExtDaoImpl"/>
+	<bean id="channelTxtDao" class="com.hcrcms.cms.dao.main.impl.ChannelTxtDaoImpl"/>
+	<bean id="channelCountDao" class="com.hcrcms.cms.dao.main.impl.ChannelCountDaoImpl"/>
+	<bean id="contentDao" class="com.hcrcms.cms.dao.main.impl.ContentDaoImpl"/>
+	<bean id="contentTagDao" class="com.hcrcms.cms.dao.main.impl.ContentTagDaoImpl"/>
+	<bean id="contentTypeDao" class="com.hcrcms.cms.dao.main.impl.ContentTypeDaoImpl"/>
+	<bean id="contentExtDao" class="com.hcrcms.cms.dao.main.impl.ContentExtDaoImpl"/>
+	<bean id="contentTxtDao" class="com.hcrcms.cms.dao.main.impl.ContentTxtDaoImpl"/>
+	<bean id="contentCountDao" class="com.hcrcms.cms.dao.main.impl.ContentCountDaoImpl"/>
+	<bean id="contentCheckDao" class="com.hcrcms.cms.dao.main.impl.ContentCheckDaoImpl"/>
+	
+	<bean id="cmsModelDao" class="com.hcrcms.cms.dao.main.impl.CmsModelDaoImpl"/>
+	<bean id="cmsModelItemDao" class="com.hcrcms.cms.dao.main.impl.CmsModelItemDaoImpl"/>
+	<bean id="cmsTopicDao" class="com.hcrcms.cms.dao.main.impl.CmsTopicDaoImpl"/>
+	<bean id="cmsThirdAccountDao" class="com.hcrcms.cms.dao.main.impl.CmsThirdAccountDaoImpl"/>
+	
+	
+	<bean id="cmsAcquisitionDao" class="com.hcrcms.cms.dao.assist.impl.CmsAcquisitionDaoImpl"/>
+	<bean id="cmsAcquisitionHistoryDao" class="com.hcrcms.cms.dao.assist.impl.CmsAcquisitionHistoryDaoImpl"/>
+	<bean id="cmsAcquisitionTempDao" class="com.hcrcms.cms.dao.assist.impl.CmsAcquisitionTempDaoImpl"/>
+	<bean id="cmsCommentDao" class="com.hcrcms.cms.dao.assist.impl.CmsCommentDaoImpl"/>
+	<bean id="cmsCommentExtDao" class="com.hcrcms.cms.dao.assist.impl.CmsCommentExtDaoImpl"/>
+	<bean id="cmsKeywordDao" class="com.hcrcms.cms.dao.assist.impl.CmsKeywordDaoImpl"/>
+	<bean id="cmsSensitivityDao" class="com.hcrcms.cms.dao.assist.impl.CmsSensitivityDaoImpl"/>
+	<bean id="cmsGuestbookCtgDao" class="com.hcrcms.cms.dao.assist.impl.CmsGuestbookCtgDaoImpl"/>
+	<bean id="cmsGuestbookExtDao" class="com.hcrcms.cms.dao.assist.impl.CmsGuestbookExtDaoImpl"/>
+	<bean id="cmsGuestbookDao" class="com.hcrcms.cms.dao.assist.impl.CmsGuestbookDaoImpl"/>	
+	<bean id="cmsVoteTopicDao" class="com.hcrcms.cms.dao.assist.impl.CmsVoteTopicDaoImpl"/>
+	<bean id="cmsVoteItemDao" class="com.hcrcms.cms.dao.assist.impl.CmsVoteItemDaoImpl"/>
+	<bean id="cmsVoteRecordDao" class="com.hcrcms.cms.dao.assist.impl.CmsVoteRecordDaoImpl"/>
+	<bean id="cmsFriendlinkCtgDao" class="com.hcrcms.cms.dao.assist.impl.CmsFriendlinkCtgDaoImpl"/>
+	<bean id="cmsFriendlinkDao" class="com.hcrcms.cms.dao.assist.impl.CmsFriendlinkDaoImpl"/>
+	<bean id="cmsAdvertisingSpaceDao" class="com.hcrcms.cms.dao.assist.impl.CmsAdvertisingSpaceDaoImpl"/>
+	<bean id="cmsAdvertisingDao" class="com.hcrcms.cms.dao.assist.impl.CmsAdvertisingDaoImpl"/>
+	<bean id="cmsMessageDao" class="com.hcrcms.cms.dao.assist.impl.CmsMessageDaoImpl"/>
+	<bean id="cmsReceiverMessageDao" class="com.hcrcms.cms.dao.assist.impl.CmsReceiverMessageDaoImpl"/>
+	
+	<bean id="luceneContentDao" class="com.hcrcms.cms.lucene.LuceneContentDaoImpl"/>
+	
+	<bean id="staticPageDao" class="com.hcrcms.cms.staticpage.StaticPageDaoImpl"/>
+	<bean id="cmsStatisticDao" class="com.hcrcms.cms.statistic.CmsStatisticDaoImpl"/>
+	<bean id="cmsMysqlDataDaoBack" class="com.hcrcms.cms.dao.assist.impl.CmsMysqlDataBackDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="cmsFileDaoImpl" class="com.hcrcms.cms.dao.assist.impl.CmsFileDaoImpl"/>
+	<bean id="cmsWorkLoadStatisticDao" class="com.hcrcms.cms.statistic.workload.CmsWorkLoadStatisticDaoImpl"/>
+	<bean id="cmsVoteReplyDao" class="com.hcrcms.cms.dao.assist.impl.CmsVoteReplyDaoImpl"/>
+	<bean id="cmsVoteSubTopicDao" class="com.hcrcms.cms.dao.assist.impl.CmsVoteSubTopicDaoImpl"/>
+	<bean id="cmsJobApplyDao" class="com.hcrcms.cms.dao.assist.impl.CmsJobApplyDaoImpl"/>
+	<bean id="cmsTaskDao" class="com.hcrcms.cms.dao.assist.impl.CmsTaskDaoImpl"/>
+	<bean id="cmsOriginDao" class="com.hcrcms.cms.dao.assist.impl.CmsOriginDaoImpl"/>
+	<bean id="cmsSearchWordsDao" class="com.hcrcms.cms.dao.assist.impl.CmsSearchWordsDaoImpl"/>
+	<bean id="cmsPlugDao" class="com.hcrcms.cms.dao.assist.impl.CmsPlugDaoImpl"/>
+	<bean id="cmsSiteAccessDao" class="com.hcrcms.cms.dao.assist.impl.CmsSiteAccessDaoImpl"/>
+	<bean id="cmsSiteAccessPagesDao" class="com.hcrcms.cms.dao.assist.impl.CmsSiteAccessPagesDaoImpl"/>
+	<bean id="cmsSiteAccessStatisticDao" class="com.hcrcms.cms.dao.assist.impl.CmsSiteAccessStatisticDaoImpl"/>
+	<bean id="cmsSiteAccessCountDao" class="com.hcrcms.cms.dao.assist.impl.CmsSiteAccessCountDaoImpl"/>
+	<bean id="cmsUserMenuDao" class="com.hcrcms.cms.dao.assist.impl.CmsUserMenuDaoImpl"/>
+	<bean id="cmsDirectiveTplDao" class="com.hcrcms.cms.dao.assist.impl.CmsDirectiveTplDaoImpl"/>
+	<bean id="cmsScoreGroupDao" class="com.hcrcms.cms.dao.assist.impl.CmsScoreGroupDaoImpl"/>
+	<bean id="cmsScoreItemDao" class="com.hcrcms.cms.dao.assist.impl.CmsScoreItemDaoImpl"/>
+	<bean id="cmsScoreRecordDao" class="com.hcrcms.cms.dao.assist.impl.CmsScoreRecordDaoImpl"/>
+	<bean id="expertDao" class="com.hcrcms.cms.dao.main.impl.ExpertDaoImpl" />
+	<bean id="cmsIpAddressDao" class="com.hcrcms.cms.dao.assist.impl.CmsIpAddressDaoImpl" />
+	<bean id="hotSpotNavigationDao" class="com.hcrcms.cms.dao.main.impl.HotSpotNavigationDaoImpl" />
+	<bean id="cmsSpecialTopicDao" class="com.hcrcms.cms.dao.main.impl.CmsSpecialTopicDaoImpl" />
+	<bean id="cmsSpecialTopicContentDao" class="com.hcrcms.cms.dao.main.impl.CmsSpecialTopicContentDaoImpl" />
+	<bean id="cmsSearchEngineDao" class="com.hcrcms.cms.dao.assist.impl.CmsSearchEngineDaoImpl" />
+	<bean id="cmsSearchEngineHistoryDao" class="com.hcrcms.cms.dao.assist.impl.CmsSearchEngineHistoryDaoImpl" />
+	<bean id="cmsSearchEngineLogDao" class="com.hcrcms.cms.dao.assist.impl.CmsSearchEngineLogDaoImpl" />
+	<bean id="cmsSearchEngineBaseDao" class="com.hcrcms.cms.dao.assist.impl.CmsSearchEngineBaseDaoImpl" />
+	<bean id="topLinkDao" class="com.hcrcms.cms.dao.main.impl.TopLinkDaoImpl" />
+	<bean id="siteRightLinkDao" class="com.hcrcms.cms.dao.main.impl.SiteRightLinkDaoImpl" />
+	<bean id="contentWordsDao" class="com.hcrcms.cms.dao.main.impl.ContentWordsDaoImpl" />
+	<bean id="articleTopLinkDao" class="com.hcrcms.cms.dao.main.impl.ArticleTopLinkDaoImpl" />
+	<bean id="articleBottomLinkDao" class="com.hcrcms.cms.dao.main.impl.ArticleBottomLinkDaoImpl" />
+	<bean id="tagsDao" class="com.hcrcms.cms.dao.main.impl.TagsDaoImpl" />
+	<bean id="enterpriseDao" class="com.hcrcms.cms.dao.assist.impl.CmsTopicEnterpriseDaoImpl" />
+	<bean id="topicReportDao" class="com.hcrcms.cms.dao.assist.impl.CmsTopicReportDaoImpl" />
+	<bean id="boutiqueColumnDao" class="com.hcrcms.cms.dao.main.impl.BoutiqueColumnDaoImpl" />
+	<bean id="keywordRelationDao" class="com.hcrcms.cms.dao.main.impl.KeywordRelationDaoImpl" />
+</beans>

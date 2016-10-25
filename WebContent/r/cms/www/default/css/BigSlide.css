@@ -1,0 +1,13 @@
+/*Big_Slide样式*/
+#Big_Slide_box{width:100%; overflow:hidden;}
+#Big_Slide{width:1000px;position: relative; margin:0 auto; height:405px;}
+#Big_Slide ul li{width:1000px; height:405px; position: absolute;}
+#Big_Slide ul li a p{color:#fff;font-size:26px;}
+#Big_Slide_Last,#Big_Slide_Next{width:46px; height:131px; color:#333; font-size:18px; position: absolute;z-index:9999; cursor:pointer; opacity:0.5;}
+#Big_Slide_Last:hover,#Big_Slide_Next:hover{opacity:1;}
+#Big_Slide_Last{background:url(../images/towardLeft.png) no-repeat center top;top:120px;}
+#Big_Slide_Next{right:0px; background:url(../images/towardRight.png) no-repeat center top;top:120px;}
+#Big_Slide_Tab{position: absolute; bottom:12px; height:1px; margin:0 auto; width:240px;}
+#Big_Slide_Tab a{display:block; background:#000; float:left; height:1px; overflow:hidden; z-index:9999; }
+#Big_Slide_Tab .TabOn{ background:#fff;} 
+#Big_Slide .prev{position:absolute; width:980px; height:335px; background:#fff; top:0px; z-index:99; opacity:0.95;}

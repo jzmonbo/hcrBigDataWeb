@@ -1,0 +1,79 @@
+<!---头部开始--->
+<div style=" background:#FFF;position:absolute;left:15px;top:10px;">
+   	<iframe name="sinaWeatherTool" src="http://weather.news.sina.com.cn/chajian/iframe/weatherStyle2.html?city=%E5%8C%97%E4%BA%AC" width="200" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+</div>
+<ul class="t-ul" style="margin:10px 10px 0 0;">
+	<li><a href="${base}/searchEngines.htm" target="_blank">大数据搜索引擎</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li>
+    <li><a href="${base}/renwuzhuanfang.htm" target="_blank">大数据人物专访</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li>
+    <!-- <li><a href="#">大数据专家</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li> -->
+    <li><a href="${base}/huodongtuijian.htm" target="_blank">大数据行业活动</a></li><li>&nbsp;&nbsp;|&nbsp;&nbsp;<li>
+    <li><a href="#" onclick="SetHome(this,window.location)">设为首页</a></li>
+</ul>
+<div class="logo-center">
+	<img src="/r/cms/www/default/images/logo-index.png" />
+</div> 
+           
+<div class="sousuo-div s-index">
+	<form action="${base}/s/" target="_blank" id="searchForm">
+		<input type="text" class="in-text-a" value="${oldq!'请输入关键词'}" name="q" onfocus="if(this.value=='请输入关键词')this.value=''"  onkeypress="qkeypress()" onblur="if(this.value=='')this.value='请输入关键词'" autocomplete="on" />
+    	<input type="submit" class="headericon-header-search search-icon search-icon-index" data-stat-click="sousuo" value="搜一下" style="cursor:pointer;" / >
+    </form>
+</div>
+<div class="s-index hot-s">
+	热门搜索：<!-- <a href="#">大数据</a><a href="#">阿里大数据</a><a href="#">金融大数据</a><a href="#">数据行业</a><a href="#">数据</a> -->
+	[#if searchWords??]
+	[#list searchWords as searchWord]
+		<a href="${base}/s/1_${searchWord.nameUs}.htm" target="_blank">${searchWord.name}</a>
+	[/#list]
+	[/#if]
+</div>
+           
+<div class="footer-index">
+	数据猿旗下大数据搜索服务&nbsp;&nbsp;s.datayuan.cn&nbsp;&nbsp;京ICP备14026010号
+</div>
+<!---头部结束--->
+<script type="text/javascript" language="javascript">  
+    function AddFavorite(sURL, sTitle)  
+    {  
+        try  
+        {  
+            window.external.addFavorite(sURL, sTitle);  
+            alert("添加收藏成功!");
+        }  
+        catch (e)  
+        {  
+        	alert(e);
+            try  
+            {  
+                window.sidebar.addPanel(sTitle, sURL, "");  
+            }  
+            catch (e)  
+            {  
+                alert("加入收藏失败，请使用Ctrl+D进行添加");  
+            }  
+        }  
+    }  
+    function SetHome(obj,vrl)  
+    {  
+        try  
+        {  
+                obj.style.behavior='url(#default#homepage)';
+                obj.setHomePage(vrl);
+                alert("设置主页成功！");
+        }  
+        catch(e){  
+        		/*alert("设置主页异常了:"+e.message);
+                if(window.netscape) {  
+                        try {  
+                                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");   
+                        }   
+                        catch (e) {   
+                                alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将[signed.applets.codebase_principal_support]设置为'true'");   
+                        }  
+                        var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);  
+                        prefs.setCharPref('browser.startup.homepage',vrl);  
+                 }*/
+        	alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请进入新网站后使用Ctrl+D进行添加");
+        }  
+    }  
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+function getTableForm() {
+	return document.getElementById('tableForm');
+}
+function optDelete() {
+	if(Pn.checkedCount('ids')<=0) {
+		$.alert("<@s.m 'global.prompt'/>","<@s.m 'error.checkRecord'/>");
+		return;
+	}
+	$.confirm(doDelete,"<@s.m 'global.confirm'/>","<@s.m 'global.confirm.delete'/>");
+}
+function doDelete(){
+	var f = getTableForm();
+	f.action="o_delete.so";
+	f.submit();
+}
+function optPriority() {
+	getTableForm().action="o_priority.so";
+}
+</script>
+</head>
+<body>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>: <@s.m "cmsAcquisition.special.topic.list"/> - <@s.m "global.list"/></div>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<form action="v_topiclist.so" method="post" style="padding-top:5px; padding-bottom:5px; border-top:1px solid #fff; text-indent:10px;">
+<@s.m "cmsSpecialTopic.name"/>: <@p.text name="text" />
+<input class="query" type="submit" value="<@s.m "global.query"/>"/>
+</form>
+<@p.table value=specialTopics;specialtopic,i,has_next><#rt/>
+	<@p.column title="<input type='checkbox' onclick='Pn.checkbox(\"ids\",this.checked)'/>" width="25" align="center">
+		<input type='checkbox' name='ids' value='${specialtopic.id}' onclick="Pn.selectCheckBox('${specialtopic.id}',this.checked)"/><#t/>
+	</@p.column><#t/>
+	<@p.column title="ID" align="center">${specialtopic.id}<input type="hidden" name="id" value="${specialtopic.id}"/></@p.column><#t/>
+	<@p.column code="cmsSpecialTopic.name" align="center"><a href="${base}/topic.htm?topicId=${specialtopic.id}" target="_blank">${specialtopic.topicName}</a></@p.column><#t/>
+	<@p.column code="cmsSpecialTopic.main.place" align="center">${specialtopic.mainPlace}</@p.column><#t/>
+	<@p.column code="cmsSpecialTopic.sub.place" align="center">${specialtopic.subPlace}</@p.column><#t/>
+	<@p.column code="cmsSpecialTopic.start.time" align="center">${specialtopic.startTime}</@p.column><#t/>
+	<@p.column code="cmsSpecialTopic.end.time" align="center">${specialtopic.endTime}</@p.column><#t/>
+</@p.table>
+</div>
+<#include "/common/alert_message.html"/>
+</body>
+</html>

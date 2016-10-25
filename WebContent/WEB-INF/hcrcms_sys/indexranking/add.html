@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>: <@s.m "cmsAcquisition.index.ranking"/> - <@s.m "global.add"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_save.so" labelWidth="10">
+<td class="pn-flabel">分类</td>
+<td class="pn-fcontent">
+	<select id="category" name="category">
+		<option selected="selected" value="0">---请选择---</option>
+		<option value="101">零售商</option>
+		<option value="102">零售支持</option>
+		<option value="103">网上购物</option>
+		<option value="201">医疗</option>
+		<option value="301">通讯</option>
+		<option value="401">征信</option>
+		<option value="402">支付</option>
+		<option value="403">金融服务</option>
+		<option value="501">营销</option>
+		<option value="601">出行</option>
+		<option value="602">交通支持</option>
+		<option value="701">旅行</option>
+		<option value="801">影视</option>
+		<option value="802">阅读</option>
+		<option value="901">地理信息</option>
+		<option value="1001">农业</option>
+		<option value="1101">制造业</option>
+		<option value="1201">政府机构</option>
+		<option value="1202">政府服务商</option>
+	</select>
+</td><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.company" name="company" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.url" name="url" required="true" class="required" maxlength="150"/><@p.tr/>
+<td class="pn-flabel">LOGO</td>
+<td class="pn-fcontent">
+<input type="text" id="uploadImgPath2" name="companyLogo" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(2);" class="preview-button"/><br/>
+<span id="ufc2" style="position:relative">
+<input type='text' id='uploadFileText2' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText2').val(this.value)" size="14" type="file" id="uploadFile2" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(2);" class="upload-button"/><label id="uploadIMgPathRule2"></label><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(2);" class="cut-button"/> 
+</td><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.companyDesc" name="companyDesc" required="true" class="required" maxlength="500"/><@p.tr/>
+<@p.td colspan="2"><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

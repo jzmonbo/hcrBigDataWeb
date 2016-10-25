@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<link href="/r/cms/jqueryUI/jquery.ui.css" rel="stylesheet" type="text/css"/>
+<script src="/r/cms/jquery.js" type="text/javascript"></script>
+<script src="/r/cms/jqueryUI/jquery-ui.js" type="text/javascript"></script>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>:  <@s.m "cmsAcquisition.index.ranking"/> - <@s.m "global.edit"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.so" labelWidth="15">
+<td class="pn-flabel">分类</td>
+<td class="pn-fcontent">
+	<select id="category" name="category">
+		<#if cmsIndexBanking.category == 0>
+			<option selected="selected" value="0">---请选择---</option>
+		<#else>
+			<option value="0">---请选择---</option>
+		</#if>
+		<#if cmsIndexBanking.category == 101>
+			<option selected="selected" value="101">零售商</option>
+		<#else>
+			<option value="101">零售商</option>
+		</#if>
+		<#if cmsIndexBanking.category == 102>
+			<option selected="selected" value="102">零售支持</option>
+		<#else>
+			<option value="102">零售支持</option>
+		</#if>
+		<#if cmsIndexBanking.category == 103>
+			<option selected="selected" value="103">网上购物</option>
+		<#else>
+			<option value="103">网上购物</option>
+		</#if>
+		<#if cmsIndexBanking.category == 201>
+			<option selected="selected" value="201">医疗</option>
+		<#else>
+			<option value="201">医疗</option>
+		</#if>
+		<#if cmsIndexBanking.category == 301>
+			<option selected="selected" value="301">通讯</option>
+		<#else>
+			<option value="301">通讯</option>
+		</#if>
+		<#if cmsIndexBanking.category == 401>
+			<option selected="selected" value="401">征信</option>
+		<#else>
+			<option value="401">征信</option>
+		</#if>
+		<#if cmsIndexBanking.category == 402>
+			<option selected="selected" value="402">支付</option>
+		<#else>
+			<option value="402">支付</option>
+		</#if>
+		<#if cmsIndexBanking.category == 403>
+			<option selected="selected" value="403">金融服务</option>
+		<#else>
+			<option value="403">金融服务</option>
+		</#if>
+		<#if cmsIndexBanking.category == 501>
+			<option selected="selected" value="501">营销</option>
+		<#else>
+			<option value="501">营销</option>
+		</#if>
+		<#if cmsIndexBanking.category == 601>
+			<option selected="selected" value="601">出行</option>
+		<#else>
+			<option value="601">出行</option>
+		</#if>
+		<#if cmsIndexBanking.category == 602>
+			<option selected="selected" value="602">交通支持</option>
+		<#else>
+			<option value="602">交通支持</option>
+		</#if>
+		<#if cmsIndexBanking.category == 701>
+			<option selected="selected" value="701">旅行</option>
+		<#else>
+			<option value="701">旅行</option>
+		</#if>
+		<#if cmsIndexBanking.category == 801>
+			<option selected="selected" value="801">影视</option>
+		<#else>
+			<option value="801">影视</option>
+		</#if>
+		<#if cmsIndexBanking.category == 802>
+			<option selected="selected" value="802">阅读</option>
+		<#else>
+			<option value="802">阅读</option>
+		</#if>
+		<#if cmsIndexBanking.category == 901>
+			<option selected="selected" value="901">地理信息</option>
+		<#else>
+			<option value="901">地理信息</option>
+		</#if>
+		<#if cmsIndexBanking.category == 1001>
+			<option selected="selected" value="1001">农业</option>
+		<#else>
+			<option value="1001">农业</option>
+		</#if>
+		<#if cmsIndexBanking.category == 1101>
+			<option selected="selected" value="1101">制造业</option>
+		<#else>
+			<option value="1101">制造业</option>
+		</#if>
+		<#if cmsIndexBanking.category == 1201>
+			<option selected="selected" value="1201">政府机构</option>
+		<#else>
+			<option value="1201">政府机构</option>
+		</#if>
+		<#if cmsIndexBanking.category == 1202>
+			<option selected="selected" value="1202">政府服务商</option>
+		<#else>
+			<option value="1202">政府服务商</option>
+		</#if>
+	</select>
+</td><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.company" name="company" value="${cmsIndexBanking.company}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.url" name="url" value="${cmsIndexBanking.url?default('')}" required="true" class="required" maxlength="150"/><@p.tr/>
+<td class="pn-flabel">LOGO</td>
+<td class="pn-fcontent">
+<input type="text" id="uploadImgPath2" name="companyLogo" style="width:220px" value="${cmsIndexBanking.companyLogo?default('')}"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(2);" class="preview-button"/><br/>
+<span id="ufc2" style="position:relative">
+<input type='text' id='uploadFileText2' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText2').val(this.value)" size="14" type="file" id="uploadFile2" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(2);" class="upload-button"/><label id="uploadIMgPathRule2"></label><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(2);" class="cut-button"/>
+</td><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.bdss" name="bdss" value="${cmsIndexBanking.bdss?default('')}" required="true" class="required" /><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.sgss" name="sgss" value="${cmsIndexBanking.sgss?default('')}" required="true" class="required" /><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.hs" name="hs" value="${cmsIndexBanking.hs?default('')}" required="true" class="required" /><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsIndexBanking.companyDesc" name="companyDesc" value="${cmsIndexBanking.companyDesc?default('')}" required="true" class="required" maxlength="500"/><@p.tr/>
+<@p.td colspan="2"><@p.hidden name="searchId" value="${cmsIndexBanking.searchId}" /><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

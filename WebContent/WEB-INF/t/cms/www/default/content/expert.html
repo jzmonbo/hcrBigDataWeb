@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>${expert.author}_${stitle}-数据猿</title>
+<meta name="Keywords" content="${expert.author},${sname}"/>
+<meta name="Description" content="数据猿为您提供最新的大数据专家${expert.author}相关介绍及资讯，更多${expert.author}等各行业大数据专家信息尽在数据猿媒体平台。" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="applicable-device" content="pc">
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<script src="/${res}/js/mergejs/m_expert.js" type="text/javascript"></script>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+			<!---增加--头像+简介-开始--->
+            <div class="wz-div" style=" width:auto;padding:0; background:none;">
+            	
+                <div class="hi">
+                	<div class="imgtx"><img src="${expert.smallImg}" alt="${expert.author}" /></div>
+                	<h3>${expert.author}</h3>
+                        <p><span>【简介】</span>${expert.description}</p>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <!---增加--头像+简介-开始--->        	
+        	
+        	<!---每篇文章开始--->
+         	[#if tag_list??]
+ 			[#list tag_list as a]
+ 			<div>
+	 			[#if a_index+1 lte 10]
+	  			<div id="contentdiv${a_index+1}"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              	<!-- <p><a href="javascript:location.href=encodeURI('${base}/author.htm?author=${a.author}')" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p> -->
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [#else]
+	              <div id="contentdiv${a_index+1}" style="display:none;"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.shortTitle?length lt 30]
+	          			${a.shortTitle}
+	          		[#else]
+	          			[@text_cut s=a.shortTitle len=30 /]...
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              	<!-- <p><a href="javascript:location.href=encodeURI('${base}/author.htm?author=${a.author}')" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p> -->
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="" data-original="${a.contentImg}" width="610" height="240" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="610" alt="${a.shortTitle}" height="240" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [/#if]
+	         </div>
+             [/#list]
+             [#if totals gt 10]
+             	<div class="morediv">
+		           	<a href="javascript:volid(0);" onclick="loadMore()">加载更多>></a>
+		        </div>
+             [/#if]
+             [/#if]
+            <!---每篇文章结束--->
+        </div>
+        <!---左边内容部分开始--->
+        
+        [#include "../include/right_other.html"/]
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+       <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+    <!---底部版权部分结束--->
+    
+    
+</body>
+</html>

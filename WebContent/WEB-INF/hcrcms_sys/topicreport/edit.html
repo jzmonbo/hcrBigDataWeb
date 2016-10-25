@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>:  <@s.m "cmsAcquisition.special.topic"/> - <@s.m "global.edit"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.so" labelWidth="15">
+<@p.text colspan="2" size="100" label="cmsTopicReport.title" name="title" value="${cmsTopicReport.title}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsTopicReport.url" name="url" value="${cmsTopicReport.url}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsTopicReport.desc" name="desc" value="${cmsTopicReport.description?default('')}" maxlength="150"/><@p.tr/>
+<@p.td colspan="2"><@p.hidden name="rId" value="${cmsTopicReport.rId}" /><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

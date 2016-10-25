@@ -1,0 +1,2 @@
+(function(E,n,G,A,g,Y,a){E['EngageyaObject']=g;E[g]=E[g]||function(){ (E[g].q=E[g].q||[]).push(arguments)},E[g].l=1*new Date();Y=n.createElement(G), a=n.getElementsByTagName(G)[0];Y.async=1;Y.src=A;a.parentNode.insertBefore(Y,a)})(window,document,'script','//widget.goingnative.cn/engageya_loader.js','__engWidget');
+__engWidget('createWidget',{wwei:'ENGAGEYA_WIDGET_73',pubid:50,webid:110,wid:73});

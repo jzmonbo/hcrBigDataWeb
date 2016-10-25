@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.assist">
+	<class name="CmsCommentExt" table="jc_comment_ext">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="integer" column="ext_id"><generator class="identity"/></id>
+		<property name="ip" column="ip" type="string" not-null="false" length="50"/>
+		<property name="text" column="text" type="org.springframework.orm.hibernate3.support.ClobStringType" not-null="false"/>
+		<property name="reply" column="reply" type="org.springframework.orm.hibernate3.support.ClobStringType" not-null="false"/>
+		<property name="anonymousName" column="anonymous_name" type="string" not-null="false" length="50" />
+		<property name="anonymousImg" column="anonymous_img" type="string" not-null="false" length="100" />
+		<property name="sort" column="sort" type="java.lang.Integer" not-null="false" length="11" />
+		<property name="rsort" column="rsort" type="java.lang.Integer" not-null="false" length="11" />
+		<property name="replayTime" column="reply_time" type="timestamp" not-null="false" length="19"/>
+		<!-- <property name="text" column="text" type="text" length = "16777216" not-null="false"/>
+		<property name="reply" column="reply" type="text" length = "16777216" not-null="false"/>-->
+		<many-to-one name="comment" column="comment_id" class="com.hcrcms.cms.entity.assist.CmsComment" not-null="true"></many-to-one>
+	</class>
+</hibernate-mapping>

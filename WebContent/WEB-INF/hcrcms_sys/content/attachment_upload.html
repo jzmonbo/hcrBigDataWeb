@@ -1,0 +1,27 @@
+<script type="text/javascript">
+//涓婁紶闄勪欢
+function uploadAttachment(n) {
+	var af = $('#attachmentFile'+n);
+	//妫�煡鏄惁閫夋嫨浜嗘枃浠�
+	if(af.val()=='') {
+		$.alert("<@s.m 'global.prompt'/>",'<@s.m "content.error.noFileSelected"/>');
+		return;
+	}
+	//灏唂ile绉诲姩鑷充笂浼犺〃鍗�
+	$('#attachmentContent').empty();
+	$('#attachmentContent').append(af);
+	//澶嶅埗涓�釜file鏀捐嚦鍘熷
+	$('#afc'+n).append(af.clone().attr('value',''));
+	$('#attachmentText'+n).attr('value','');
+	//淇敼灞炴�
+	af.attr('id','');
+	//鍏朵粬琛ㄥ崟
+	$('#attachmentNum').val(n);
+	$('#attachmentForm').submit();
+}
+</script>
+<form id="attachmentForm" action="o_upload_attachment.so" method="post" enctype="multipart/form-data" target="attachment_iframe" style="display:none;width:0px;height:0px;">
+<span id="attachmentContent"></span>
+<input type="hidden" id="attachmentNum" name="attachmentNum"/>
+</form>
+<iframe name="attachment_iframe" frameborder="0" border="0" style="display:none;width:0px;height:0px;"></iframe>

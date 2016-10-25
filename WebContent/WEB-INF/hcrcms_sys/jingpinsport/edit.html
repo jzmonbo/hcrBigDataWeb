@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>: <@s.m "cmsAcquisition.jingpin.sport"/> - <@s.m "global.edit"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.so" labelWidth="10">
+<@p.text colspan="2" name="twentyfour" label="cmsJingPinSport.twentyfour" value="${cmsJingPinSport.twentyfour}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="zhouZhouKanStart" label="cmsJingPinSport.zhouzhoukan.start" value="${cmsJingPinSport.zhouZhouKanStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="zhouZhoukanEnd" label="cmsJingPinSport.zhouzhoukan.end" value="${cmsJingPinSport.zhouZhoukanEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="touRongZiStart" label="cmsJingPinSport.tourongzi.start" value="${cmsJingPinSport.touRongZiStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="touRongZiEnd" label="cmsJingPinSport.tourongzi.end" value="${cmsJingPinSport.touRongZiEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="daJiaZhouYuLuStart" label="cmsJingPinSport.dajiazhouyulu.start" value="${cmsJingPinSport.daJiaZhouYuLuStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="daJiaZhouYuLuEnd" label="cmsJingPinSport.dajiazhouyulu.end" value="${cmsJingPinSport.daJiaZhouYuLuEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="zhouPinHuiStart" label="cmsJingPinSport.zhoupinhui.start" value="${cmsJingPinSport.zhouPinHuiStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="zhouPinHuiEnd" label="cmsJingPinSport.zhoupinhui.end" value="${cmsJingPinSport.zhouPinHuiEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="oneBookWeekStart" label="cmsJingPinSport.onebookweek.start" value="${cmsJingPinSport.oneBookWeekStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="oneBookWeekEnd" label="cmsJingPinSport.onebookweek.end" value="${cmsJingPinSport.oneBookWeekEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="jiDuYuGaoStart" label="cmsJingPinSport.jiduyugao.start" value="${cmsJingPinSport.jiDuYuGaoStart}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="1" name="jiDuYuGaoEnd" label="cmsJingPinSport.jiduyugao.end" value="${cmsJingPinSport.jiDuYuGaoEnd}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.td colspan="2"><@p.hidden name="jpId" value="${cmsJingPinSport.jpId}" /><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

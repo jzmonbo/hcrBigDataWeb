@@ -1,0 +1,184 @@
+<!---登录、注册、找回密码开始--->
+<div id="logindiv" class="b-bg-tm-div" style="display:none;">
+   	<div class="login-bg-div">
+    	<div class="login-bg-div-top">
+          		<img src="${res}/images/logo.png" />
+          	</div>
+        <!---登录开始--->
+        <div class="login-bg-div-bottom">
+	    	<div class="login-b-t">
+	        	<div class="login-b-t-con">
+	                 <a href="javascript:void(0);" onmouseover="showLoginType(this,0)" class="this">微信扫一扫登录</a>
+                     <a href="javascript:void(0);" onmouseover="showLoginType(this,1)">其他账号登录</a>
+             	</div>
+            </div>
+            <div class="login-b-b-wx">
+            	<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+            	<div id="login_container">
+            		<img src="${res}/images/ewmdl.png" />
+            	</div>
+            	<script type="text/javascript">
+	            	//产生随机数上限、下限值
+	            	/*function getMinMaxVal(n){
+	            		return parseInt(Math.ceil(Math.random()*n));
+	            	}*/
+	            	
+	            	//生成请求随机数status
+	            	/*function getStatus(min,max){
+	            		var range = max - min;   
+	            		var rand = Math.random();   
+	            		return parseInt(min + Math.round(rand * range));   
+	            	}
+	            	var min = getMinMaxVal(10);
+	            	var max = getMinMaxVal(100);
+	            	var stateVal = getStatus(min,max);
+	            	var obj = new WxLogin({
+	                    id:"login_container", 
+	                    appid: "123456", 
+	                    scope: "snsapi_login", 
+	                    redirect_uri: "http://${site.domain}/public_auth.jspx",
+	                    state: ""+stateVal,
+	                    style: "",
+	                    href: ""
+	                  });*/
+            	</script>
+            </div>
+            <div class="login-b-b-qt" style="display:none;">
+               	<input type="text" class="in-text" value="请输入邮箱账号" />
+                <input type="text password" class="in-text" value="请输入密码" />
+                <input type="button" class="in-text btn" value="登录" />                        
+                <p>没账号？一键<a href="#" onclick="showRegister();return false;">注册</a>数据猿账号<a href="#" onclick="findPwd();return false;" class="wja">忘记密码？</a></p>
+            </div>
+            <div class="qt-zh-dl">
+               	<p>其他第三方账号登录</p>
+                <div class="icon-a-dl">
+                  	<!--<a href="#" class="wx"></a>-->
+                    <a href="#" class="wb" title="新浪微博"></a>
+                    <a href="#" class="qq" title="QQ登陆"></a>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+         </div>
+         <!---登录结束--->
+   	</div>
+</div>
+<div id="registerdiv" class="b-bg-tm-div" style="display:none;">
+	<div class="login-bg-div">
+    	<div class="login-bg-div-top">
+        	<img src="${res}/images/logo.png" />
+        </div>
+        <!---登录开始--->
+        <div class="login-bg-div-bottom">
+            <div class="login-b-b-qt">
+            	<form action="/register.htm" post="post">
+	            	<input type="text" class="in-text" name="username" placeholder="请使用邮箱注册账号" />
+	                <input type="text" class="in-text" name="password" placeholder="设置登陆密码" />
+	                <input type="submit" onclick="myRegister()" class="in-text btn" value="立即注册" />    
+                </form>                    
+                <p>已有账号？<a href="#" onclick="showLogin();return false;">登录到数据猿</a></p>
+            </div>
+            <div class="qt-zh-dl">
+            	<p>其他第三方账号登录</p>
+                <div class="icon-a-dl">
+                	<a href="#" class="wx"></a>
+                    <a href="#" class="wb"></a>
+                    <a href="#" class="qq"></a>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <!---登录结束--->
+    </div>
+</div>
+<div id="findPwddiv" class="b-bg-tm-div" style="display:none;">
+	<div class="login-bg-div">
+    	<div class="login-bg-div-top">
+        	<img src="${res}/images/logo.png" />
+        </div>
+        <!---登录开始--->
+        <div class="login-bg-div-bottom">
+            <div class="login-b-b-qt">
+            	<form action="/member/forgot_password.jspx" method="post">
+	            	<input type="text" class="in-text" name="email" placeholder="请输入注册时使用的邮箱账号" />
+	                <input type="submit" class="in-text btn" value="安全验证" /> 
+                </form>                       
+                <p>已有账号？<a href="#" onclick="showLogin();return false;">马上登录</a></p>
+            </div>
+            <div class="qt-zh-dl">
+            	<p>其他第三方账号登录</p>
+                <div class="icon-a-dl">
+                	<a href="#" class="wx"></a>
+                    <a href="#" class="wb"></a>
+                    <a href="#" class="qq"></a>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <!---登录结束--->
+    </div>
+</div>
+<!---登录、注册、找回密码结束--->
+ <script type="text/javascript">
+ 	//显示登陆窗口
+ 	function showLogin(){
+ 		$("#logindiv").css("display","block");
+ 	}
+ 	//显示注册窗口
+ 	function showRegister(){
+ 		$("#registerdiv").css("display","block");
+ 	}
+ 	//显示登陆方式
+ 	function showLoginType(lia,type){
+ 		$(lia).addClass("this");
+ 		$(lia).siblings("a").removeClass("this");
+ 		if (type == 0){
+ 			//微信登陆
+ 			$(".login-b-b-wx").css("display","block");
+ 	 		$(".login-b-b-qt").css("display","none");
+ 		}else if (type == 1){
+ 			//其它帐户登陆
+ 			$(".login-b-b-wx").css("display","none");
+ 	 		$(".login-b-b-qt").css("display","block");
+ 		}
+ 		
+ 	}
+ 	//注册
+ 	function myRegister(){
+ 		var username = $("input[name=username]").val();
+ 		var password = $("input[name=password]").val();
+ 		var aj = $.ajax({
+			 url:'${base}/register.htm',
+		     data:{  
+		    	 username : username,
+		    	 email : username,
+		    	 password : password
+		     },
+		     type:'post',  
+		     cache:false,  
+		     dataType:'json',  
+		     success:function(data) {
+		    	 if (data == 1){
+		    		 
+		    	 }
+		     }		
+ 		});
+ 	}
+	//显示登陆
+ 	function showLogin(){
+ 		$("#registerdiv").css("display","none");
+ 		$("#findPwddiv").css("display","none");
+ 		$("#logindiv").css("display","block");
+ 	}
+ 	//显示注册
+ 	function showRegister(){
+ 		$("#logindiv").css("display","none");
+ 		$("#findPwddiv").css("display","none");
+ 		$("#registerdiv").css("display","block");
+ 	}
+ 	//找回密码
+ 	function findPwd(){
+ 		$("#logindiv").css("display","none");
+ 		$("#registerdiv").css("display","none");
+ 		$("#findPwddiv").css("display","block");
+ 	}
+ </script>

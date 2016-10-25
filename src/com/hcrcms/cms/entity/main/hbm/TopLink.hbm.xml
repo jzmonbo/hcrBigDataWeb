@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.main">
+	<class name="TopLink" table="jc_top_link">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="topId" type="java.lang.Integer" column="top_id"><generator class="identity"/></id>
+		<property name="text" column="text" type="java.lang.String" not-null="false" length="100"/>
+		<property name="textUs" column="text_us" type="java.lang.String" not-null="false" length="100"/>
+		<property name="url" column="url" type="java.lang.String" not-null="false" length="100"/>
+		<property name="titleTag" column="titletag" type="java.lang.String" not-null="false" length="100" />
+		<property name="sort" column="sort" type="java.lang.Integer" not-null="false" length="11" />
+	</class>
+</hibernate-mapping>

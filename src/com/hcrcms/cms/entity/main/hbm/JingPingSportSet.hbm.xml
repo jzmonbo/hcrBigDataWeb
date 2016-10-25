@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.main">
+	<class name="JingPinSportSet" table="jc_jingping_sport_set">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="jpId" type="java.lang.Integer" column="jp_id"><generator class="identity"/></id>
+		<property name="twentyfour" column="dsj_twentyfour" type="timestamp" not-null="true" length="19"/>
+		<property name="zhouZhouKanStart" column="dsj_zhou_s" type="timestamp" not-null="true" length="19"/>
+		<property name="zhouZhoukanEnd" column="dsj_zhou_e" type="timestamp" not-null="true" length="19"/>
+		<property name="touRongZiStart" column="dsj_tourongzi_s" type="timestamp" not-null="true" length="19"/>
+		<property name="touRongZiEnd" column="dsj_tourongzi_e" type="timestamp" not-null="true" length="19"/>
+		<property name="daJiaZhouYuLuStart" column="dsj_dajiazhou_s" type="timestamp" not-null="true" length="19"/>
+		<property name="daJiaZhouYuLuEnd" column="dsj_dajiazhou_e" type="timestamp" not-null="true" length="19"/>
+		<property name="zhouPinHuiStart" column="dsj_zhoupinhui_s" type="timestamp" not-null="true" length="19"/>
+		<property name="zhouPinHuiEnd" column="dsj_zhoupinhui_e" type="timestamp" not-null="true" length="19"/>
+		<property name="oneBookWeekStart" column="dsj_onebook_s" type="timestamp" not-null="true" length="19"/>
+		<property name="oneBookWeekEnd" column="dsj_onebook_e" type="timestamp" not-null="true" length="19"/>
+		<property name="jiDuYuGaoStart" column="dsj_jiduyugao_s" type="timestamp" not-null="true" length="19"/>
+		<property name="jiDuYuGaoEnd" column="dsj_jiduyugao_e" type="timestamp" not-null="true" length="19"/>
+	</class>
+</hibernate-mapping>

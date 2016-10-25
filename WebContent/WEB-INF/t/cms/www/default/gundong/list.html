@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>${expert.author}-数据猿</title>
+<meta name="Keywords" content="${expert.author}-数据猿"/>
+<meta name="Description" content="${expert.author}-数据猿" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<script src="/${res}/js/mergejs/m_gundong.js" type="text/javascript"></script>
+</head>
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+			<!---增加--头像+简介-开始--->
+            <div class="wz-div" style=" width:auto;padding:0; background:none;">
+            	
+                <div class="hi">
+                	<div class="imgtx"><img src="${expert.smallImg}" /></div>
+                	<h3>${expert.author}</h3>
+                        <p><span>【简介】</span>${expert.description}</p>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <!---增加--头像+简介-开始--->        	
+        	
+        	<!---每篇文章开始--->
+         	[#if tag_list??]
+ 			[#list tag_list as a]
+ 			<div>
+	 			[#if a_index+1 lte 10]
+	  			<div id="contentdiv${a_index+1}"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<!-- <li><a href="#">${a.tagStr?default("")}</a></li> -->
+	                  	<li>
+	                  		[#if a.tagStr??]
+	                  			[#list a.tagStr?split(" ") as tags]
+	                  				[#if tags_index+1<8]
+	                  					<a href="${base}/search?q=${tags}" target="_blank">${tags}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  		
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [#else]
+	              <div id="contentdiv${a_index+1}" style="display:none;"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.shortTitle?length lt 30]
+	          			${a.shortTitle}
+	          		[#else]
+	          			[@text_cut s=a.shortTitle len=30 /]...
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.tagStr??]
+	                  			[#list a.tagStr?split(" ") as tags]
+	                  				[#if tags_index+1<8]
+	                  					<a href="${base}/search?q=${tags}" target="_blank">${tags}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  		
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="610" height="240" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="610" alt="${a.shortTitle}" height="240" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [/#if]
+	             [#if a_index+1 gte totals && a_index+1 gt 10]
+	             	<div class="morediv">
+			           	<a href="javascript:volid(0);" onclick="loadMore()">加载更多>></a>
+			        </div>
+	             [/#if]
+	         </div>
+             [/#list]
+             [/#if]
+            <!---每篇文章结束--->
+        </div>
+        <!---左边内容部分开始--->
+        
+        <!---右边内容部分开始--->
+        <div class="main-div-r">
+            <!---专家推荐开始--->
+            <div class="r-div-k">
+            	<h3>专家推荐</h3>
+                <div class="zjtj-div">
+                	[@cms_expert_list count='9' channelId='专家访谈']
+    				[#list tag_list as a]
+                	<dl>
+                    	<dt>
+                    		<a href="${base}/expert.htm?param=${a.author}" target="_blank">
+                    			[#if a.company ??]
+                    				<img src="${a.smallImg}" width="60px" height="60px" title="${a.company}-${a.author}" />
+                    			[#else]
+                    				<img src="${a.smallImg}" width="60px" height="60px" title="${a.author}" />
+                    			[/#if]
+                    		</a>
+                    	</dt>
+                    	<dd><a href="${base}/expert.htm?param=${a.author}" target="_blank">${a.author}</a></dd>
+                    </dl>
+                    [/#list]
+                	[/@cms_expert_list]
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        	<!---专家推荐结束--->
+            
+            <!---人物专访开始--->
+            <div class="r-div-k">
+            	<h3><a href="${base}/renwuzhuanfang.htm" target="_blank">人物专访</a></h3>
+                <div class="rw-con-div xt-con-div">
+                	[@cms_content_list count='1' orderBy='2' titLen='15' channelId='人物专访']
+    				[#list tag_list as a]
+                	<a href="${a.url}" target="_blank"><img src="${a.bigPictureImg}" width="280" height="160"></a>
+            		<h3 class="h3"><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a></h3>
+            		[/#list]
+                	[/@cms_content_list]
+                </div>
+            </div>
+            <!---人物专访结束--->
+            
+            <!--广告位开始-->
+            <!--<div class="div-g-r"></div>-->
+            <!--广告位结束-->
+            
+            <!---活动推荐开始--->
+            <div class="r-div-k">
+            	<h3>活动推荐</h3>
+                <ul class="hd-tj-ul">
+                	[@cms_content_list count='5' orderBy='24' titLen='13' channelId='活动推荐']
+    				[#list tag_list as a]
+                	<li><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a><span>${a.sportDate?string("yyyy-MM-dd")}</span></li>
+                    [/#list]
+                	[/@cms_content_list]
+                </ul>
+            </div>
+            <!---活动推荐结束--->
+            
+            <!---不容错过的资讯开始--->
+            <div id="nomissdiv" class="r-div-k">
+            	<h3>不容错过的资讯</h3>
+                <ul class="zx-div-dl">
+                	[@cms_content_list count='10' orderBy='6' titLen='18' channelId='新闻咨讯']
+    				[#list tag_list as a]
+                	<li><a href="${a.url}" onmouseover="liover(this)" onmouseout="liout(this)" target="_blank">
+                		[#if a.includeLetter == 1]
+		          			[#if a.shortTitle?length lt 19]
+		          				[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[#else]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[/#if]
+		          		[#else]
+		          			[#if a.shortTitle?length lt 19]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[#else]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[/#if]
+		          		[/#if]
+                	</a>
+                    	[#if a.contentImg??]
+                    		<img src="${a.contentImg}" width="280" height="114" />
+                    	[#else]
+                    		<img src="res/common/img/theme/nopicture.png" width="280" height="114" />
+                    	[/#if]
+                    </li>
+                    [/#list]
+                	[/@cms_content_list]
+                </ul>
+                
+            </div>
+            <!---不容错过的资讯结束--> 
+            
+            
+            <!---大数据学堂开始--->
+            <div class="r-div-k">
+            	<h3><a href="${base}/xuetang.htm" target="_blank">大数据学堂</a></h3>
+                <div class="xt-con-div">
+                	[@cms_content_list count='1' orderBy='2' titLen='15' channelId='大数据学堂']
+    				[#list tag_list as a]
+    				[#if a.classify=='百科']
+    					<p class="img-bq hd-bg" style="color:#FFF;">百科</p>
+    				[#elseif a.classify=='书单']
+    					<p class="img-bq hd-bg" style="color:#FFF;">书单</p>
+    				[#elseif a.classify=='培训']
+    					<p class="img-bq hd-bg" style="color:#FFF;">培训</p>
+    				[/#if]
+        			<a href="${a.url}" target="_blank"><img src="${a.bigPictureImg}" width="280" height="160"></a>
+            		<h3 class="h3"><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a></h3>
+            		[/#list]
+                	[/@cms_content_list]
+                </div>
+            </div>
+            <!---大数据学堂结束--->
+            
+            <!---大数据企业推荐开始--->
+            <div class="r-div-k">
+            	<h3>大数据企业推荐</h3>
+                <div class="zx-div-dl qy-div-dl">
+                	[@cms_content_list count='5' orderBy='2' titLen='14' channelId='大数据企业推荐']
+    				[#list tag_list as a]
+                	<dl>
+                    	<dt><a href="${a.originUrl}" target="_blank" rel="nofollow"><img src="${a.contentImg}" /></a></dt>
+                        <dd><a href="${a.originUrl}" target="_blank" rel="nofollow">[@text_cut s=a.title len=titLen /]</a></dd>
+                    </dl>
+                    [/#list]
+                	[/@cms_content_list]                   
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <!---大数据企业推荐结束--->
+            
+            <!--广告位开始-->
+            <!--<div class="div-g-r"></div>-->
+            <!--广告位结束-->
+            
+            <!---热门职位开始--->
+            <div class="r-div-k">
+            	<h3>热门职位</h3>
+                <div class="rm-con-div">
+                	<ul>
+                		[@cms_content_list count='5' orderBy='2' titLen='20' channelId='热门职业招聘']
+    					[#list tag_list as a]
+                    	<li><a href="${base}/job.htm?param=${a.id}" target="_blank"><span class="span">${a.shortTitle}</a></li>
+                        [/#list]
+                		[/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+            <!---热门职位结束--->
+            
+            
+        </div>
+        <!---右边内容部分开始--->
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+       <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    [#include "../include/footer.html"/]
+    <!---底部版权部分结束--->
+    
+    
+</body>
+</html>

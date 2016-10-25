@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.assist">
+	<class name="CmsTopicEnterprise" table="jc_topic_enterprise">
+		<meta attribute="sync-DAO">false</meta>
+		<id name="entId" type="java.lang.Integer" column="ent_id"><generator class="identity"/></id>
+		<property name="shortVideo" column="shortVideo" type="string" not-null="false" length="300"/>
+		<property name="longVideo" column="longVideo" type="string" not-null="false" length="300"/>
+		<property name="shareTopic" column="shareTopic" type="string" not-null="false" length="100"/>
+		<property name="interview" column="interview" type="string" not-null="false" length="100"/>
+		<property name="description" column="description" type="string" not-null="false" length="100"/>
+		<property name="meetId" column="meeting_id" type="java.lang.Integer" not-null="false" length="11"/>
+		<property name="topicName" column="topicName" type="string" not-null="false" length="200" />
+		<set name="topicReport" inverse="true" cascade="all-delete-orphan">
+			<key column="ent_id"/>
+			<one-to-many class="CmsTopicReport"/>
+		</set>
+	</class>
+</hibernate-mapping>

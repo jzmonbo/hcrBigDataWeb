@@ -1,0 +1,216 @@
+<!---右边内容部分开始--->
+        <div class="main-div-r">
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://gdevops.com/" rel=”nofollow” target="_blank"><img src="/${res}/images/mjfh.jpg" alt="全球敏捷运维峰会" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---人物专访开始--->
+            <div class="r-div-k">
+            	<h3><span></span>人物专访<a href="${base}/renwuzhuanfang.htm" target="_blank">more&nbsp;&gt;</a></h3>
+                <div class="rw-con-div xt-con-div">
+                	[@cms_content_list count='1' orderBy='2' titLen='16' channelId='人物专访']
+    				[#list tag_list as a]
+                	<a href="${a.url}" target="_blank"><img src="${a.bigPictureImg}" width="280" height="160" alt="[@text_cut s=a.shortTitle len=titLen /]"></a>
+            		<h3 class="h3"><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a></h3>
+            		[/#list]
+                	[/@cms_content_list]
+                </div>
+            </div>
+            <!---人物专访结束--->
+            
+            <!--广告位开始-->
+            <!--<div class="div-g-r"></div>-->
+            <!--广告位结束-->
+            
+            <!---活动推荐开始--->
+            <div class="r-div-k">
+            	<h3><span></span>活动推荐<a href="${base}/huodongtuijian.htm" target="_blank">more&nbsp;&gt;</a></h3>
+                <ul class="hd-tj-ul">
+                	[@cms_content_list count='6' orderBy='24' titLen='13' channelId='活动推荐']
+    				[#list tag_list as a]
+                	<li><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a><span>${a.sportDate?string("yyyy-MM-dd")}</span></li>
+                    [/#list]
+                	[/@cms_content_list]
+                </ul>
+            </div>
+            <!---活动推荐结束--->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://www.datayuan.cn/article/3758.htm" rel=”nofollow” target="_blank"><img src="/${res}/images/mofangDSJ.jpg" alt="2016魔方大数据" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---不容错过的资讯开始--->
+            <div id="nomissdiv" class="r-div-k">
+            	<h3><span></span>不容错过的资讯</h3>
+                <ul class="zx-div-dl">
+                	[@cms_content_list count='10' orderBy='6' titLen='18' channelId='新闻咨讯']
+    				[#list tag_list as a]
+                	<li onmouseover="liover(this)" onmouseout="liout(this)"><a href="${a.url}" target="_blank">
+                		[#if a.includeLetter == 1]
+		          			[#if a.shortTitle?length lt 19]
+		          				[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[#else]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[/#if]
+		          		[#else]
+		          			[#if a.shortTitle?length lt 19]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[#else]
+			          			[#if a_index+1 gt 3]
+		          					<span>${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[#else]
+		          					<span class="span">${a_index+1}</span>[@text_cut s=a.shortTitle len=19 /]
+		          				[/#if]
+			          		[/#if]
+		          		[/#if]
+                	</a>
+                    	[#if a.contentImg??]
+                    		<img src="${a.contentImg}" width="280" height="114" alt="${a.title}" onmouseover="limyover(this)" />
+                    	[#else]
+                    		<img src="res/common/img/theme/nopicture.png" width="280" height="114" alt="没有图片" onmouseover="limyover(this)" />
+                    	[/#if]
+                    </li>
+                    [/#list]
+                	[/@cms_content_list]
+                </ul>
+                
+            </div>
+            <!---不容错过的资讯结束--> 
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://www.datayuan.cn/article/3168.htm" rel=”nofollow” target="_blank"><img src="/${res}/images/pt_fenxi.jpg" alt="大数据分析平台的演进" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---大数据学堂开始--->
+            <div class="r-div-k">
+            	<h3><span></span>大数据学堂<a href="${base}/xuetang.htm" target="_blank">more&nbsp;&gt;</a></h3>
+                <div class="xt-con-div">
+                	[@cms_content_list count='1' orderBy='2' titLen='15' channelId='大数据学堂']
+    				[#list tag_list as a]
+    				[#if a.classify=='百科']
+    					<p class="img-bq hd-bg" style="color:#FFF;">百科</p>
+    				[#elseif a.classify=='书单']
+    					<p class="img-bq hd-bg" style="color:#FFF;">书单</p>
+    				[#elseif a.classify=='培训']
+    					<p class="img-bq hd-bg" style="color:#FFF;">培训</p>
+    				[/#if]
+        			<a href="${a.url}" target="_blank"><img src="${a.bigPictureImg}" width="280" height="160" alt="[@text_cut s=a.shortTitle len=titLen /]"></a>
+            		<h3 class="h3"><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=titLen /]</a></h3>
+            		[/#list]
+                	[/@cms_content_list]
+                </div>
+            </div>
+            <!---大数据学堂结束--->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://wxlink.jd.com" rel=”nofollow” target="_blank"><img src="/${res}/images/jingdongwanxiang.jpg" alt="京东万象" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---大数据企业推荐开始--->
+            <div class="r-div-k">
+            	<h3><span></span>大数据企业推荐<a href="${base}/indexRanking.htm" target="_blank">more&nbsp;&gt;</a></h3>
+                <div class="zx-div-dl qy-div-dl">
+                	[@cms_content_list count='5' orderBy='2' titLen='14' channelId='大数据企业推荐']
+    				[#list tag_list as a]
+                	<dl>
+                    	<dt><a href="${a.originUrl}" target="_blank" rel="nofollow"><img src="${a.contentImg}" alt="[@text_cut s=a.title len=titLen /]" /></a></dt>
+                        <dd><a href="${a.originUrl}" target="_blank" rel="nofollow">[@text_cut s=a.title len=titLen /]</a></dd>
+                    </dl>
+                    [/#list]
+                	[/@cms_content_list]                   
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <!---大数据企业推荐结束--->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://www.datayuan.cn/article/3086.htm" rel=”nofollow” target="_blank"><img src="/${res}/images/sjy_gongkake.jpg" alt="巅峰思享会" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---热门职位开始--->
+            <div class="r-div-k">
+            	<h3><span></span>热门职位<a href="${base}/remenzhiye.htm" target="_blank">more&nbsp;&gt;</a></h3>
+                <div class="rm-con-div">
+                	<ul>
+                		[@cms_content_list count='5' orderBy='2' titLen='20' channelId='热门职业招聘']
+    					[#list tag_list as a]
+                    	<li><a href="${base}/job.htm?param=${a.id}" target="_blank"><span class="span">${a.shortTitle}</a></li>
+                        [/#list]
+                		[/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+            <!---热门职位结束--->
+            
+            <!---更多栏目开始--->
+            <div class="r-div-k">
+            	<h3><span></span>精品栏目</h3>
+                   <div class="dashuju_text" >
+                   		[@cms_boutique_list]
+                   			[#list tag_list as a]
+                   			<div class="dashuju_text1">
+	                        	<p class="dashuju_text2p" style="color:#999;">[${a.timeFrame}]</p>
+	                            <a href="${a.url}" target="_blank"><p class="dashuju_text1p">${a.description}</p></a>
+	                            <a href="${a.urlMore}" target="_blank"><p class="dashuju_text1p2" style="color:#f39300;">More&gt;</p></a>
+	                        </div>
+	                        [/#list]
+                   		[/@cms_boutique_list]
+                   </div>
+            </div>
+            <!---更多栏目结束--->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://events.iresearch.cn/summit/288/" rel=”nofollow” target="_blank"><img src="/${res}/images/yjwl_arfh.jpg" alt="预见未来" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!---大家都在搜开始--->
+            <div class="r-div-k">
+            	<h3>大家都在搜</h3>
+                <div class="s-a">
+                	[@cms_innerlink_list linkId=3]
+                	[#list tag_list as a]
+                		<a href="${a.url}" target="_blank" title="${a.titleTag}">${a.text}</a>
+                	[/#list]
+                	[/@cms_innerlink_list]
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <!---大家都在搜结束-->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://www.thewoo.cn/list-23-1.html" rel=”nofollow” target="_blank"><img src="/${res}/images/o2oblh.jpg" alt="OSCA 2016 最佳应用评选" /></a>
+            </div>
+            <!--广告位结束-->
+            
+            <!--广告位开始-->
+            <div class="div-g-r">
+            	<a href="http://u-time.umeng.com/activity.html?utm_source=utsjy" rel=”nofollow” target="_blank"><img src="/${res}/images/youmeng.jpg" alt="运营新玩法" /></a>
+            </div>
+            <!--广告位结束-->
+        </div>
+        <!---右边内容部分开始--->

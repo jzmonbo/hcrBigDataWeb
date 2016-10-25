@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$( "#tabs" ).tabs();
+});
+</script>
+</head>
+<body>
+<div class="body-box">
+<div id="tabs">
+	<ul>
+		<li><a href="v_index.so"><@s.m "cmsStatic.index"/></a></li>
+		<li><a href="v_channel.so"><@s.m "cmsStatic.channel"/></a></li>
+		<li><a href="v_content.so"><@s.m "cmsStatic.content"/></a></li>
+		<li><a href="v_reset_generate.so"><@s.m "cmsContent.regenerate"/></a></li>
+	</ul>
+</div>
+</div>
+</body>
+</html>

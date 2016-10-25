@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>:  <@s.m "cmsAcquisition.special.topic"/> - <@s.m "global.edit"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.so" labelWidth="15">
+<@p.text colspan="2" width="100" label="cmsSpecialTopic.name" name="topicName" value="${cmsspecialTopic.topicName}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" width="100" label="cmsSpecialTopic.short" name="shortName" value="${cmsspecialTopic.shortName}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" width="100" label="cmsSpecialTopic.keywords" name="keywords" value="${cmsspecialTopic.keywords}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" width="100" label="cmsSpecialTopic.main.place" name="mainPlace" value="${cmsspecialTopic.mainPlace}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" width="100" label="cmsSpecialTopic.sub.place" name="subPlace" value="${cmsspecialTopic.subPlace}" maxlength="150"/><@s.m "cmsSpecialTopic.sub.place.separate"/><@p.tr/>
+<@p.text colspan="2" name="startTime" label="cmsSpecialTopic.start.time" value="${cmsspecialTopic.startTime}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="2" name="endTime" label="cmsSpecialTopic.end.time" value="${cmsspecialTopic.endTime}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.td colspan="2" width="50" label="cmsSpecialTopic.isuse">
+<#if cmsspecialTopic.isUse == 1>
+	<input type="radio" name="isUse" value="1" checked="checked">yes</input>
+	<input type="radio" name="isUse" value="0">no</input>
+<#else>
+	<input type="radio" name="isUse" value="1">yes</input>
+	<input type="radio" name="isUse" value="0" checked="checked">no</input>
+</#if>
+</@p.td><@p.tr/>
+<@p.td colspan="2"><@p.hidden name="id" value="${cmsspecialTopic.id}" /><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

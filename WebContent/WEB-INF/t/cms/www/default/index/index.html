@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>数据猿_大数据产业创新服务媒体</title>
+<meta name="Keywords" content="大数据新闻资讯、大数据企业指数、大数据报告分析、大数据图谱"/>
+<meta name="Description" content="数据猿是中国最权威的大数据媒体与企业应用服务平台，提供各行业大数据、大数据新闻资讯、大数据报告、数据交易共享、大数据案例、大数据分析应用、大数据挖掘、大数据营销、大数据企业指数等服务，致力成为大数据行业第一媒体服务平台 ！" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="applicable-device" content="pc">
+
+<link rel=”icon” href=”/favicon.ico” mce_href=”/favicon.ico” type=”image/x-icon”>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico">
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<link rel="canonical" href="http://www.datayuan.cn/"/>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+
+<body>
+	[#include "../include/login.html"/]
+	[#include "../include/header.html"/]
+    <!---广告位--->
+    <div class="head-g-div">
+    	<a href="http://apcio.org.cn/index.asp" target="_blank"><img src="/${res}/images/yataiCIO.jpg" alt="2016年亚太CIO上海峰会" /></a>
+    </div>
+    <!---广告位结束--->
+    
+    <!---图片位置开始--->
+    
+    <div class="img-div">
+    	[@cms_content_list count='4' orderBy='22' channelId='新闻咨讯_']
+    	[#list tag_list as a]
+    	[#if a.classify == '1']
+    	<div class="img-div-l">
+        	<a href="${a.url}" target="_blank"><img src="${a.bigPictureImg}" width="650px" height="360px" alt="${a.shortTitle}" /></a>
+            <h3><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=32 /]</a></h3>
+        </div>
+        <div class="img-div-r">
+        	[#elseif a.classify == '2']
+        	<div class="img-div-r-t">
+            	<a href="${a.url}"  target="_blank"><img src="${a.bigPictureImg}" width="440px" height="180px" alt="${a.shortTitle}" /></a>
+                <h3><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=28 /]</a></h3>
+            </div>
+            <div class="img-div-r-b">
+            	[#elseif a.classify == '3']
+            	<div class="img-div-r-b-l">
+                	<a href="${a.url}"  target="_blank"><img src="${a.bigPictureImg}" width="215px" height="170px" alt="${a.shortTitle}" /></a>
+                    <h3><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=12 /]</a></h3>
+                </div>
+                [#elseif a.classify == '4']
+                <div class="img-div-r-b-r">
+                	<a href="${a.url}"  target="_blank"><img src="${a.bigPictureImg}" width="215px" height="170px" alt="${a.shortTitle}" /></a>
+                    <h3><a href="${a.url}" target="_blank">[@text_cut s=a.shortTitle len=12 /]</a></h3>
+                </div>
+            </div>
+        </div>
+        [/#if]
+        [/#list]
+    	[/@cms_content_list]
+    	<div style="clear:both;"></div>
+    </div>
+    <!---图片位置结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+        	<!---每篇文章开始--->
+         	[@cms_content_list count='50' orderBy='23' titLen='140' channelId='新闻咨讯']
+         	[#if tag_list??]
+ 			[#list tag_list as a]
+ 			<div>
+	 			[#if a_index+1 lte 15]
+	  			<div id="contentdiv${a_index+1}"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=titLen /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=titLen /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [#else]
+	              <div id="contentdiv${a_index+1}" style="display:none;"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img class="lazy" src="" data-original="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=titLen /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=titLen /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [/#if]
+	         </div>
+             [/#list]
+             [#if totals gt 15]
+             	<div class="morediv">
+		           	<a href="javascript:volid(0);" onclick="loadMore()">加载更多>></a>
+		        </div>
+             [/#if]
+             [/#if]
+             [/@cms_content_list]
+            <!---每篇文章结束--->
+            
+        </div>
+        <!---左边内容部分开始--->
+        [#include "../include/right_index.html"/]
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    $('a').bind('focus', function(){
+        this.blur();
+    });
+});
+</script>
+<script type="text/javascript">
+	var totalPage = 0;			//总页数
+	var perPage = 15;			//每页条数
+	var currentPage = 1;		//当前条数
+	var linshiPage = 1;			//初使化临时当前条数
+	
+	function loadMore(){
+		if ($('.morediv').length > 0){
+			totalPage = $(".main-div-l").children("div").size() - 1;
+		}else{
+			totalPage = $(".main-div-l").children("div").size();
+		}
+		currentPage = linshiPage * 15;
+		//alert("before :   currentPage [" + currentPage + "]   ,   totalPage " + totalPage + "]");
+		for (var i=0;i<perPage;i++){
+			if (currentPage<=totalPage){
+				$('#contentdiv'+currentPage).css("display","block");
+				var img = $('#contentdiv'+currentPage).children(".wz-div-img").children("a").children("img");
+				var imgPath = img.attr("data-original");
+				img.removeClass("lazy").removeAttr("data-original").attr("src",imgPath);
+				if (currentPage<totalPage){
+					currentPage++;
+				}
+			}else if (currentPage>totalPage){
+				break;
+			}
+		}
+		//alert("after :   currentPage [" + currentPage + "]   ,   totalPage " + totalPage + "]");
+		
+		//加载文章思路:判断未显示文章占比,占比小于40%需要加载后续文章,然后添加到文章列表末尾
+		//var percent = Math.round((totalPage-currentPage)*10000)/100;
+		var percent = Math.round(totalPage-currentPage);
+		if (percent < 40){
+			var contentId = $(".main-div-l").children("div").eq(-2);
+			var aj = $.ajax({
+				url : '${base}/loadFollowUpArticle.htm',
+				data : {
+					contentId : contentId.children("div").children(".wz-div-img").children("a").attr("href"),
+					divLocal : contentId.children("div").attr("id"),
+					category : 'article'
+				},
+				type:'post',  
+			    cache:false,
+				success : function(data){
+					if (data.length > 0){
+						//思路:1.先复制一个"加载更多",从.main-div-l下删掉
+						//     2.在.main-div-l后面加上返回文章,然后再加上"加载更多"
+						var lm = $(".main-div-l").children("div:last").clone();
+						$(".main-div-l").children("div:last").remove();
+						$(".main-div-l").append(data);
+						$(".main-div-l").append(lm);
+					}
+				}
+			});
+		}
+		linshiPage++;
+		if (currentPage>totalPage){
+			$('.morediv').remove();
+		}
+	}
+</script>
+<script type="text/javascript">
+	function liover(lia){
+		$(lia).children(":eq(1)").css('display','block');
+	}
+	
+	function liout(lia){
+		$(lia).children(":eq(1)").css('display','none');
+	}
+	function limyover(lia){
+		$(lia).css("display","block");
+	}
+</script>
+<script type="text/javascript">
+$(function(){
+	$("a").each(function(){
+		var val = $(this).attr("href");
+		if (indexNum(val) == 1){
+			var value = val.substring(0,val.indexOf("="));
+			val = val.substring(val.indexOf("=")+1);
+			$(this).attr("href",value+"="+encodeURIComponent(val));
+		}
+	});
+});
+
+
+function indexNum(str){
+	var flag = true;
+	var count = 0;
+	while (flag){
+		if (str == null || str == ""){
+			break;
+		}
+		if (str.indexOf("=") > 0){
+			count = count + 1;
+			str = str.substring(str.indexOf("=")+1);
+		}else{
+			break;
+		}
+	}
+	return count;
+}
+</script>
+<script type="text/javascript">
+ 	/*var headDiv = $(".head-g-div");
+ 	today=new　Date();
+ 	jran=today.getTime();
+ 	function　rnd()　{
+ 	　　　　ia=9301;
+ 	　　　　ic=49297;
+ 	　　　　im=233280;
+ 	　　　　jran　=　(jran*ia+ic)　%　im;
+ 	　　　　return　jran/(im*1.0);
+ 	};
+ 	function　rand(number)　{
+ 	　　　　return　Math.ceil(rnd()*number);
+ 	};
+	myNum=(rand(8));　//改成你要随机显示的图片数；
+	if (myNum%2 == 0){
+		//偶数显示专题
+		headDiv.html('<a href="${base}/topic.htm?topicId=1" target="_blank"><img src="/${res}/topic/bigDataMeeting_small.jpg" /></a>');
+		//alert(myNum+"  "+headDiv.html());
+	}else{
+		//奇数显示专访
+		headDiv.html('<a href="${base}/renwuzhuanfang.htm" target="_blank"><img src="/${res}/images/shujuyuanzhuanfang.jpg" /></a>');
+		//alert(myNum+"  "+headDiv.html());
+	}*/
+	
+	/*var count = 1;
+	setInterval(showHeadPic,5000);
+	
+	function showHeadPic(){
+		var headDiv = $(".head-g-div");
+		if (count == 1){
+			headDiv.html('<a href="${base}/renwuzhuanfang.htm" target="_blank"><img src="/${res}/images/shujuyuanzhuanfang.jpg" /></a>');
+		}else if (count == 2){
+			headDiv.html('<a href="${base}/topic.htm?topicId=1" target="_blank"><img src="/${res}/topic/bigDataMeeting_small.jpg" /></a>');
+		}else if (count == 3){
+			headDiv.html('<a href="${base}/topic.htm?topicId=2" target="_blank"><img src="/${res}/topic/shanghaifenghui.jpg" /></a>');
+		}
+		if (count >= 3){
+			count = 1;
+		}else{
+			count = count + 1;
+		}
+	}*/
+	
+	var count = 2;
+	setInterval(showHeadPic,5000);
+	
+	function showHeadPic(){
+		var headDiv = $(".head-g-div");
+		if (count == 1){
+			headDiv.html('<a href="http://www.dt-cloud.cn/" target="_blank"><img src="/${res}/images/banner_zggjdsjcloud.jpg" alt="2016年中国国际大数据及云计算展览会" /></a>');
+		}else if (count == 2){
+			headDiv.html('<a href="http://strata.oreilly.com.cn/hadoop-big-data-cn" target="_blank"><img src="/${res}/images/shw_BJ-banner1101_100.jpg" alt="Make Data Work" /></a>');
+		}
+		if (count >= 2){
+			count = 1;
+		}else{
+			count = count + 1;
+		}
+		//headDiv.html('<a href="${base}/topic.htm?topicId=2" target="_blank"><img src="/${res}/topic/shanghaifenghui.jpg" /></a>');
+		//headDiv.html('<a href="http://ubdc2016.umeng.com/" target="_blank"><img src="/${res}/images/UBDCdsj.jpg" /></a>');
+	}
+ </script>
+  <script type="text/javascript">
+ 	$(function(){
+ 		$(".zjxq_nav1111").children("ul").children("li").each(function(k,v){
+ 			$(v).hover(function(){
+ 				$(this).addClass("zjxq_navhd");
+ 				$(this).siblings().removeClass("zjxq_navhd");
+ 			},function(){
+ 				$(this).parent().children("li:eq(0)").addClass("zjxq_navhd");
+ 				$(this).parent().children("li:not(:eq(0))").removeClass("zjxq_navhd");
+ 			});
+ 		});
+ 	});
+ </script>

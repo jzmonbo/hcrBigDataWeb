@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>${input!}_${stitle}-数据猿</title>
+<meta name="Keywords" content="${input!},${sname}"/>
+<meta name="Description" content="数据猿为您提供最新的${input!}相关的资讯，更多${input!}等各行业大数据新闻资讯尽在数据猿媒体平台。" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="applicable-device" content="pc">
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+    
+    <!---广告位--->
+    <div class="head-g-div"></div>
+    <!---广告位结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+        	<script type="text/javacript">
+          		if ("0" == $("#isMiaoHong").val()){
+          			document.write('<div class="sousuo-tit"><div><div style="font-size:18px;">');
+          			document.write('数据猿提供【<span style="color:#f39300;">${input!}</span>】的相关内容,您正在查看的【<span style="color:#f39300;">${input!}</span>】的具体内容如下：');
+          			document.write('</div></div></div>');
+          		}
+          	</script> 
+            [#if q??]
+		    [@cms_lucene_page q=q descLen='140' count='100']
+        	<!---每篇文章开始--->
+        	[#list tag_list as a]
+        	<div>
+        		[#if a.searchKeyWord??]
+        			<input type="hidden" name="searchKeyWords" value="${a.searchKeyWord}" />
+        		[/#if]
+	 			[#if a_index+1 lte 10]
+	  			<div id="contentdiv${a_index+1}"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [#else]
+	              <div id="contentdiv${a_index+1}" style="display:none;"  class="wz-div">
+	          	<h2><a href="${a.url}" target="_blank">
+	          		[#if a.includeLetter == 1]
+	          			[#if a.shortTitle?length lt 34]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=29 /]...
+		          		[/#if]
+	          		[#else]
+	          			[#if a.shortTitle?length lt 30]
+		          			${a.shortTitle}
+		          		[#else]
+		          			[@text_cut s=a.shortTitle len=30 /]...
+		          		[/#if]
+	          		[/#if]
+	          	</a></h2>
+	              <div class="nametime">
+	              	<ul>
+	                  	<li>
+	                  		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  	</li>
+	                  </ul>
+	              	<p><a href="${base}/author.htm?author=${a.author}" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	              </div>
+	              <div class="wz-div-img">
+	              	[#if a.isPictureTop==2]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">头条</p>
+	              	[#elseif a.isPictureTop==1]
+	              		<p class="img-bq hd-bg" style="color:#FFF;">推广</p>
+	              	[/#if]
+	              	[#if a.contentImg??]
+	              		<a href="${a.url}" target="_blank"><img src="" data-original="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[#else]
+	              		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	              	[/#if]
+	              </div>
+	              <div class="wz-div-text">
+	              	<!--里面span控制三行后显示省略号-->
+	              	[#if a.description??]
+	              		[#if a.description?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.description}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[#else]
+	              		[#if a.title?length lt 140]
+	              			<a href="${a.url}" target="_blank"><span>${a.title}...</span><span class="qw-a">《全文》</span></a>
+	              		[#else]
+	              			<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]...</span><span class="qw-a">《全文》</span></a>
+	              		[/#if]
+	              	[/#if]
+	              </div>
+	              </div>
+	          [/#if]
+	         </div>
+            [/#list]
+            [#if tag_pagination.totalCount gt 10]
+             	<div class="morediv">
+		           	<a href="javascript:volid(0);" onclick="loadMore()">加载更多>></a>
+		        </div>
+             [/#if]
+            [/@cms_lucene_page]	 
+            [/#if] 
+            <!---每篇文章结束--->
+            
+        </div>
+        <!---左边内容部分开始--->
+        
+        [#include "../include/right_other.html"/]
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+    <!---底部版权部分结束--->
+</body>
+</html>
+<script type="text/javascript">
+	var totalPage = 0;			//总页数
+	var perPage = 10;			//每页条数
+	var currentPage = 0;		//当前条数
+	var linshiPage = 1;			//初使化临时当前条数
+	
+	function loadMore(){
+		totalPage = $(".main-div-l").children("div").size();
+		currentPage = linshiPage * 10 - 1;
+		for (var i=0;i<perPage+1;i++){
+			currentPage++;
+			if (currentPage<=totalPage){
+				$('#contentdiv'+currentPage).css("display","block");
+				var img = $('#contentdiv'+currentPage).children(".wz-div-img").children("a").children("img");
+				var imgPath = img.attr("data-original");
+				img.removeClass("lazy").removeAttr("data-original").attr("src",imgPath);
+			}else if (currentPage>totalPage){
+				break;
+			}
+		}
+		linshiPage++;
+		if (currentPage>totalPage){
+			$('.morediv').remove();
+		}
+	}
+</script>
+<script type="text/javascript">
+	$(function(){
+		var val = "${q}";
+		$("input[name='q']").val(val);
+	});
+	function liover(lia){
+		$(lia).children(":eq(1)").css('display','block');
+	}
+	
+	function liout(lia){
+		$(lia).children(":eq(1)").css('display','none');
+	}
+	function limyover(lia){
+		$(lia).css("display","block");
+	}
+</script>
+<script type="text/javascript">
+$(function(){
+	$("a").each(function(){
+		var val = $(this).attr("href");
+		if (indexNum(val) == 1){
+			var value = val.substring(0,val.indexOf("="));
+			val = val.substring(val.indexOf("=")+1);
+			$(this).attr("href",value+"="+encodeURIComponent(val));
+		}
+	});
+});
+
+
+function indexNum(str){
+	var flag = true;
+	var count = 0;
+	while (flag){
+		if (str == null || str == ""){
+			break;
+		}
+		if (str.indexOf("=") > 0){
+			count = count + 1;
+			str = str.substring(str.indexOf("=")+1);
+		}else{
+			break;
+		}
+	}
+	return count;
+}
+</script>
+
+<script type="text/javascript">
+$(function(){
+    $('a').bind('focus', function(){
+        this.blur();
+    });
+    
+    //先把关键词分组，然后循环把搜索结果的短标题、标签、描述有关键词地方标红
+    /*var keywords = $("#searchKeyWords").val().split(",");
+    if (keywords.length > 0){
+    	var shortTitle = $(".wz-div").children("h2").children("a").html();		//短标题
+    	var description = $(".wz-div-text").children("a").html();	//描述
+    	for (var i=0;i<keywords.length;i++){
+        	if (shortTitle.length > 0){
+        		shortTitle = shortTitle.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+        	}
+        	
+        	$(".nametime ul li a").each(function(k,v){
+        		var tagHtml = $(this).html();
+        		tagHmtl = tagHtml.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+        		$(this).html(tagHmtl);
+        	});
+        	
+        	if (description.length > 0){
+        		description = description.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+        	}
+        }
+    	$(".wz-div").children("h2").children("a").html(shortTitle);
+    	$(".wz-div-text").children("a").html(description);
+    }*/
+    //alert($("#isMiaoHong").val());
+    if ("0" == $("#isMiaoHong").val()){
+    	$("input[name='searchKeyWords']").each(function(k1,v1){
+        	var value = $(this).val();
+        	var keywords = value.split(",");
+        	if (keywords.length > 0){
+            	var shortTitle = $(this).siblings(".wz-div").children("h2").children("a").html();		//短标题
+            	var description = $(this).siblings(".wz-div").children(".wz-div-text").children("a").html();	//描述
+            	for (var i=0;i<keywords.length;i++){
+                	if (shortTitle.length > 0){
+                		shortTitle = shortTitle.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+                	}
+                	
+                	$(this).siblings(".wz-div").children(".nametime").children("ul").children("li").children("a").each(function(k,v){
+                		var tagHtml = $(this).html();
+                		tagHmtl = tagHtml.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+                		$(this).html(tagHmtl);
+                	});
+                	
+                	if (description.length > 0){
+                		description = description.replace(keywords[i],"<span style='color:red;'>"+keywords[i]+"</span>");
+                	}
+                }
+            	$(this).siblings(".wz-div").children("h2").children("a").html(shortTitle);
+            	$(this).siblings(".wz-div").children(".wz-div-text").children("a").html(description);
+            }
+        });
+    }else{
+    	$(".sousuo-tit").css("display","none");
+    }
+});
+</script>

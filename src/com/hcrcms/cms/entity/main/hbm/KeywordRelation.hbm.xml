@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.main">
+	<class name="KeywordRelation" table="jc_keyword_relation">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="java.lang.Integer" column="kr_id"><generator class="identity"/></id>
+		<property name="name" column="name" type="java.lang.String" not-null="true" length="30"/>
+		<property name="parentId" column="parent_id" type="java.lang.Integer" not-null="true" />
+		<property name="note" column="note" type="java.lang.String" not-null="false" />
+	</class>
+</hibernate-mapping>

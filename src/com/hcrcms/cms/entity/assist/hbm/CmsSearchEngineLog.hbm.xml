@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.assist">
+	<class name="CmsSearchEngineLog" table="jc_search_engine_log">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="slogId" type="integer" column="slog_id"><generator class="identity"/></id>
+		<property name="category" column="category" type="java.lang.Integer" not-null="true" length="11"/>
+		<property name="company" column="company" type="java.lang.String" not-null="true" length="100"/>
+		<property name="companyKeyword" column="companyKeyword" type="java.lang.String" not-null="true" length="100"/>
+		<property name="bdssAbnormal" column="bdss_abnormal" type="java.lang.String" not-null="false" length="30"/>
+		<property name="bdssYestoday" column="bdss_yestoday" type="java.lang.String" not-null="false" length="30"/>
+		<property name="sgssAbnormal" column="sgss_abnormal" type="java.lang.String" not-null="false" length="30"/>
+		<property name="sgssYestoday" column="sgss_yestoday" type="java.lang.String" not-null="false" length="30"/>
+		<property name="hsAbnormal" column="hs_abnormal" type="java.lang.String" not-null="false" length="30"/>
+		<property name="hsYestoday" column="hs_yestoday" type="java.lang.String" not-null="false" length="30"/>
+		<property name="createtime" column="createtime" type="timestamp" not-null="true" length="19"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,887 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>2016基因大数据-数据猿</title>
+<meta name="Keywords" content="2016基因大数据-数据猿"/>
+<meta name="Description" content="2016基因大数据-数据猿" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="applicable-device" content="pc">
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<script src="/${res}/js/mergejs/m_jiyindashuju.js" type="text/javascript"></script>
+<link href="/${res}/css/BigSlide.css" rel="stylesheet" type="text/css" />
+<script src="${res}/js/BigSlide.js" type="text/javascript"></script>
+<style type="text/css">
+	.time-item{
+		text-align:center;
+	}
+	.time-item p{
+		float:left;
+		font-size:26px;
+		color:#fff;
+		line-height:74px;
+	}
+	.time-item strong {
+		/*background:#C71C60;*/
+		display:block;
+		float:left;
+		background:url(${res}/topic/jiyindashuju/ztds/time_bg.png) no-repeat;
+		color:#f39a00;
+		width:100px;
+		height:74px;
+		line-height:74px;
+		font-size:30px;
+		font-family:Arial;
+		/*padding:0 10px;*/
+		margin-right:10px;
+		border-radius:5px;
+		/*box-shadow:1px 1px 3px rgba(0,0,0,0.2);*/
+	}
+
+	#day_show {
+		width:100px;
+		height:74px;
+		line-height:74px;
+		/*background:#C71C60;*/
+		color:#f39a00;
+		font-size:30px;
+		margin:0 10px;
+		font-family:Arial,Helvetica,sans-serif;
+	}
+	
+	.item-title .unit {
+		background:none;
+		line-height:49px;
+		font-size:24px;
+		padding:0 10px;
+		float:left;
+	}
+</style>
+<script type="text/javascript">
+	var intDiff = parseInt(${daojishi?default(0)});//倒计时总秒数量
+	
+	function timer(intDiff){
+		window.setInterval(function(){
+		var day=0,
+			hour=0,
+			minute=0;
+			//second=0;//时间默认值		
+		if(intDiff > 0){
+			day = Math.floor(intDiff / (60 * 60 * 24));
+			hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+			minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+			//second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+		}
+		if (minute <= 9) minute = '0' + minute;
+		//if (second <= 9) second = '0' + second;
+		$('#day_show').html(day+"天");
+		$('#hour_show').html('<s id="h"></s>'+hour+'时');
+		$('#minute_show').html('<s></s>'+minute+'分');
+		//$('#second_show').html('<s></s>'+second+'秒');
+		intDiff--;
+		}, 1000);
+	} 
+	
+	$(function(){
+		timer(intDiff);
+	});	
+</script>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+	
+	<!---创新创业大赛专题首页开始--->
+	<div class="idea_con">
+		
+	    <!--页面悬浮导航栏开始-->
+	    <div class="xf_nav">
+	    	<ul class="xf_nav_ul">
+	        	<li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">大赛介绍</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">参赛理由</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">活动时间轴</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">各赛事介绍</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">大咖评审团</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">参赛团队</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">人物专访</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">相关报道</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">投资机构</a></li>
+	            <li><a href="#" onclick="javascript:document.getElementById('cansailiyou').scrollIntoView();return false;">大赛合作方</a></li>
+	        </ul>
+	    </div>
+	    <!--页面悬浮导航栏结束-->
+	    
+	    <!--banner头图开始-->
+	    <div class="idea_div">
+	    	<img src="${res}/topic/jiyindashuju/ztds/banner_ds.jpg" width="100%" />
+	    	<div class="banner_time">
+	    		<!-- 倒計時開始 -->
+				<div class="time-item">
+					<p>倒计时：</p>
+					<strong id="day_show"></strong>
+					<strong id="hour_show"></strong>
+					<strong id="minute_show"></strong>
+					<!-- <strong id="second_show">0秒</strong> -->
+				</div>
+				<!-- 倒計時結束 -->
+	    	</div>
+	    	<div class="banner_logo">
+	        	<p>主办方:</p>
+	           	<a href="#"><img src="${res}/topic/jiyindashuju/ztds//banner_logo3.png"/></a>
+	           	<a href="#"><img src="${res}/topic/jiyindashuju/ztds//banner_logo2.png"/></a>
+	           	<a href="#"><img src="${res}/topic/jiyindashuju/ztds//banner_logo1.png"/></a>
+	        </div>
+	    </div>
+	    <!--banner头图结束-->
+	    
+	    <!--大赛介绍开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit1.png" /></h3>
+	            <dl class="js_dl">
+	            	<dt><a href="#dianjibaoming"><img src="${res}/topic/jiyindashuju/ztds/js_btn.png" /></a></dt>
+	                <dd><p>立足上海创新创业环境，围绕“基因大数据领域”面向全国，跨界融合！</p>
+	<p>通过本次“基因大数据创业创新大赛”，加速大数据背景下，创新技术对基因领域的推动作用，促进产业整体发展；同时也借助本次活动促进基因产业链上下游、生物医疗领域与大数据创新技术领域跨界交流、行业领军企业与创新创业企业间的交流互动。</p>
+	</dd>
+	            </dl>
+	            <div class="clear"></div>
+	    	</div>
+	    </div>
+	    <!--大赛介绍结束-->
+	    
+	    <!--参赛理由开始-->
+	    <div id="cansailiyou" class="idea_div" style="background:#3a3a3a; position:relative;">
+	    	<div style="position:absolute;top:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/ztds/border_top.png) repeat-x;"></div>
+	        <div style="position:absolute;bottom:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/ztds/border_bottom.png) repeat-x;"></div>
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit2.png" /></h3>
+	            <div class="idea_con_div_b">
+	            	<dl>
+	                	<dt><img src="${res}/topic/jiyindashuju/ztds/reason1.png" /></dt>
+	                    <dd>
+	                    	<p class="titp">1、IT领域企业</p>
+	                    	<p>切入大健康行业、对接大健康产业资源和产业合作伙伴、展示本企业在大数据应用上的实力</p>
+	                    </dd>
+	                </dl>
+	                <dl>
+	                	<dt><img src="${res}/topic/jiyindashuju/ztds/reason2.png" /></dt>
+	                    <dd>
+	                    	<p class="titp">2、基因领域企业</p>
+	                    	<p>扩大产业影响力、拓展生态系合作伙伴、发掘优质产业布局项目和产业人才</p>
+	                    </dd>
+	                </dl>
+	                <dl>
+	                	<dt><img src="${res}/topic/jiyindashuju/ztds/reason3.png" /></dt>
+	                    <dd>
+	                    	<p class="titp">3、创业团队</p>
+	                    	<p>深度了解行业需求、通过实战进行行业模型验证、对接行业潜在客户、扩大投融资几率、优先对接优质孵化体系（办公补贴、优惠政策）</p>
+	                    </dd>
+	                </dl>
+	                <dl>
+	                	<dt><img src="${res}/topic/jiyindashuju/ztds/reason4.png" /></dt>
+	                    <dd>
+	                    	<p class="titp">4、高校团队</p>
+	                    	<p>产学研结合，训练实战经验，转化学术成果</p>
+	                    </dd>
+	                </dl>
+	                <dl style="margin-left:300px;">
+	                	<dt><img src="${res}/topic/jiyindashuju/ztds/reason5.png" /></dt>
+	                    <dd>
+	                    	<p class="titp">5、生信专业选手</p>
+	                    	<p>与同业者切蹉并推进产业发展、体现个人价值、展示个人实力</p>
+	                    </dd>
+	                </dl>
+	            </div>
+	            <div class="clear"></div>
+	    	</div>
+	    </div>
+	    <!--参赛理由结束-->
+	    
+		<!--奖项设置开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div" style="position:relative;">
+	        	<div style="position:absolute; right:0;top:-80px;"><img src="${res}/topic/jiyindashuju/ztds/jb.png" /></div>
+	    		<h3 style="text-align:center;"><img src="${res}/topic/jiyindashuju/ztds/zt-tit12.png" /></h3>
+	            <p class="jxp" style="text-align:center;">现金奖励 + 大赛创投基金 + 指定入孵优惠政策独享+专项产学研转化通道</p>
+	            <div>
+	            	<p class="jxp">一、现金奖励——（赛事２赛事３）</p>
+	                <img src="${res}/topic/jiyindashuju/ztds/jx1.png" />
+	            </div>
+	            <div>
+	            	<p class="jxp">二、创投基金——千万级VC基金专候优质创业团队</p>
+	                <div class="jxdiv2">
+	                	<p class="p1">千万级大赛创业基金：联合各方设立本次大赛的创业基金共计1000万RMB，优胜企业将优先获得创投基金</p>
+	                    <p class="p2">提供三千万跟投基金：由创赛基金、普华资本、经纬创投等数家投资机构及产业基金联合跟投（跟投基金持续加入）</p>
+	                </div>
+	            </div>
+	            <p class="jxp">三、优先入驻市北高新产业创业园，享受来自入驻3年租金减免、人才、户口、税收、企业补助专项对接等各项入园或入优惠政策</p>
+	            <p class="jxp">四、优胜的高校、个人或者小团队项目可对接张江转化医学研究中心等商业转化机构，进行商业孵化</p>
+	            
+	            <div class="clear"></div>
+	    	</div>
+	    </div>
+	    <!--奖项设置结束-->    
+	    
+	    <!--时间轴开始-->
+	    <div class="idea_div" style="background:#f9ce84; position:relative;">
+	    	<div style="position:absolute;top:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/ztds/border_top.png) repeat-x;"></div>
+	        <div style="position:absolute;bottom:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/ztds/border_bottom.png) repeat-x;"></div>
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit3.png" /></h3>
+	            <div style="padding-top:10px; text-align:center;"><img src="${res}/topic/jiyindashuju/ztds/time-base.png" /></div>
+	            <div class="clear"></div>
+	    	</div>
+	    </div>
+	    <!--时间轴结束-->
+	    
+	    <!--三大赛事介绍开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><a name="dianjibaoming"><img src="${res}/topic/jiyindashuju/ztds/zt-tit4.png" /></a></h3>
+	            <div class="sd_js">
+	            	<div onmouseover="showMyBSport(this)" onmouseout="noShowMySport(this)">
+		            	<div class="sd_js_a">
+		                	<a href="${base}/jiYinDSJTopic.htm?subSport=1" target="_blank"><img src="${res}/topic/jiyindashuju/ztds/present1.png"/></a>
+		                </div>
+		                <div class="sd_js_a_con_div" style="display:none;">
+		                    	<span class="span1"></span>
+		                        <img src="${res}/topic/jiyindashuju/ztds/jx_b1.png" />
+		                </div>
+		            </div>
+		            <div>
+		            	<div class="sd_js_a2">
+		                    <a href="${base}/jiYinDSJTopic.htm?subSport=2" onmouseover="showMySport(this,0)" onmouseout="showMySport2(this,0)" target="_blank"><img src="${res}/topic/jiyindashuju/ztds/present2.png" /></a>
+		                    <a href="${base}/jiYinDSJTopic.htm?subSport=3" onmouseover="showMySport(this,1)" onmouseout="showMySport2(this,1)" target="_blank"><img src="${res}/topic/jiyindashuju/ztds/present3.png" /></a>
+		                </div>
+		                <div class="sd_js_a_con" onmouseout="noShowBMySport(this)">
+		                    <!--下面div是（2）程序与算法优化的内容-->
+		                    <div class="sd_js_a_con_div" style="display:none;">
+		                    	<span class="span2"></span>
+		                        <img src="${res}/topic/jiyindashuju/ztds/jx_b2.png" />
+		                    </div>
+		                    
+		                    <!--下面div是（3）流程优化的内容-->
+		                    <div class="sd_js_a_con_div" style="display:none;">
+		                    	<span class="span3"></span>
+		                        <img src="${res}/topic/jiyindashuju/ztds/jx_b3.png" />
+		                    </div>                    
+		                </div>
+	                </div>
+	            </div>                        
+	            <div class="clear"></div>
+	    	</div>
+	    </div>
+	    <!--三大赛事介绍结束-->
+	    
+	    <!--大咖评审团开始-->
+	    <div class="idea_div" style="background:#3a3a3a; position:relative;">
+	    	<div style="position:absolute;top:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/border_top.png) repeat-x;"></div>
+	        <div style="position:absolute;bottom:0;width:100%;height:8px;background:url(${res}/topic/jiyindashuju/border_bottom.png) repeat-x;"></div>
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/zt-tit5.png" /></h3>
+	            <div class="evaluation_div">
+	            	<div class="ps_tx">
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc1.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">戴珩</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc2.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">王升跃</p>
+	                            <p>国务院“政府特殊津贴”专家</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc3.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">李根国</p>
+	                            <p>上海超级计算中心副主任</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc4.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">孔华威</p>
+	                            <p>上海张江科技创业投资有限公司</p>
+	                            <p>首席科学家</p>
+	                        </dd>
+	                    </dl>
+	                    <dl style="margin-right:0;">
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc5.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">徐莹</p>
+	                            <p>上海超级计算中心云计算</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc6.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">楼敬伟</p>
+	                            <p>上海宝藤生物医药科技有限公司</p>
+	                            <p>董事长</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc7.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">金刚</p>
+	                            <p>云健康医疗科技集团总裁</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc8.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">余昶</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">王丙强</p>
+	                            <p>华大基因计算研发部门主管</p>
+	                        </dd>
+	                    </dl>
+	                    <dl style="margin-right:0;">
+	                        <dt><img src="${res}/topic/jiyindashuju//01180756ricc9.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">方向东</p>
+	                            <p>中国科学院“百人计划”研究员</p>
+	                        </dd>
+	                    </dl>
+	                    <div class="clear"></div>
+	                </div>
+	                <div class="ps_tx" style="display:none;">
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人智库创始</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl style="margin-right:0;">
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <dl>
+	                        <dt><img src="${res}/topic/jiyindashuju/01180756ricc.jpg" /></dt>
+	                        <dd>
+	                        	<p class="name">涂子沛</p>
+	                            <p>观数智库创始人</p>
+	                        </dd>
+	                    </dl>
+	                    <div class="clear"></div>
+	                </div>
+	                <div style=" text-align:center;">
+	                    <div class="ps_b">
+	                        <a href="#" class="this" onclick="switchPinShenTuan(this,0);return false;">1</a>
+	                        <a href="#" onclick="switchPinShenTuan(this,1);return false;">2</a>
+	                    </div>
+	                </div>
+	            </div>                       
+	            
+	    	</div>
+	    </div>
+	    <!--大咖评审团结束-->
+	    
+	    <!--参赛团队展示开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/zt-tit6.png" /></h3>
+	            <div style="padding-top:20px;">
+	            	<div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联</a></p>
+	                </div>
+	                <div class="clear"></div>
+	            </div> 
+	            <div style="padding-top:20px;display:none;">
+	            	<div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联1</a></p>
+	                </div>
+	                <div class="clear"></div>
+	            </div>
+	            <div style="padding-top:20px;display:none;">
+	            	<div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="cstd_div" style="margin-right:0;">
+	                	<a href="#" class="imga"><img src="${res}/topic/jiyindashuju/hezuohuoban_15.jpg" /></a>
+	                    <p><a href="#">中科汇联2</a></p>
+	                </div>
+	                <div class="clear"></div>
+	            </div>                     
+	            <div style=" text-align:center;">
+	                <div class="ps_b logo_ps_b">
+	                    <a href="#" class="this" onclick="switchCanSaiTuanDui(this,0);return false;">1</a>
+	                    <a href="#" onclick="switchCanSaiTuanDui(this,1);return false;">2</a>
+	                    <a href="#" onclick="switchCanSaiTuanDui(this,2);return false;">3</a>
+	                </div>
+	            </div>
+	    	</div>
+	    </div>
+	    <!--参赛团队展示结束-->
+	    
+	    <!--精彩现场开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit7.png" /></h3>
+	            	<div id="Big_Slide_box" style="margin: 30px auto 0;width: 1100px;">
+			           	<div id="Big_Slide" style="width:1100px;height:449px;">
+			            	[#if jiyindashujuPictures??]
+			            		<ul>
+			            			[#list jiyindashujuPictures as imp]
+			            				<li id="Big_Slide_${imp_index}"><a href="javascript:void(0);" target="_blank"><p style="position: absolute;top:0;width:100%;text-align: center;">${imp_index+1}/${jiyindashujuPictures?size}</p><img src="${imp}" width="1100" height="449"></a></li>
+			            			[/#list]
+			            		</ul>
+			            	[#else]
+			            		<ul>
+			            			<li id="Big_Slide_0"><p style="position: absolute;top:0;margin-left:450px;">1/1</p><img src="/${res}/topic/zoujinalibaba/zoujinali_article1fximg_07.jpg" width="100%"/></li>
+			            		</ul>
+			            	[/#if]
+			            	[#if imageCount??]
+			            		<!-- <input type="hidden" id="imagecount" name="imagecount" value="${imageCount}" /> -->
+			            	[/#if]
+			            	<a id="Big_Slide_Last"></a>
+					        <a id="Big_Slide_Next"></a>
+			           	</div>
+			        </div>
+	    	</div>
+	    </div>    
+	    <!--精彩现场结束-->    
+	    
+	    
+	    <!--人物专访开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit8.png" /></h3>
+	            <div style="padding:20px 110px 0 110px;">
+	            	<div style="clear:both;"></div>
+	            	[#if topicInterview?? && topicInterview?size gt 0]
+		        		[#list topicInterview as interview]
+		        			<div class="cstd_div rwzf_div">
+			                	<a href="${interview.url}" target="_blank" class="imga"><img src="${interview.contentImg}" width="210px" height="116px" /></a>
+			                    <p><a href="${interview.url}" target="_blank">[@text_cut s=interview.shortTitle len=30 /]</a></p>
+			                </div>
+		        		[/#list] 
+	        		[#else]
+	        			<div class="zt-con">
+	        				<img src="/${res}/topic/hd-ing.png" />
+	        			</div>
+	        		[/#if]      	
+	                <div class="clear"></div>
+	            </div> 
+	    	</div>
+	    </div>
+	    <!--人物专访结束-->
+	    
+	    <!--相关报道开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/zt-tit9.png" /></h3>
+	            <div class="bd_div">
+	            	<div class="bd_div_l">
+	                	<ul>
+	                    	<li><a href="#">数据猿专访阿里数据经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济阿里数据经济研究中心秘心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经阿里数据经济研究中济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济研阿里数据经济研究究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿阿里数据经济研究中里数据经济研究中心秘书长潘永花</a></li>
+	                    </ul>
+	                </div>
+	                <div class="bd_div_c">
+	                <img src="${res}/topic/jiyindashuju/line_s.png" />
+	                </div>
+	                <div class="bd_div_l">
+	                	<ul>
+	                    	<li><a href="#">数据猿专访阿里数据经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济阿里数据经济研究中心秘心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经阿里数据经济研究中济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济研阿里数据经济研究究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿里数据经济研究中心秘书长潘永花</a></li>
+	                        <li><a href="#">数据猿专访阿阿里数据经济研究中里数据经济研究中心秘书长潘永花</a></li>
+	                    </ul>
+	                </div>
+	                <div class="clear"></div>
+	            </div>
+	    	</div>
+	    </div>
+	    <!--相关报道结束-->
+	    
+	    <!--投资机构开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/zt-tit10.png" /></h3>
+	            
+	            	<div class="zt-c-con"> 
+	                <div class="fb-logo-div fb-logo-div-b">
+	                	
+	                    <div style="width:980px;margin-left:60px;">
+	                    	<a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_01.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_02.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_03.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_04.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_05.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_06.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_07.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_08.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_09.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_10.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_11.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_12.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_13.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_14.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_15.jpg" /></a>
+	                        <a href="javascript:void(0);"><img src="${res}/topic/jiyindashuju/tzjg/tzjg_16.jpg" /></a>                        
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                
+	                <div style="clear:both;"></div>
+	            </div>
+	                <div class="clear"></div>
+	           
+	    	</div>
+	    </div>
+	    <!--投资机构结束-->
+	    
+	    <!--大赛合作方案开始-->
+	    <div class="idea_div">
+	    	<div class="idea_con_div">
+	    		<h3><img src="${res}/topic/jiyindashuju/ztds/zt-tit11.png" /></h3>
+	            
+	            	<div class="zt-c-con">
+	            	<div class="fb-logo-div">
+	                	<p>联合主办方</p>
+	                    <div style="width:980px;float:left;"><!--以下logo是后面链接打开后的合作伙伴(http://www.datayuan.cn/topic.htm?topicId=6)-->
+	                    	<a href="#"><img src="${res}/topic/jiyindashuju/ztds/logo1.png" /></a>
+	                        <a href="#"><img src="${res}/topic/jiyindashuju/ztds/logo2.png" /></a>
+	                        <a href="#"><img src="${res}/topic/jiyindashuju/ztds/logo3.png" /></a>
+	                        <a href="#"><img src="${res}/topic/jiyindashuju/ztds/logo4.png" /></a>
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                <div class="fb-logo-div">
+	                	<p>指导单位</p>
+	                    <div style="width:980px;float:left;">
+	                    	<a href="#">上海市经信委</a><a href="#">上海市科委</a>                        
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                <div class="fb-logo-div">
+	                	<p>支持单位</p>
+	                    <div style="width:980px;float:left;">
+	                    	<a href="#" style="width:auto;">上海大数据产业基地（市北高新）</a>
+	                        <a href="#" style="width:auto;">上海市科技创业中心</a>
+	                        <a href="#" style="width:auto;">上海市浦东新区科学技术委员会</a>
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                <div class="fb-logo-div">
+	                	<p>合作伙伴</p>
+	                    <div style="width:980px;float:left;">
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti1.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti2.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti3.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti4.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti5.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti6.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti7.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti8.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti9.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti10.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti11.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti12.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti13.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti14.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti15.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti16.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti17.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti18.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti19.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti20.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti21.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti22.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti23.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti24.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti25.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti26.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti27.PNG" style="background:#fff;"/></a>
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                <div class="fb-logo-div">
+	                	<p>支持媒体</p>
+	                    <div style="width:980px;float:left;">
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti64.png" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti65.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti66.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti67.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti68.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti69.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti70.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti71.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);" style="clear:both;"><img src="/${res}/topic/jiyindashuju/logozhaunti72.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti73.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti74.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti75.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti76.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti77.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti78.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti79.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti80.png" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti81.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti82.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti83.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti84.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti85.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti86.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti87.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti88.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti89.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti90.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti91.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti92.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti93.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti94.PNG" style="background:#fff;"/></a>
+	                    	<a href="javascript:void(0);"><img src="/${res}/topic/jiyindashuju/logozhaunti95.PNG" style="background:#fff;"/></a>
+	                    </div>
+	                <div style="clear:both;"></div>
+	                </div>
+	                <div style="clear:both;"></div>
+	            </div>
+	                <div class="clear"></div>
+	           
+	    	</div>
+	    </div>
+	    <!--大赛合作方案结束-->
+	    
+	    <!--联系方式开始-->
+	    <div class="call_div">
+	    	<div class="call_div_l">
+	        	赞助合作<br>   
+				联系人:Grace<br>
+	            18601297396(微信号)<br>
+	            grace.li@datayuan.cn
+	    	</div>
+	        <div class="call_div_c">
+	        	媒体合作<br>   
+				联系人:刘朝霞<br>
+	            18600754384(微信号)<br>
+	            zhaoxia.liu@hcr.com.cn
+	    	</div>
+	        <div class="call_div_r">
+	        	大赛咨询<br>
+				联系人:时炜<br>
+	            13916935076(微信号)<br>
+	            wshi@mass-computing.com
+	    	</div>
+	        <div class="clear"></div>
+	    </div>
+	    <!--联系方式结束-->
+	    
+	</div>
+	<!---创新创业大赛专题首页结束--->
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="${base}/r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='${base}/r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='${base}/r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+    <!---底部版权部分结束--->
+    
+    
+</body>
+</html>

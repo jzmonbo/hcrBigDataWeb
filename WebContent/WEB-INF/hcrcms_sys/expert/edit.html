@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>:  <@s.m "cmsAcquisition.expert"/> - <@s.m "global.edit"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.so" labelWidth="15">
+<@p.text colspan="2" width="50" label="cmsExpert.author" name="author" value="${cmsExpert.author}" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" name="releaseDate" value="${cmsExpert.releaseDate}" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<td class="pn-flabel">小图</td>
+<td class="pn-fcontent">
+<input type="text" id="uploadImgPath1" name="smallImg" value="${cmsExpert.smallImg}" style="width:220px"/>
+<input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(1);" class="preview-button"/><br/>
+<span id="ufc2" style="position:relative">
+<input type='text' id='uploadFileText1' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText1').val(this.value)" size="14" type="file" id="uploadFile1" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(1);" class="upload-button"/><label id="uploadIMgPathRule1"></label><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(2);" class="cut-button"/> 
+</td><@p.tr/>
+<td class="pn-flabel">大图</td>
+<td class="pn-fcontent">
+<input type="text" id="uploadImgPath2" name="bigImg" value="${cmsExpert.bigImg}" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(2);" class="preview-button"/><br/>
+<span id="ufc2" style="position:relative">
+<input type='text' id='uploadFileText2' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText2').val(this.value)" size="14" type="file" id="uploadFile2" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(2);" class="upload-button"/><label id="uploadIMgPathRule2"></label><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(2);" class="cut-button"/> 
+</td><@p.tr/>
+<@p.text colspan="2" width="50" label="cmsExpert.sort" name="sort" value="${cmsExpert.sort}" maxlength="100"/><@p.tr/>
+<@p.text colspan="2" width="50" label="cmsExpert.company" name="company" value="${cmsExpert.company?default('')}" maxlength="100"/><@p.tr/>
+<@p.textarea value="${cmsExpert.description}" maxlength="255" help="" helpPosition="" label="cmsExpert.description" name="description" colspan="2" /><@p.tr/>
+<@p.td colspan="2"><@p.hidden name="expertId" value="${cmsExpert.expertId}" /><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

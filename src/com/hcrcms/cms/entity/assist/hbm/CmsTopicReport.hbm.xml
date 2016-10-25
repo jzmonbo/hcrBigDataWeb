@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.assist">
+	<class name="CmsTopicReport" table="jc_topic_report">
+		<meta attribute="sync-DAO">false</meta>
+		<id name="rId" type="java.lang.Integer" column="r_id"><generator class="identity"/></id>
+		<property name="title" column="title" type="string" not-null="false" length="200"/>
+		<property name="url" column="url" type="string" not-null="false" length="300"/>
+		<property name="description" column="description" type="string" not-null="false" length="100"/>
+		<many-to-one name="topicEnterprise" column="ent_id" class="com.hcrcms.cms.entity.assist.CmsTopicEnterprise" not-null="false"></many-to-one>
+	</class>
+</hibernate-mapping>

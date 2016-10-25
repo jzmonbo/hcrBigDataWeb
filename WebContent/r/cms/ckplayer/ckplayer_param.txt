@@ -1,0 +1,26 @@
+/**
+注意，flashvars中的参数：
+    v：ckplayer_volume，视频默认音量 0-100 之间，默认为 85。
+    p：ckplayer_play，是否自动播放，可以为 1 或 0，默认为 1，参数不为 1 时播放器加载完成后均为暂停状态。
+    f：ckplayer_flv，视频地址，默认为空，可以是单独视频地址、url 地址列表文件、xml 地址列表文件、Flash 地址文件这四种情况。（注意对应修改 s 参数的值，即 ckplayer_style）
+    i：ckplayer_loadimg，视频播放器初始图片地址，即封面图片，默认为空。
+    d：ckplayer_pauseflash，暂停时播放的广告，只支持 Flash 和图片，默认为空。
+    u：ckplayer_pauseurl，暂停时播放广告图片的链接地址，默认为空。
+    l：ckplayer_loadadv，视频开始前播放的广告，可以是 图片/Flash/视频格式，默认为空。
+    r：ckplayer_loadurl，视频开始前广告的链接地址，主要针对视频广告，如果是 Flash 广告可以不填写，默认为空。
+    t：ckplayer_loadtime，视频开始前广告播放的秒数，只针对 Flash 或图片有效，默认为 0。
+    e：ckplayer_endstatus，视频结束后的动作，0 停止播放并发送js，1 是不发送 js 且重新循环播放，2 停止播放，默认为2。当为 0 时需要自定义函数：
+        function playerstop(){
+            alert("播放完成");
+        }
+    a：ckplayer_pat，只有在使用 Flash 加密地址传递时有效，需要 f 和 s 参数配合，以及你自定义的 geturl.swf 文件配合，f：ckplayer_flv 参数也可以为 getflv.php?id=[$pat] 这样的格式，相当于 Flash 加密地址传递，其中的 pat 是有效的,可以通过这里传递参数后得到视频播放地址给播放器。
+    s：ckplayer_style，f 参数的传递方式，0 是普通视频地址，1 是视频地址列表文件，2 是 xml 地址列表文件，3 是 Flash 加密地址解析，默认为 0 普通视频地址文件播放。
+    x：ckplayer_xml，皮肤配置文件，如果为空的话将使用 js 文件配置，默认为官方皮肤 ckplayer.xml，要修改为其他皮肤只需要下载后改这个文件名就可以了，比如网易皮肤 ckplayer_163.xml。
+    c：ckplayer_default，读取文本配置，此参数具有非常强大的功能，非 0 值时调用本地 ckplayer.txt 配置文件（比如外站引用视频只需一个参数即可）说来话长，请到网站了解详情。
+    b：ckplayer_bgcolor，该参数以适应站外调用时有些论坛自动设置透明度的问题。
+    h：ckplayer_http，默认为0，定义 http 视频流采用按关键帧拖动还是按关键时间点拖动，0是按关键帧，1是按关键时间点。
+    m：ckplayer_load，默认为0，为1时不自动加载视频，选择是否采用点击播放按钮时再加载视频，这个参数的功能是在同页面加载多个视频时，有些视频可以先不加载，省带宽。
+    g：ckplayer_start，默认为0，开头跳过时间，这两个参数可以定义按指定时间进行播放的功能和提前结束的功能，该功能的用处一是可以记录用户已播放到的时间下次打开该视频时直接从指定时间进行播放,二是可以做跳过片头和片尾的功能。
+    j：ckplayer_ending，同上，默认为0，提前结束时间。
+    o：附加参数，非 CKplayer 官方参数，可选，默认值为 0，当值为 1 时，可加载站外视频 Flash 地址，如优酷分享中的 Flash 地址等，相当于使用 <embed> 标签加载站外 Flash 视频。
+**/

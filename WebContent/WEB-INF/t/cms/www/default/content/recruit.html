@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>${content.title}-数据猿</title>
+<meta name="Keywords" content="${content.title}-数据猿"/>
+<meta name="Description" content='[@text_cut s=content.txt len=120 /]' />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="applicable-device" content="pc"> 
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="/${res}/css/publicCss.css" rel="stylesheet" type="text/css" />
+<script src="/${res}/js/publicJs.js" type="text/javascript"></script>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+<body>
+	<!---头部开始--->
+	[#include "../include/header.html"/]
+    <!---头部结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+        	<!---文章详情页开始--->
+            <div class="wz-div">
+            	<h2><a href="#">${content.title}</a></h2>
+              <div class="wz-div-text wz-xq-div">
+                <div id="divcontent">${content.txt}</div>
+				<div class="sc-bq-div">
+					<a id="cancelSpan" class="scfx-a" style="display:none; cursor: pointer;">取消收藏</a>
+		            <a id="comfirmSpan" class="scfx-a" style="display:none;cursor: pointer;">收藏</a>
+		            [#if user??]
+		            <script type="text/javascript">
+		            $(function() {
+		                   Cms.collectexist("${base}","${content.id}","cancelSpan","comfirmSpan");
+		                   $("#comfirmSpan").click(function(){
+		                	   alert("加入收藏");
+		                	   Cms.collect("${base}","${content.id}",1,"cancelSpan","comfirmSpan");
+		                   });
+		                   $("#cancelSpan").click(function(){
+		                	   alert("取消收藏");
+		                	   Cms.collect("${base}","${content.id}",0,"cancelSpan","comfirmSpan");
+		                   });
+		            });
+		            </script>
+		            [/#if]
+                    	
+                   	<a href="#"class="scfx-a">分享</a>
+                   	[#include "inc_share.html"/]
+                       <div style="clear:both;"></div>
+                   </div>
+                   
+                    <div class="sm-div">
+                    	<span>声明：</span>数据猿尊重媒体行业规范，相关内容都会注明来源与作者；转载我们原创内容时，也请务必注明“来源：数据猿”与作者名称，否则将会受到数据猿追责。
+                  </div>
+                
+                  <div class="xgwz-div">
+                  	<!--网友评论_Begin-->
+	                <div>
+	                    <h3>我要评论</h3>
+	                    <!-- <form id="commentForm" action="${base}/comment.jspx" method="post"> -->
+	                    <div class="pl-div">
+	               			<textarea id="text" name="text" rows="3">我想要评论......</textarea>
+	               			<input type="hidden" name="contentId" value="${content.id}"/>
+	               			<input type="hidden" id="userIp" name="userIp" value="0" /> 
+	                    </div>
+	                    <div class="tjpl-div">
+	                      	<input type="button" name="Submit" value="提交评论" onclick="commentSubmit(${content.id});" />
+	                    </div>
+	                    <!-- </form> -->
+                    </div>
+                  </div>
+                  
+                  <div id="commentListContainer"></div>
+					<script type="text/javascript">
+						$(function(){
+							var userIP = $('#userIp').val();
+							Cms.commentList("${base}","commentListContainer",{contentId:${content.id},orderBy:0,count:100,checked:1,userIp:userIP});
+						});
+					</script>
+                  <!--网友评论_End-->
+                  
+                </div>
+            </div>
+            <!---文章详情页结束--->            
+        </div>
+        <!---左边内容部分开始--->
+        
+        [#include "../include/right_other.html"/]
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    
+    
+    <!---底部版权部分开始--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="${base}/r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='${base}/r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='${base}/r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+    <!---底部版权部分结束--->
+    
+    
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    $('a').bind('focus', function(){
+        this.blur();
+    });
+});
+</script>
+<script type="text/javascript">
+$(function() {
+Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+Cms.viewCount("${base}","${content.id}");
+Cms.siteFlow("${base}", location.href, document.referrer);
+});
+</script>
+<script type="text/javascript">
+	$(function(){
+		var count = 0;
+		$("#divcontent").children("p").each(function(k,v){
+			$(v).children("img").each(function(k1,v1){
+				if (typeof($(this).attr("alt")) == "undefined"){
+					count = count + 1;
+					$(this).addAttr("alt","${content.title}-图片"+count);	
+				}
+				if ($(this).attr("alt").length == 0){
+					count = count + 1;
+					$(this).attr("alt","${content.title}-图片"+count);
+				}
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+$(function(){
+	$("a").each(function(){
+		var val = $(this).attr("href");
+		if (indexNum(val) == 1){
+			var value = val.substring(0,val.indexOf("="));
+			val = val.substring(val.indexOf("=")+1);
+			$(this).attr("href",value+"="+encodeURIComponent(val));
+		}
+	});
+});
+
+
+function indexNum(str){
+	var flag = true;
+	var count = 0;
+	while (flag){
+		if (str == null || str == ""){
+			break;
+		}
+		if (str.indexOf("=") > 0){
+			count = count + 1;
+			str = str.substring(str.indexOf("=")+1);
+		}else{
+			break;
+		}
+	}
+	return count;
+}
+</script>

@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>活动推荐-数据猿</title>
+<meta name="Keywords" content="活动推荐-数据猿"/>
+<meta name="Description" content="活动推荐-数据猿" />
+<meta content="width=device-width, initial-scale=1,user-scalable=yes" name="viewport" />
+<meta content="Title" name="apple-mobile-web-app-title" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="True" name="HandheldFriendly" />
+<meta content="320" name="MobileOptimized" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link  rel="Bookmark"  href="favicon.ico"> 
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css"/>
+<link href="${resSys}/jqueryUI/jquery.ui.css" rel="stylesheet" type="text/css"/>
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/jquery.lazyload.js" type="text/javascript"></script>
+<script src="${resSys}/jqueryUI/jquery-ui.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<script src="${resSys}/tongji.js" type="text/javascript"></script>
+<link href="/${res}/css/generate.css" rel="stylesheet" type="text/css" />
+<script src="${resSys}/generate.js" type="text/javascript"></script>
+<link href="/${res}/css/styleComm.css" rel="stylesheet" type="text/css" />
+<link href="/${res}/css/zhuanjia.css" rel="stylesheet" type="text/css" />
+<link href="/${res}/css/zoujinali.css" rel="stylesheet" type="text/css" />
+
+<!-- <link href="/${res}/css/html5.css" rel="stylesheet" type="text/css"/> -->
+<script src="/${res}/js/indexshow.js" type="text/javascript"></script>
+<script src="/${res}/js/imgFlip.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    $('a').bind('focus', function(){
+        this.blur();
+    });
+});
+</script>
+<script type="text/javascript">
+	var totalPage = 0;			//总页数
+	var perPage = 10;			//每页条数
+	var currentPage = 0;		//当前条数
+	var linshiPage = 1;			//初使化临时当前条数
+	
+	function loadMore(){
+		totalPage = $(".main-div-l").children("div").size();
+		currentPage = linshiPage * 10 - 1;
+		for (var i=0;i<perPage+1;i++){
+			currentPage++;
+			if (currentPage<=totalPage){
+				$('#contentdiv'+currentPage).css("display","block");
+				var img = $('#contentdiv'+currentPage).children(".wz-div-img").children("a").children("img");
+				var imgPath = img.attr("data-original");
+				img.removeClass("lazy").removeAttr("data-original").attr("src",imgPath);
+			}else if (currentPage>totalPage){
+				break;
+			}
+		}
+		linshiPage++;
+		if (currentPage>totalPage){
+			$('.morediv').remove();
+		}
+	}
+</script>
+<!-- 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ -->
+</head>
+
+<body>
+	[#include "../include/header_huodong.html"/]
+    
+    <!---广告位--->
+    <!---<div class="head-g-div"></div>-->
+    <!---广告位结束--->
+    
+    <!---页面内容（文章）开始--->
+    <div class="mainbody-div">       
+    
+    	<!---左边内容部分开始--->
+        <div class="main-div-l">
+        	<!---每篇文章开始--->
+            <div>
+            	[@cms_content_list count='100' orderBy='2' titLen='18' channelId='活动推荐']
+    			[#if tag_list??]
+    			[#list tag_list as a]
+    			[#if a_index+1 lte 10]
+	    			<div id="contentdiv${a_index+1}" class="wz-div">
+	            	<h2><a href="${a.url}" target="_blank">${a.title}</a></h2>
+	                <div class="nametime">
+	                	<ul>
+	                    	<li>
+	                  			[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                  		</li>
+	                    </ul>
+	                	<p><a href="${base}/author/${a.authorPy}.htm" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	                </div>
+	                <div class="wz-div-img">
+	                	[#if a.contentImg??]
+	                		<a href="${a.url}" target="_blank"><img src="${a.contentImg}" width="690" height="280" alt="${a.shortTitle}" /></a>
+	                	[#else]
+	                		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="690" height="280" alt="${a.shortTitle}" /></a>
+	                	[/#if]
+	                </div>
+	                <div class="wz-div-text">
+	                	<!--里面span控制三行后显示省略号-->
+	                	[#if a.description??]
+		                	[#if a.description?length lt 140]
+		                		<a href="${a.url}" target="_blank"><span>${a.description}</span><span class="qw-a">《全文》</span></a>
+		                	[#else]
+		                		<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]......</span><span class="qw-a">《全文》</span></a>
+		                	[/#if]
+		                [#else]
+		                	[#if a.title?length lt 140]
+		                		<a href="${a.url}" target="_blank"><span>${a.title}</span><span class="qw-a">《全文》</span></a>
+		                	[#else]
+		                		<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]......</span><span class="qw-a">《全文》</span></a>
+		                	[/#if]
+		                [/#if]
+	                </div>
+	                </div>
+                [#else]
+                	<div id="contentdiv${a_index+1}" class="wz-div" style="display:none;">
+	            	<h2><a href="${a.url}" target="_blank">${a.title}</a></h2>
+	                <div class="nametime">
+	                	<ul>
+	                    	<li>
+	                    		[#if a.contentExt.tagConent??]
+	                  			[#list a.contentExt.tagConent?split(" ") as tags]
+	                  				[#if tags_index+1<9]
+	                  					<!-- <a href="${base}/search?q=${tags}" target="_blank">${tags}</a> -->
+	                  					<a href="${base}/s/${tags?substring(tags?index_of('_')+1)}.htm" target="_blank">${tags?substring(0,tags?index_of("_"))}</a>
+	                  				[/#if]
+	                  			[/#list]
+	                  		[#else]
+	                  			
+	                  		[/#if]
+	                    	</li>
+	                    </ul>
+	                	<p><a href="${base}/author/${a.authorPy}.htm" target="_blank">${a.author}</a>&nbsp;|&nbsp;<span><a href="${base}/searchTime.htm?time=${a.sortDate?string('yyyy-MM-dd')}" target="_blank">${a.sortDate?string("yyyy-MM-dd")}</a></span></p>
+	                </div>
+	                <div class="wz-div-img">
+	                	[#if a.contentImg??]
+	                		<a href="${a.url}" target="_blank"><img src="" data-original="${a.contentImg}" width="610" height="240" alt="${a.shortTitle}" /></a>
+	                	[#else]
+	                		<a href="${a.url}" target="_blank"><img src="res/common/img/theme/nopicture.png" width="610" height="240" alt="${a.shortTitle}" /></a>
+	                	[/#if]
+	                </div>
+	                <div class="wz-div-text">
+	                	<!--里面span控制三行后显示省略号-->
+	                	[#if a.description??]
+		                	[#if a.description?length lt 140]
+		                		<a href="${a.url}" target="_blank"><span>${a.description}</span><span class="qw-a">《全文》</span></a>
+		                	[#else]
+		                		<a href="${a.url}" target="_blank"><span>[@text_cut s=a.description len=140 /]......</span><span class="qw-a">《全文》</span></a>
+		                	[/#if]
+		                [#else]
+		                	[#if a.title?length lt 140]
+		                		<a href="${a.url}" target="_blank"><span>${a.title}</span><span class="qw-a">《全文》</span></a>
+		                	[#else]
+		                		<a href="${a.url}" target="_blank"><span>[@text_cut s=a.title len=140 /]......</span><span class="qw-a">《全文》</span></a>
+		                	[/#if]
+		                [/#if]
+	                </div>
+	                </div>
+                [/#if]
+                [/#list]
+                [#if totals gt 10]
+	             	<div class="morediv">
+			           	<a href="javascript:volid(0);" onclick="loadMore()">加载更多>></a>
+			        </div>
+	             [/#if]
+                [/#if]
+                [/@cms_content_list]
+            </div>
+            <!---每篇文章结束--->
+            
+        </div>
+        <!---左边内容部分开始--->
+        
+        [#include "../include/right_other.html"/]
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+       
+        
+        <div style="clear:both;"></div>
+    </div>
+    <!---页面内容（文章）结束--->
+    <div style="float:right;">
+    	<a href="#" title="返回顶部" id="goto-top"></a>
+    	<img id="goto-top2" src="${base}/r/cms/www/default/images/qrCodeSmall.jpg" onMouseOver="this.src='${base}/r/cms/www/default/images/qrCodeBig.jpg'" onMouseOut="this.src='${base}/r/cms/www/default/images/qrCodeSmall.jpg'" />
+    </div>
+    
+    <!--尾部开始-->
+	<footer class="zjxq_footer">
+		<div class="zjxq_footer_inner juzhongchicun">
+		    [#include "../include/friendlink.html"]
+		    [#include "../include/footer.html"/]
+		    [#include "../include/hotSpotNavigation.html"]
+	    </div>
+	</footer>
+	<!--尾部结束-->
+</body>
+</html>
+<script type="text/javascript">
+	function liover(lia){
+		$(lia).siblings(":first").css('display','block');
+	}
+	
+	function liout(lia){
+		$(lia).siblings(":first").css('display','none');
+	}
+</script>
+<script type="text/javascript">
+$(function(){
+	$("a").each(function(){
+		var val = $(this).attr("href");
+		if (indexNum(val) == 1){
+			var value = val.substring(0,val.indexOf("="));
+			val = val.substring(val.indexOf("=")+1);
+			$(this).attr("href",value+"="+encodeURIComponent(val));
+		}
+	});
+});
+
+
+function indexNum(str){
+	var flag = true;
+	var count = 0;
+	while (flag){
+		if (str == null || str == ""){
+			break;
+		}
+		if (str.indexOf("=") > 0){
+			count = count + 1;
+			str = str.substring(str.indexOf("=")+1);
+		}else{
+			break;
+		}
+	}
+	return count;
+}
+</script>
+<script type="text/javascript">
+ 	$(function(){
+ 		$(".zjxq_nav1111").children("ul").children("li").each(function(k,v){
+ 			$(v).hover(function(){
+ 				$(this).addClass("zjxq_navhd");
+ 				$(this).siblings().removeClass("zjxq_navhd");
+ 			},function(){
+ 				$(this).parent().children("li:eq(2)").addClass("zjxq_navhd");
+ 				$(this).parent().children("li:not(:eq(2))").removeClass("zjxq_navhd");
+ 			});
+ 		});
+ 	});
+ </script>

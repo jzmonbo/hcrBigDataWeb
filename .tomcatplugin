@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir></rootDir>
+    <workDir>/work</workDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <mavenClasspath>false</mavenClasspath>
+    <webPath>hcr</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/hcrBigDataWeb/WebContent/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>/hcrBigDataWeb/build/classes</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/DevloaderTomcat7.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/annotations-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/catalina-ant.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/catalina-ha.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/catalina-tribes.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/catalina.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/ecj-4.4.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/el-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/jasper-el.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/jasper.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/jsp-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/mysql.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/servlet-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-coyote.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-dbcp.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-i18n-es.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-i18n-fr.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-i18n-ja.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-jdbc.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat-util.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/tomcat7-websocket.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Apache Software Foundation/apache-tomcat-7.0.57/lib/websocket-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/access-bridge-64.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/jaccess.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/sunec.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/ext/zipfs.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/jfr.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>D:/Java/jdk1.7.0_13/jre/lib/rt.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/IKAnalyzer2012_u6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/activation-1.1.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/antlr-2.7.7.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/aopalliance.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/apache-ant-zip-1.8.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/apache-httpcomponents-httpclient.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/c3p0-0.9.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/cglib-nodep-2.2.3.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-cli-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-codec-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-collections-3.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-fileupload-1.3.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-httpclient-3.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-io-1.4.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-lang-2.4.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-logging-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-net-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-net-ftp-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/commons-pool-1.5.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/dom4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/dwr.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/ehcache-1.6.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/ezmorph-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/freemarker.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/ganymed-ssh2-build251beta1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/hibernate3.6.10.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/htmlparser-1.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/httpclient-4.0.3.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/httpcore-4.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/httpmime-4.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/javamelody.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/javassist-3.12.0.GA.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jcaptcha-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jcl-over-slf4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jedis-2.1.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jmagick.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jodconverter-2.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jodconverter-cli-2.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jodconverter-core-3.0-beta-4.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jrobin-1.5.9.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/json-lib.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/json.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jta-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jug-2.0.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/juh-3.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/jurt-3.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/log4j-over-slf4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/logback-classic-0.9.27.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/logback-core-0.9.27.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/lucene-core-3.0.3.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/lucene-highlighter-3.0.3.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/mailapi-1.4.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/memcachedclient-2.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/mysql-connector-5.1.8.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/nekohtml-1.9.22.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/pinyin4j-2.5.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/quartz-1.6.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/ridl-3.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/shiro-cas-1.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/shiro-core-1.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/shiro-ehcache-1.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/shiro-spring-1.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/shiro-web-1.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/smtp-1.4.2.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-aop-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-aspects-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-beans-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-context-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-context-support-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-core-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-expression-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-jdbc-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-orm-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-tx-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-web-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spring-webmvc-3.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/spymemcached-2.3.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/unoil-3.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/xercesImpl-2.11.0.jar</webClassPathEntry>
+        <webClassPathEntry>D:/workspace/hcrBigDataWeb/WebContent/WEB-INF/lib/xml-apis-1.4.01.jar</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.j2ee.internal.module.container</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.j2ee.internal.web.container</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="dynamicAct" class="com.hcrcms.cms.action.front.DynamicPageAct"/>
+	<bean id="tagAct" class="com.hcrcms.cms.action.front.TagAct"/>
+	<bean id="topicAct" class="com.hcrcms.cms.action.front.TopicAct"/>
+	<bean id="searchAct" class="com.hcrcms.cms.action.front.SearchAct"/>
+	<bean id="voteAct" class="com.hcrcms.cms.action.front.VoteAct"/>
+	<bean id="friendlinkAct" class="com.hcrcms.cms.action.front.FriendlinkAct"/>
+	
+	<bean id="contentCountAct" class="com.hcrcms.cms.action.front.ContentCountAct"/>
+	<bean id="attachmentAct" class="com.hcrcms.cms.action.front.AttachmentAct"/>
+	<bean id="commentAct" class="com.hcrcms.cms.action.front.CommentAct"/>
+	<bean id="commentExtAct" class="com.hcrcms.cms.action.front.CommentExtAct" />
+	<bean id="guestbookAct" class="com.hcrcms.cms.action.front.GuestbookAct"/>
+	<bean id="rssAct" class="com.hcrcms.cms.action.front.RssAct"/>
+	<bean id="csiCustomAct" class="com.hcrcms.cms.action.front.CsiCustomAct"/>
+	<bean id="advertisingAct" class="com.hcrcms.cms.action.front.AdvertisingAct"/>
+	
+	<bean id="casLoginAct" class="com.hcrcms.cms.action.member.CasLoginAct"/>
+	<bean id="loginAct" class="com.hcrcms.cms.action.member.LoginAct"/>
+	<bean id="memberAct" class="com.hcrcms.cms.action.member.MemberAct"/>
+	<bean id="contributeAct" class="com.hcrcms.cms.action.member.ContributeAct"/>
+	<bean id="fckAct" class="com.hcrcms.cms.action.member.FckAct"/>
+	<bean id="ueditorAct" class="com.hcrcms.cms.action.member.UeditorAct"/>
+	<bean id="registerAct" class="com.hcrcms.cms.action.member.RegisterAct"/>
+	<bean id="forgotPasswordAct" class="com.hcrcms.cms.action.member.ForgotPasswordAct"/>
+	<bean id="imageCutAct" class="com.hcrcms.cms.action.member.ImageCutAct"/>
+	<bean id="imageUploadAct" class="com.hcrcms.cms.action.member.ImageUploadAct"/>
+	<bean id="commentMemberAct" class="com.hcrcms.cms.action.member.CommentMemberAct"/>
+	<bean id="guestbookMemberAct" class="com.hcrcms.cms.action.member.GuestbookMemberAct"/>
+	<bean id="collectionMemberAct" class="com.hcrcms.cms.action.member.CollectionMemberAct"/>
+	<bean id="messageAct" class="com.hcrcms.cms.action.member.MessageAct"/>
+
+	<bean id="siteFlowAct" class="com.hcrcms.cms.action.front.CmsSiteFlowAct"/>
+	<bean id="resumeAct" class="com.hcrcms.cms.action.member.ResumeAct"/>
+	<bean id="swfUploadAct" class="com.hcrcms.cms.action.member.SwfUploadAct"/>
+	<bean id="contentScoreAct" class="com.hcrcms.cms.action.front.ContentScoreAct"/>
+	<bean id="thirdLoginAct" class="com.hcrcms.cms.action.front.ThirdLoginAct"/>
+	
+</beans>

@@ -1,0 +1,1101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script src="${base}/thirdparty/swfupload/swfupload.js" type="text/javascript"></script>
+<script src="${base}/thirdparty/swfupload/swfupload.queue.js" type="text/javascript"></script>
+<script src="${base}/thirdparty/swfupload/fileprogress.js" type="text/javascript"></script>
+<script src="${base}/thirdparty/swfupload/handlers.js" type="text/javascript"></script>
+<link href="${base}/thirdparty/swfupload/process.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+var types = [];
+<#list typeList as t>
+	types[${t_index}] = {hasImage:${t.hasImage?string('true','false')},imgWidth:${t.imgWidth},imgHeight:${t.imgHeight}};
+</#list>
+var channels = [];
+<#list channelList as c>
+	channels[${c_index}] = {
+		id:${c.id},
+		hasTitleImg:${c.hasTitleImg?string('true','false')},
+		titleImgWidth:${c.titleImgWidth},
+		titleImgHeight:${c.titleImgHeight},
+		hasContentImg:${c.hasContentImg?string('true','false')},
+		contentImgWidth:${c.contentImgWidth},
+		contentImgHeight:${c.contentImgHeight}
+	};
+</#list>
+function typeChange(n) {
+	var tr = $('#tr-typeImg');
+	tr.toggle(types[n].hasImage);
+	$('#zoomWidth0').val(types[n].imgWidth);
+	$('#zoomHeight0').val(types[n].imgHeight);
+}
+function channelChange(n) {
+	if(n==0) {
+		return;
+	}
+	//0为请选择，所以必须减一。
+	n--;
+	var trt = $('#tr-titleImg');
+	var trc = $('#tr-contentImg');
+	trt.toggle(channels[n].hasContentImg);
+	$('#zoomWidth1').val(channels[n].titleImgWidth);
+	$('#zoomHeight1').val(channels[n].titleImgHeight);
+	trc.toggle(channels[n].hasTitleImg);
+	$('#zoomWidth2').val(channels[n].contentImgWidth);
+	$('#zoomHeight2').val(channels[n].contentImgHeight);
+	fetchTopics(channels[n].id);
+}
+function fetchTopics(channelId) {
+	$.getJSON("../topic/by_channel.so",{channelId:channelId},function(topics) {
+		var ts = $("#topics");
+		ts.empty();
+		var len = topics.length;
+		var s="<select name='topicIds'>";
+		for(var i=0;i<len;i++) {
+			s+="<option value='"+topics[i].id+"'>"+topics[i].name+"</option>";
+		}
+		s+="</select>";
+		ts.append(s);
+		ts.parent().toggle(len>0);
+	});
+}
+$.validator.methods.leafChannel = function(value, element, param) {
+	var i = element.selectedIndex;
+	return $(element.options[i]).attr("class")!="sel-disabled";
+}
+$(function() {
+	$("#titleColor").colorPicker();
+	//先隐藏自定义上传行
+	$("#uploadImgPath4").parent().parent().hide();
+	$("#selectImg").hide();
+	$("#jvForm").validate({
+		rules: {
+			channelId: {
+				//required: true,
+				leafChannel: true
+			},
+			docPath:{
+				required: true
+			},
+			mediaType: {
+				required: function() {return $("#mediaPath").val()!=""}
+			}
+		},
+		messages:{
+			channelId: {
+				leafChannel: "<@s.m "content.error.notLeafChannel"/>"
+			},
+			docPath:$.validator.messages.required,
+			mediaType:$.validator.messages.required
+		}
+	});
+	//副栏目对话框
+	$("#channelsDialog").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 280,
+		height: 400,
+		position: ["center",20],
+		buttons: {
+			"OK": function() {
+				$("#channelsSelector input[name='channels']:checked").each(function(){
+					appendChannels(this);
+					$(this).removeAttr("checked");
+				});
+				$(this).dialog("close");
+			}
+		}
+	});
+	$('#channelsLink').click(function(){
+		$('#channelsDialog').dialog('open');
+		return false;
+	});	
+	$("#channelsSelector").treeview({
+		url: "v_tree_channels.so"
+	});
+	$("input[name=origin]").autocomplete({
+		 source: "../origin/v_ajax_list.so",
+		 minLength: 1,
+		 autoFocus: true
+	});
+	$(document).tooltip();
+});
+function appendChannels(channel) {
+	var hasContain = false;
+	$("input[name=channelIds]").each(function() {
+		if($(this).val()==$(channel).val()) {
+			hasContain = true;
+		}
+	});
+	if(hasContain) {
+		return;
+	}
+	var nodeList = eval($(channel).attr("nodeList"));
+	var s = "<div style='padding-top:3px'>";
+	for(var i=0,len=nodeList.length;i<len;i++) {
+		s += nodeList[i];
+		if(i<len-1) {
+			s += " > ";
+		}
+	}
+	s += " <a href='javascript:void(0);' onclick='$(this).parent().remove();' class='pn-opt'><@s.m "global.delete"/></a>";
+	s += "<input type='hidden' name='channelIds' value='"+$(channel).val()+"'/>";
+	s += "</div>";
+	$("#channelsContainer").append(s);
+}
+function generateTags(){
+	//这里修改为系统不自动分词,改为自动复制到下面两个字段框里
+	/*$.post("o_generateTags.so", {
+		title:$("input[name='title']").val()
+	}, function(data) {
+		$("input[name='tagStr']").val(data.tags);
+	}, "json");*/
+	
+	$("input[name=shortTitle]").val($("input[name=title]").val());
+	$("input[name=tagStr]").val($("input[name=title]").val());
+}
+var swfu;
+window.onload=function() {
+	var uploadPicsUrl = "../common/o_swfPicsUpload.so";
+	var uploadAttachsUrl = "../common/o_swfAttachsUpload.so";
+	//在firefox、chrome下，上传不能保留登录信息，所以必须加上jsessionid。
+	var jsessionid = $.cookie("JSESSIONID");
+	if(jsessionid) {
+		uploadPicsUrl += ";jsessionid="+jsessionid;
+		uploadAttachsUrl += ";jsessionid="+jsessionid;
+	}
+	<#if model.modelItems?seq_contains("pictures")>
+	swfu=new SWFUpload({
+		upload_url : uploadPicsUrl,
+		flash_url : "${base}/thirdparty/swfupload/swfupload.swf",
+		file_size_limit : "20 MB",
+		file_types : "*.jpg;*.gif;*.png;*.bmp",
+		file_types_description : "<@s.m 'content.picture'/>",
+		//file_upload_limit: 100,
+		file_queue_limit : 0,
+		custom_settings : {
+			progressTarget : "fsUploadProgress",
+			cancelButtonId : "btnCancel"
+		},
+		debug: false,
+		
+		button_image_url : "${base}/res/common/img/theme/menu_search.jpg",
+		button_placeholder_id : "spanButtonPlaceHolder",
+		button_text: "<span class='btnText'><@s.m "content.pictures.upload"/></span>",
+		button_width: 52,
+		button_height: 19,
+		button_text_top_padding: 2,
+		button_text_left_padding: 0,
+		button_text_style: '.btnText{color:#666666;}',
+		
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadPicsSuccess,
+		upload_complete_handler : uploadComplete,
+		queue_complete_handler : queueComplete
+	});
+	</#if>
+	<#if model.modelItems?seq_contains("attachments")>
+	swfau=new SWFUpload({
+		upload_url : uploadAttachsUrl,
+		flash_url : "${base}/thirdparty/swfupload/swfupload.swf",
+		file_size_limit : "2000 MB",
+		file_types : "*.*",
+		file_types_description : "All Types",
+		file_queue_limit : 0,
+		custom_settings : {
+			progressTarget : "afsUploadProgress",
+			cancelButtonId : "abtnCancel"
+		},
+		debug: false,
+		
+		button_image_url : "${base}/res/common/img/theme/menu_search.jpg",
+		button_placeholder_id : "aspanButtonPlaceHolder",
+		button_text: "<span class='btnText'><@s.m "content.pictures.upload"/></span>",
+		button_width: 52,
+		button_height: 19,
+		button_text_top_padding: 2,
+		button_text_left_padding: 0,
+		button_text_style: '.btnText{color:#666666;}',
+		
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadAttachSuccess,
+		upload_complete_handler : uploadComplete,
+		queue_complete_handler : queueComplete
+	});
+	</#if>
+};
+function uploadPicsSuccess(file,data) {
+	var jsonData=eval("("+data+")");//转换为json对象 
+	if(jsonData.error!=null){
+		$.alert("<@s.m 'global.prompt'/>",jsonData.error);
+	}else{
+		addPicLine();
+		var index = picIndex - 1;
+		imgUrl=jsonData.imgUrl;
+		$("#preImg"+index).attr("src",""+imgUrl);
+		var imgSrc = parent.document.getElementById("preImg"+index);
+		if(!$(imgSrc).attr("noResize")) {
+			$(imgSrc).css("width","auto");
+			$(imgSrc).css("height","auto");
+		}
+		$("#uploadImgPath"+index).val(imgUrl);
+	}
+}
+function uploadAttachSuccess(file,data) {
+	var jsonData=eval("("+data+")");//转换为json对象 
+	if(jsonData.error!=null){
+		$.alert("<@s.m 'global.prompt'/>",jsonData.error);
+	}else{
+		addAttachLine();
+		var index = attachIndex - 1;
+		
+		var attachUrl=jsonData.attachUrl;
+		var attachName=jsonData.attachName;
+		$("#attachmentPaths"+index).val(attachUrl);
+		$("#attachmentNames"+index).val(attachName);
+	}
+}
+function submitContent(){
+	//选择发送微信消息
+	var t=$("#sendType").val();
+	if(t!=0){
+		if(t==1&&CKEDITOR.instances.txt.getData()==""){
+			//图文需要校验文本框
+			$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.txt.required'/>");
+			return false;
+		}else if(t==2&&$("#mediaPath").val()==""){
+			//视频需要校验
+			$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.media.required'/>");
+			return false;
+		}else if(t==3){
+			//图片需要校验
+			var i=$("#selectImg").val();
+			if(i==1&&$("input[name='typeImg']").val()==""){
+				//类型图必须
+				$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.typeimage.required'/>");
+				return false;
+			}else if(i==2&&$("input[name='titleImg']").val()==""){
+				//标题图必须
+				$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.titleimage.required'/>");
+				return false;
+			}else if(i==3&&$("input[name='contentImg']").val()==""){
+				//内容图必须
+				$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.contentimage.required'/>");
+				return false;
+			}else if(i==0&&$("input[name='weixinImg']").val()==""){
+				//自定义图必须
+				$.alert("<@s.m 'global.prompt'/>","<@s.m 'content.image.required'/>");
+				return false;
+			}
+		}
+	}
+	$("#channelId").removeAttr("disabled");	//提交前解冻
+	return true;
+}
+
+	/*function selectResult(n){
+		var selectValue;
+		$('#channelId option').each(function(){
+			if ($(this).val() == n){
+				selectValue = $(this).text();
+			}
+		});
+		if (selectValue == '新闻咨讯'){		//判断是否大图
+			$("#bigPictureUpload").css("display","none");
+			$("#isBigTuDisplay").css("display","block");
+			$("#isIndexrankDisplay").css("display","block");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","none");
+		}else if (selectValue == '大数据学堂'){	//判断是否学堂的百科/书单/培训
+			$("#bigPictureUpload").css("display","none");
+			$("#xueTangFeiLei").css("display","block");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","block");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","none");
+		}else if (selectValue == '人物专访'){
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","block");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","block");
+		}else if (selectValue == '专题活动'){
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","none");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("#specialTopicDiv").css("display","block");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","none");
+		}else if (selectValue == '指数排行'){
+			$("#zhishu").css("display","block");
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","none");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#recommendInterviewCheck").css("display","none");
+		}else if (selectValue == '活动推荐'){
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","none");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","none");
+		}else{
+			$("input[name=isbigtu]").removeAttr("checked");
+			$("input[name=bigTuLocal]").removeAttr("checked");
+			$("input[name=xueTangFL]").removeAttr("checked");
+			$("#isBigTuDisplay").css("display","none");
+			$("#isIndexrankDisplay").css("display","none");
+			$("#xueTangFeiLei").css("display","none");
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","none");
+			$("#bigPictureLocal").val("0");					//0表示不是大图,后台需要判断
+			$("#xueTangCatory").val("0");					//0表示没有分类,后台需要判断
+			$("#uploadImgPathBig").val("");
+			$("#meetingId option:first").prop("selected", 'selected');			//把专题下拉表置为默认值
+			$("#siteLocation option:first").prop("selected", 'selected');
+			$("#specialTopicDiv").css("display","none");
+			$("#zhishu").css("display","none");
+			$("input[name=indexrank]").removeAttr("checked");
+			$("#indexrankLocal").val("0");
+			$("#recommendInterviewCheck").css("display","none");
+		}
+	}*/
+	
+	$(function(){
+		//默认选择多个分类
+		/*$("#selectMoreChannel").children().each(function(k,v){
+			var kid = parseInt($(this).attr("value"));
+			var kn = parseInt(n);
+			if (kid == kn){
+				$(this).prop("checked",true);
+			}else{
+				$(this).removeAttr("checked");
+			}
+		});*/
+	});
+	
+	function selectBigTu(val){
+		if (val = 0 || val == "0"){					//不是大图
+			$("#bigLocaldiv").css("display","none");
+			$("#bigPictureUpload").css("display","none");
+			$("#bigPictureLocal").val("0");
+			$("#uploadImgPathBig").val("");
+		}else if (val = 1 || val == "1"){			//是大图
+			$("#bigLocaldiv").css("display","block");
+			$("#bigPictureUpload").css("display","block");
+			$("#bigPictureLocal").val($("#bigTuLocal").val());
+		}
+	}
+	
+	function selectIndexrankBigTu(val){
+		if (val = 0 || val == "0"){					//不是大图
+			$("#zhishu").css("display","none");
+			$("#indexrankLocal").val("0");
+		}else if (val = 1 || val == "1"){			//是大图
+			$("#zhishu").css("display","block");
+			$("#indexrankLocal").val($("#bigTuLocal").val());
+		}
+	}
+	
+	function selectBigTuVal(val){
+		$("#bigPictureLocal").val(val);
+	}
+	
+	function selectBaikeyVal(val){
+		$("#xueTangCatory").val(val);
+	}
+	
+	function selectIndexVal(val){
+		$("#indexrankLocal").val(val);
+	}
+	function recommendInterviewCheckStatus(lia,checked){
+		if (checked){
+			$(lia).val(20);
+		}else{
+			$(lia).val(0);
+		}
+	}
+	function ziyuanshangchuan(num){
+		$('.box').show();
+		$(".box1").children("div").each(function(k,v){
+			if (num == k && k == 0){
+				$("#xinwenzixunSC").show();
+			}else if (num == k && k == 1){
+				$("#mySportCheck").show();
+			}else if (num == k && k == 2){
+				$("#renwuzhuanfangSC").show();
+			}else if (num == k && k == 3){
+				$("#dashujuxuetangSC").show();
+			}else if (num == k && k == 4){
+				$("#specialTopicDiv").show();
+			}else if (num == k && k == 5){
+				$("#zhishudatuSC").show();
+			}else{
+				$(this).hide();
+			}
+		});
+	}
+</script>
+<style>
+    *{padding: 0; margin: 0}
+    .box{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.2);
+        display: none;
+    }
+    .box1{
+        width: 450px;
+        height: 300px;
+        position: fixed;left: 43%; top: 25%;
+        margin-left: -250px;
+        border: 1px solid #000000;
+        background: #ffffff none repeat scroll 0 0;
+        padding:20px;
+    }
+</style>
+<style type="text/css">
+.sel-disabled{background-color:#ccc}
+</style>
+</head>
+<body>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>: <@s.m "content.function"/> - <@s.m "global.add"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+		<input type="hidden" name="cid" value="${cid!}"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<#include "/common/image_upload.html"/>
+<#include "attachment_upload.html"/>
+<#include "media_upload.html"/>
+<@p.form id="jvForm" action="o_save.so" labelWidth="10">
+
+<#assign count=0/>
+<#list itemList as item>
+<#if !item.single><#assign count=count+1/></#if>
+<#if !item.custom>
+
+<#if expertList??>
+<#if expertList?size gt 0>
+	<select id="expertId" name="expertId">
+	<#list expertList as e>
+		<option value="${e.expertId}">${e.name}</option>
+	</#list>
+	</select>
+</#if>
+</#if>
+
+<#if item.field=="channelId">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.td required="true" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<div style="float:left">
+<div>
+<!-- <select id="channelId" name="${item.field}" onchange="channelChange(this.selectedIndex)"> -->
+<!-- <select id="channelId" name="${item.field}" onchange="selectResult(this.value)">
+<#if !channel??>
+	<option value="" class="sel-disabled"><@s.m "global.pleaseSelect"/></option>
+</#if>
+<#if channelList?size gt 0>
+<#assign origDeep=channelList[0].deep+1/>
+<#list channelList as c>
+	<#if c.hasContent || c.child?size gt 0>
+	<option value="${c.id}"<#if c.modelIds?size gt 0&&!c.modelIds?seq_contains(model.id?string)|| c.child?size gt 0> class="sel-disabled"</#if>><#if c.deep gte origDeep><#list origDeep..c.deep as i>&nbsp;&nbsp;</#list>></#if>${c.name}</option>
+	</#if>
+</#list>
+</#if>
+</select>  --><!-- <input class="vice-channel" id="channelsLink" type="button" value="<@s.m "content.channels"/>"/> -->
+<span class="pn-fhelp">${h}</span>
+<div class="box">
+	<div class="box1">
+		<a href="javascript:;" onclick="$('.box').hide()" class="close" style="float:right;color:#ff0033;font-size:18px;right:0;top:0;position:absolute;">关闭</a>
+		<div id="xinwenzixunSC" style="display:none;">
+			<h3>新闻资讯资源上传:</h3>
+			<div id="isBigTuDisplay" sytle="maggine-top:20px;">
+				是否大图:<input type="radio" name="isbigtu" value="1" onclick="selectBigTu(this.value);">是</input>
+						<input type="radio" name="isbigtu" value="0" onclick="selectBigTu(this.value);">否</input>
+			</div>
+			<div id="bigLocaldiv" style="display:none;">
+				大图位置:<input type="radio" name="bigTuLocal" value="1" onclick="selectBigTuVal(this.value)">图1</input>
+						<input type="radio" name="bigTuLocal" value="2" onclick="selectBigTuVal(this.value)">图2</input>
+						<input type="radio" name="bigTuLocal" value="3" onclick="selectBigTuVal(this.value)">图3</input>
+						<input type="radio" name="bigTuLocal" value="4" onclick="selectBigTuVal(this.value)">图4</input>
+			</div>
+			<div id="bigPictureUpload" style="display:none;">
+				<@p.text id="uploadImgPath10" name="bigPictureImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(10);" class="preview-button"/><br/>
+				<span id="ufc2" style="position:relative">
+				<input type='text' id='uploadFileText10' size="14"/>  
+				<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+				<input onchange="$('#uploadFileText10').val(this.value)" size="14" type="file" id="uploadFile10" class="file-button"/>
+				</span>
+				<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(10);" class="upload-button"/><label id="uploadIMgPathRule10"></label><br/>
+				<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(10);" class="cut-button"/> 
+			</div>
+			<HR SIZE=5>
+			<div id="isIndexrankDisplay">
+				是否指数排行大图:<input type="radio" name="isIndexrankbigtu" value="1" onclick="selectIndexrankBigTu(this.value);">是</input>
+						<input type="radio" name="isIndexrankbigtu" value="0" onclick="selectIndexrankBigTu(this.value);">否</input>
+			</div>
+			<div id="zhishu">
+				<input type="radio" name="indexrank" value="1" onclick="selectIndexVal(this.value)">图1</input>
+				<input type="radio" name="indexrank" value="2" onclick="selectIndexVal(this.value)">图2</input>
+				<input type="radio" name="indexrank" value="3" onclick="selectIndexVal(this.value)">图3</input>
+				<input type="radio" name="indexrank" value="4" onclick="selectIndexVal(this.value)">图4</input>
+				<input type="radio" name="indexrank" value="5" onclick="selectIndexVal(this.value)">图5</input>
+				<input type="radio" name="indexrank" value="6" onclick="selectIndexVal(this.value)">图6</input>
+			</div>
+			<div>
+				<@p.text id="uploadImgPath11" name="indexrankImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(11);" class="preview-button"/><br/>
+				<span id="ufc2" style="position:relative">
+				<input type='text' id='uploadFileText11' size="14"/>  
+				<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+				<input onchange="$('#uploadFileText11').val(this.value)" size="14" type="file" id="uploadFile11" class="file-button"/>
+				</span>
+				<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(11);" class="upload-button"/><label id="uploadIMgPathRule11"></label><br/>
+				<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(11);" class="cut-button"/> 
+			</div>
+		</div>
+		<div id="mySportCheck" style="display:none;">
+			<input type="checkbox" id="mySport" name="mySport" value="20" onclick="recommendInterviewCheckStatus(this,this.checked)" />数据猿活动
+		</div>
+		<div id="renwuzhuanfangSC" sytle="display:none;">
+			<h3>人物专访资源上传：</h3>
+			<div id="bigPictureUpload">
+				<@p.text id="uploadImgPath20" name="renwuBigPictureImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(20);" class="preview-button"/><br/>
+				<span id="ufc2" style="position:relative">
+				<input type='text' id='uploadFileText20' size="14"/>  
+				<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+				<input onchange="$('#uploadFileText20').val(this.value)" size="14" type="file" id="uploadFile20" class="file-button"/>
+				</span>
+				<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(20);" class="upload-button"/><label id="uploadIMgPathRule20"></label><br/>
+				<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(20);" class="cut-button"/> 
+			</div>
+			<div id="recommendInterviewCheck">
+				<input type="checkbox" id="recommendInterview" name="recommendInterview" value="0" onclick="recommendInterviewCheckStatus(this,this.checked)" />推荐到人物专访大图页面
+			</div>
+		</div>
+		<div id="dashujuxuetangSC" sytle="display:none;">
+			<h3>大数据学堂资源上传：</h3>
+			<div id="bigPictureUpload">
+				<@p.text id="uploadImgPath21" name="xuetangBigPictureImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(21);" class="preview-button"/><br/>
+				<span id="ufc2" style="position:relative">
+				<input type='text' id='uploadFileText21' size="14"/>  
+				<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+				<input onchange="$('#uploadFileText21').val(this.value)" size="14" type="file" id="uploadFile21" class="file-button"/>
+				</span>
+				<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(21);" class="upload-button"/><label id="uploadIMgPathRule21"></label><br/>
+				<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(21);" class="cut-button"/> 
+			</div>
+			<div id="xueTangFeiLei">
+				大数据学堂分类：<input type="radio" name="xueTangFL" value="百科" onclick="selectBaikeyVal(this.value)">百科</input>
+							   <input type="radio" name="xueTangFL" value="书单" onclick="selectBaikeyVal(this.value)">书单</input>
+							   <input type="radio" name="xueTangFL" value="培训" onclick="selectBaikeyVal(this.value)">培训</input>
+			</div>
+		</div>
+		<div id="specialTopicDiv" style="display:none;">
+			<h3>专题资源上传：</h3><br />
+			<select id="topicType" name="topicType">
+				<option value="0">现场专访</option>
+				<option value="1">内容分享</option>
+				<option value="99">屏蔽</option>
+			</select>
+			<select id="meetingId" name="meetingId" onclick="getLocationSelect(this)">
+				<option value="-1">请选择会议</option>
+			<#list specialTopicList as meeting>
+				<option value="${meeting.id}">${meeting.shortName}</option>
+			</#list>
+			<#list specialTopicList as meeting>
+				<input type="hidden" id="meeting${meeting.id}1" value="${meeting.mainPlace}|${meeting.subPlace}" />
+			</#list>
+			</select>
+			<select id="siteLocation" name="siteLocation"></select>
+		</div>
+		<div id="zhishudatuSC"  sytle="display:none;">
+			<h3>指数排行资源上传：</h3>
+			<div id="zhishu">
+				指数排行大图位置：<input type="radio" name="indexrank" value="1" onclick="selectIndexVal(this.value)">图1</input>
+								<input type="radio" name="indexrank" value="2" onclick="selectIndexVal(this.value)">图2</input>
+								<input type="radio" name="indexrank" value="3" onclick="selectIndexVal(this.value)">图3</input>
+								<input type="radio" name="indexrank" value="4" onclick="selectIndexVal(this.value)">图4</input>
+								<input type="radio" name="indexrank" value="5" onclick="selectIndexVal(this.value)">图5</input>
+								<input type="radio" name="indexrank" value="6" onclick="selectIndexVal(this.value)">图6</input>
+				<div>
+					<@p.text id="uploadImgPath11" name="indexrankImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(11);" class="preview-button"/><br/>
+					<span id="ufc2" style="position:relative">
+					<input type='text' id='uploadFileText11' size="14"/>  
+					<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+					<input onchange="$('#uploadFileText11').val(this.value)" size="14" type="file" id="uploadFile11" class="file-button"/>
+					</span>
+					<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(11);" class="upload-button"/><label id="uploadIMgPathRule11"></label><br/>
+					<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(11);" class="cut-button"/> 
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="text" id="bigPictureLocal" name="bigPictureLocal" value="0" style="display:none;" />
+<input type="text" id="xueTangCatory" name="xueTangCatory" value="0" style="display:none;" />
+<input type="text" id="indexrankLocal" name="indexrankLocal" value="0" style="display:none;" />
+
+</div>
+<div><label for="channelId" class="error" generated="true"></label></div>
+<div id="channelsContainer"></div>
+<div id="selectMoreChannel">
+	分享多个分类：<br />
+	<#list channelList as c>
+		<#if c.id == 70>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(0)" />&nbsp;&nbsp;
+		<#elseif c.id == 74>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(1)" />&nbsp;&nbsp;
+		<#elseif c.id == 75>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(2)" />&nbsp;&nbsp;
+		<#elseif c.id == 76>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(3)" />&nbsp;&nbsp;
+		<#elseif c.id == 84>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(4)" />&nbsp;&nbsp;
+		<#elseif c.id == 85>
+			<input type="checkbox" name="moreChannels" value="${c.id}" /><input type="button" value="${c.name}" onclick="ziyuanshangchuan(5)" />&nbsp;&nbsp;
+		<#else>
+			<input type="checkbox" name="moreChannels" value="${c.id}" />${c.name}&nbsp;&nbsp;
+		</#if> 
+	</#list>
+</div>
+</div>
+
+<div style="float:left;padding-left:7px;<#if topicList?size == 0>display:none</#if>">
+&nbsp;<@s.m "content.topicIds"/>: <span id="topics">
+<@p.select list=topicList listKey="id" listValue="sname" name="topicIds"/>
+</span>
+</div>
+<div style="clear:both"></div>
+</@p.td>
+
+<#elseif item.field=="title">
+<@p.td required="true" help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.text value="${item.defValue!}" class="required" maxlength="150" size="${item.size!70}" name=item.field onchange="generateTags()"/>
+<!-- <label><input type="checkbox" onclick="$('#linkDiv').toggle(this.checked);if(!this.checked){$('#link').val('');}"/><@s.m "content.link"/></label>
+<div id="linkDiv" style="display:none">url: <input type="text" id="link" name="link"  title="<@s.m 'contentLink.tip.title'/>" size="35" maxlength="255"/></div> -->
+</@p.td>
+
+<#elseif item.field=="shortTitle">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.text value="${item.defValue!}" class="pn-fruler" maxlength="150" size="${item.size!35}" help="${h}" helpPosition="${item.helpPosition!3}" label=item.label name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="titleColor">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.td help="${h}" helpPosition="${item.helpPosition!3}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<input type="text" id="${item.field}" name="${item.field}" value="" style="width:70px" title="<@s.m 'titleColor.tip.title'/>"/>
+&nbsp; <label><input type="checkbox" onclick="$('#bold').val(this.checked)"/><@s.m "content.bold"/><input type="hidden" id="bold" name="bold" value="false"/></label>
+</@p.td>
+
+<#elseif item.field=="tagStr">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.text value="${item.defValue!}" maxlength="50" size="${item.size!35}" help="${h}" helpPosition="${item.helpPosition!2}" label=item.label name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="description">
+<@p.textarea value="${item.defValue!}" cols="${item.cols!70}" rows="${item.rows!3}" maxlength="255" help=item.help helpPosition="${item.helpPosition!2}" label=item.label name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="author">
+<@p.td required="true" help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.text name=item.field  class="required" value="${item.defValue!}" maxlength="100" size="${item.size!}"/>
+</@p.td>
+
+<#elseif item.field=="origin">
+<@p.td required="true" help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.text name=item.field  class="required" value="${item.defValue!}" maxlength="100" style="width:70px"/> &nbsp;
+<@s.m "content.originUrl"/>: <input type="text" name="originUrl" maxlength="255" style="width:100px"/>
+</@p.td>
+
+<#elseif item.field=="viewGroupIds">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.checkboxlist list=groupList listKey="id" listValue="name" help="${h}" helpPosition="${item.helpPosition!2}" label=item.label name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="topLevel">
+<@p.td help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<input type="text" name="topLevel" value="0" required="true" class="required digits" maxlength="2" style="width:20px"/>
+&nbsp;<@s.m "content.sortDate"/>: <@p.text name="sortDate" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/>
+</@p.td>
+
+<#elseif item.field=="releaseDate">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.text style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" help="${h!}" helpPosition="${item.helpPosition!2}" label=item.label name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="typeId">
+<@p.td help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.select list=typeList listKey="id" listValue="name" onchange="typeChange(this.selectedIndex)" name=item.field colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+&nbsp; <label><input type="checkbox" onclick="$('#recommend').val(this.checked)"/><@s.m "content.recommend"/><input type="hidden" id="recommend" name="recommend" value="false"/></label>
+&nbsp; <label><input type="checkbox" onclick="$('#draft').val(this.checked)"/><@s.m "content.draft"/><input type="hidden" id="draft" name="draft" value="false"/></label>
+</@p.td>
+
+<#elseif item.field=="tplContent">
+<#assign h><#if item.help??>${item.help}<#else><@s.m "content."+item.field+".help"/></#if></#assign>
+<@p.select list=tplList headerKey="" headerValue="global.default" name=item.field help="${h}" helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}"/>
+
+<#elseif item.field=="typeImg">
+<@p.td id="typeImg" label=item.label colspan="1" width="50" noHeight="true">
+<@p.text id="uploadImgPath0" name="typeImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(0);" class="preview-button"/><br/>
+<span id="ufc0" style="position:relative">
+<input type='text' id='uploadFileText0' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText0').val(this.value)" size="14" type="file" id="uploadFile0" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark0').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark0" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(0);" class="upload-button"/><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth0" value="${typeList[0].imgWidth}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight0" value="${typeList[0].imgHeight}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(0);" class="cut-button"/> 
+</@p.td><@p.td colspan="1" width="50">
+<!-- <img id="preImg0" alt="<@s.m "imageupload.preview"/>" style="width:100px;height:70px;background-color:#ccc;border:1px solid #333"/> -->
+</@p.td>
+
+<#elseif item.field=="titleImg">
+<@p.td id="titleImg" label=item.label colspan="1" width="50" noHeight="true">
+<@p.text id="uploadImgPath1" name="titleImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(1);" class="preview-button"/><br/>
+<span id="ufc1" style="position:relative">
+<input type='text' id='uploadFileText1' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText1').val(this.value)" size="14" type="file" id="uploadFile1" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark1').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark1" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(1);" class="upload-button"/><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth1" value="${(channel.titleImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight1" value="${(channel.titleImgHeight)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(1);" class="cut-button"/> 
+</@p.td><@p.td colspan="1" width="50">
+<!-- <img id="preImg1" alt="<@s.m "imageupload.preview"/>" style="width:100px;height:70px;background-color:#ccc;border:1px solid #333"/> -->
+</@p.td>
+
+<#elseif item.field=="contentImg">
+<@p.td id="contentImg" label=item.label colspan="1" width="50" noHeight="true">
+<@p.text id="uploadImgPath2" name="contentImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(2);" class="preview-button"/><br/>
+<span id="ufc2" style="position:relative">
+<input type='text' id='uploadFileText2' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText2').val(this.value)" size="14" type="file" id="uploadFile2" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark2').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark2" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(2);" class="upload-button"/><label id="uploadIMgPathRule2"></label><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth2" value="${(channel.contentImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeight2" value="${(channel.contentImgWidth)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(2);" class="cut-button"/> 
+</@p.td><@p.td colspan="1" width="50">
+<!-- <img id="preImg2" alt="<@s.m "imageupload.preview"/>" style="width:30px;height:30px;background-color:#ccc;border:1px solid #333"/> -->
+</@p.td>
+
+<#elseif item.field=="attachments">
+<@p.td label=item.label colspan="2" noHeight="true">
+<div>
+<span id="aspanButtonPlaceHolder"></span>
+<span style="display: none;"><input class="cancel" id="abtnCancel" type="button" value="<@s.m "global.cancel"/>" onclick="swfu.cancelQueue();" disabled="disabled" /></span>
+<div id="afsUploadProgress" style="display: none;"></div>
+</div>
+<table id="attachTable" border="0">
+<tr>
+	<td align="center"></td>
+	<td align="center"><@s.m "content.attachmentName"/></td>
+	<td align="center"><@s.m "content.attachmentPath"/></td>
+	<td align="center"><@s.m "content.fileUpload"/></td>
+</tr>
+</table>
+<textarea id="attachTr" style="display:none">
+<tr id="attachTr{0}">
+	<td align="center"><a onclick="$('#attachTr{0}').remove();" href="javascript:void(0);" class="pn-opt"><@s.m "content.attachmentDelLine"/></a></td>
+	<td align="center"><input type="text" id="attachmentNames{0}" name="attachmentNames"/></td>
+	<td align="center"><input type="text" id="attachmentPaths{0}" name="attachmentPaths"/></td>
+	<td align="center">
+		<span id="afc{0}" style="position:relative;display:block;width:300px;*width:300px;">
+		<input type='text' id='attachmentText{0}'/>  
+		<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+		<input onchange="$('#attachmentText{0}').val(this.value)" size="19" type="file" name="attachmentFile" id="attachmentFile{0}" style="height:24px;opacity:0;filter:alpha(opacity=0);position:absolute;right:69px;top:2px;"/>
+		<input type="button" value="<@s.m "content.fileUpload"/>" onclick="uploadAttachment({0});" class="upload-button"/>
+		</span>
+		<input type="hidden" id="attachmentFilenames{0}" name="attachmentFilenames"/>
+	</td>
+</tr>
+</textarea>
+<script type="text/javascript">
+var attachIndex = 1;
+var attachTpl = $.format($("#attachTr").val());
+function addAttachLine() {
+	$('#attachTable').append(attachTpl(attachIndex++));
+}
+</script>
+</@p.td>
+
+<#elseif item.field=="media">
+<@p.td label=item.label colspan="1" width="50" noHeight="true">
+<div>
+	<input type="text" id="mediaPath" name="mediaPath" style="width:265px"/>
+</div>
+<div>
+	<span id="mfc" style="position:relative;display:block;width:300px;*width:300px;">
+	<input type='text' id='mediaFileText'/>  
+	<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+	<input onchange="$('#mediaFileText').val(this.value)" size="19" type="file" name="mediaFile" id="mediaFile" style="height:24px;opacity:0;filter:alpha(opacity=0);position:absolute;right:79px;top:2px;"/>
+	<input type="button" value="<@s.m "imageupload.upload"/>" onclick="uploadMedia();" class="upload-button"/>
+	</span> 
+</div>
+</@p.td>
+<@p.td colspan="1" width="50" label="content.mediaType">
+<@p.radio name="mediaType" list=["WM","REAL","FLV","FLASH","CK"]/>
+<div><label for="mediaType" class="error" generated="true"></label></div>
+</@p.td>
+
+<#elseif item.field=="txt">
+<@p.editor value=item.defValue colspan="2" help=item.help helpPosition="${item.helpPosition!}" label=item.label name=item.field/>
+<@p.tr/>
+
+<!-- <@p.td colspan="2" label="content.txtattr">
+&nbsp; <label><input type="checkbox" onclick="$('#copyimg').val(this.checked)"/><@s.m "content.copyimg"/><input type="hidden" id="copyimg" name="copyimg" value="false"/></label> -->
+<#if site.config.weixinEnable>
+<@p.select name="sendType"  id="sendType" onchange="Cms.selectWeiXinType()" headerKey="0" headerValue="content.selecttypetoweixin" list={"1":"content.sendText","2":"content.sendVedio","3":"content.sendContent"}/>
+<@p.select name="selectImg" id="selectImg" onchange="Cms.selectWeiXinImg()"  list={"1":"content.typeImg","2":"content.titleImg","3":"content.contentImg","0":"content.weixinImg"}/>
+<span id="imageHelpSpan" style="display: none;"><@s.m "content.image.help"/></span>
+</#if>
+</@p.td>
+<@p.tr/>
+
+<#if site.config.weixinEnable>
+<@p.td colspan="1" width="50" label="content.weixinImg">
+<@p.text id="uploadImgPath4" name="weixinImg" style="width:220px"/> <input type="button" value="<@s.m "imageupload.preview"/>" onclick="previewImg(4);" class="preview-button"/><br/>
+<span id="ufc4" style="position:relative">
+<input type='text' id='uploadFileText4' size="14"/>  
+<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+<input onchange="$('#uploadFileText4').val(this.value)" size="14" type="file" id="uploadFile4" class="file-button"/>
+</span>
+<label><input type="checkbox" onclick="$('#mark4').val(this.checked);"/><@s.m "imageupload.mark"/></label><input type="hidden" id="mark4" value="false"/> <input type="button" value="<@s.m "imageupload.upload"/>" onclick="upload(4);" class="upload-button"/><br/>
+<@s.m "global.width"/>: <input type="text" id="zoomWidth4" value="${(channel.titleImgWidth)!}" size="5"/> <@s.m "global.height"/>: <input type="text" id="zoomHeightweixin" value="${(channel.titleImgHeight)!}" size="5"/> <input type="button" value="<@s.m "imageupload.cut"/>" onclick="imgCut(4);" class="cut-button"/> 
+</@p.td>
+<@p.td colspan="1" width="50">
+<!-- <img id="preImg4" alt="<@s.m "imageupload.preview"/>" style="width:100px;height:70px;background-color:#ccc;border:1px solid #333"/> -->
+</@p.td><@p.tr/>
+</#if>
+
+<#elseif item.field=="txt1">
+<@p.editor value=item.defValue colspan="2" help=item.help helpPosition="${item.helpPosition!}" label=item.label name=item.field/>
+
+<#elseif item.field=="txt2">
+<@p.editor value=item.defValue colspan="2" help=item.help helpPosition="${item.helpPosition!}" label=item.label name=item.field/>
+
+<#elseif item.field=="txt3">
+<@p.editor value=item.defValue colspan="2" help=item.help helpPosition="${item.helpPosition!}" label=item.label name=item.field/>
+
+<#elseif item.field=="pictures">
+<@p.td label=item.label colspan="2" noHeight="true">
+<div>
+<span id="spanButtonPlaceHolder"></span>
+<span style="display: none;"><input class="cancel" id="btnCancel" type="button" value="<@s.m "global.cancel"/>" onclick="swfu.cancelQueue();" disabled="disabled" /></span>
+<div id="fsUploadProgress" style="display: none;"></div>
+</div>
+<div id="picBefore" style="clear:both"></div>
+<textarea id="picTable" style="display:none;">
+<table id="picTable{0}" border="0" style="float:left;">
+<tr>
+	<td>
+		<div><input type="text" id="uploadImgPath{0}" name="picPaths" style="width:160px"/> <a href="javascript:void(0);" onclick="$('#picTable{0}').remove();" class="pn-opt"><@s.m "content.picturesDel"/></a></div>
+		<div>
+		<span id="ufc{0}" style="position:relative">
+		<input type='text' id='uploadFileText{0}' size="10"/>  
+		<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+		<input onchange="$('#uploadFileText{0}').val(this.value)" size="10" type="file" id="uploadFile{0}" class="file-button"/>
+		</span>
+		<input type="button" value="<@s.m "content.fileUpload"/>" onclick="upload({0});" class="upload-button"/>
+		</div>
+		<div>&lt;textarea style="width:200px;height:60px;" name="picDescs" maxlength="255"&gt;&lt;/textarea&gt;</div>
+	</td>
+	<td><img id="preImg{0}" alt="<@s.m "imageupload.preview"/>" noResize="true" style="width:110px;height:110px;background-color:#ccc;border:1px solid #333"/></td>
+</tr>
+</table>
+</textarea>
+<script type="text/javascript">
+var picIndex = 4;
+var picTpl = $.format($("#picTable").val());
+function addPicLine() {
+	$('#picBefore').before(picTpl(picIndex++));
+}
+</script>
+</@p.td>
+<#elseif item.field=="docPath">
+<@p.td help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<div>
+	<input type="text" id="docPath" name="docPath" style="width:265px" required="true" class="required"/>
+	<input type="hidden" id="fileSuffix" name="fileSuffix"/>
+</div>
+<div>
+	<span id="mfc" style="position:relative;display:block;width:300px;*width:300px;">
+	<input type='text' id='docFileText'/>  
+	<input class="browse" type='button' value='<@s.m "global.browse"/>'/>
+	<input onchange="$('#docFileText').val(this.value)" size="19" type="file" name="docFile" id="docFile" style="height:24px;opacity:0;filter:alpha(opacity=0);position:absolute;right:79px;top:2px;"/>
+	<input type="button" value="<@s.m "imageupload.upload"/>" onclick="uploadDoc();" class="upload-button"/>
+	</span> 
+</div>
+</@p.td>
+<#elseif item.field=="downNeed">
+<@p.td help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.text name=item.field value="${item.defValue!}" maxlength="100" size="${item.size!}" required="true" class="required digits" />
+</@p.td>
+
+<#elseif item.field=="isOpen">
+<@p.td help=item.help helpPosition="${item.helpPosition!2}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}">
+<@p.radio name=item.field value="true" list={"true":"global.true","false":"global.false"} required="true"/><@p.tr/>
+</@p.td>
+
+</#if>
+
+<#else>
+<@p.selfDefineWidget name="attr_${item.field}" value=item.defValue size="${item.size!}" list="${item.optValue!}" help=item.help helpPosition="${item.helpPosition!2}" rows="${item.rows!}" cols="${item.cols!}" label=item.label colspan=item.single?string("2","1") width="${item.single?string(100,50)}" type="${item.dataType}"/>
+</#if>
+<#if count%2==0></tr><tr<#if item_has_next><#assign f=itemList[item_index+1].field/> id="tr-${f}"<#if (f=="typeImg" && !typeList[0].hasImage) || (f=="titleImg" && (!channel?? || !channel.hasTitleImg) || (f=="contentImg" && (!channel?? || !channel.hasContentImg)))> style="display:none"</#if></#if>></#if>
+</#list>
+<@p.td colspan="2">
+	<input type="hidden" name="cid" value="${cid!}"/>
+	<input type="hidden" name="modelId" value="${model.id!}"/>
+	<input type="hidden" name="model.id" value="${model.id!}"/>
+	<@p.submit code="global.submit" onclick="return submitContent()"/> &nbsp; <@p.reset code="global.reset"/>
+</@p.td>
+</@p.form>
+</div>
+<#include "/common/alert_message.html"/>
+<div id="channelsDialog" title="<@s.m "content.selectChannels"/>" style="display:none;">
+<ul id="channelsSelector" class="filetree"></ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	//手工给下拉列表加ID属性
+	var defineId = $("[name=attr_selDefault]").attr("name");
+	$("[name=attr_selDefault]").attr("id",defineId);
+	
+	$("#attr_selDefault").bind("change",function(){
+		var selectTxt = $(this).val();
+		if ('快播' == selectTxt){
+			$('#channelId option').each(function(){
+				if ($(this).text() == '大数据快播'){
+					$(this).attr("selected","selected");
+				}else{
+					$(this).removeAttr("selected");
+				}
+			});
+			$('#channelId').attr("disabled",true);
+		}else if ('网站介绍' == selectTxt){
+			$('#channelId option').each(function(){
+				if ($(this).text() == '网站介绍'){
+					$(this).attr("selected","selected");
+				}else{
+					$(this).removeAttr("selected");
+				}
+			});
+			$('#channelId').attr("disabled",true);
+		}else{
+			$('#channelId').attr("disabled",false);
+			$('#channelId option').each(function(){
+				$(this).removeAttr("selected");
+			});
+			$('#channelId option:nth-child(1)').attr("selected","selected");
+		}
+		//alert("选中值:" + $('#channelId option:selected').val());
+	});
+	$('#tr-contentImg').css("display","block");
+	$('#tr-titleImg').css("display","block");
+</script>
+<script type="text/javascript">
+	function getLocationSelect(metting){
+		var index = metting.selectedIndex; // 选中索引
+		var value = metting.options[index].value; // 选中值
+		if (value > -1){
+			var meetingValue = $("#meeting"+value+"1").val();
+			var meets = meetingValue.split("|");
+			var mainPlace = meets[0];
+			var subPlace = meets[1];
+			
+			var siteLocation = $("#siteLocation");
+			siteLocation.empty();
+			siteLocation.append("<option value='-1'>请选择会场</option>");
+			siteLocation.append("<optgroup label='---主会场---'></optgroup>");
+			siteLocation.append("<option value='1'>"+mainPlace+"</option>");
+			siteLocation.append("<optgroup label='---子会场---'></optgroup>");
+			if (subPlace.length > 0){
+				var subs = subPlace.split(",");
+				for (var i=0;i<subs.length;i++){
+					siteLocation.append("<option value='"+(i+2)+"'>"+subs[i]+"</option>");
+				}
+			}
+		}else{
+			var siteLocation = $("#siteLocation");
+			siteLocation.empty();
+		}
+	}
+</script>

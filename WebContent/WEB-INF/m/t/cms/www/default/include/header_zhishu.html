@@ -1,0 +1,75 @@
+<!---头部开始--->
+<!-- <header class="mui-bar mui-bar-nav" style="background:#f39300;">
+	<h1 id="title" class="mui-title">聚焦数据<span style="font-family:'Times New Roman'">&nbsp;&nbsp;</span>改变生活</h1>
+</header> -->
+<!---头部结束--->
+
+<header class="mui-bar mui-bar-nav">
+	<div class="header_first">
+		<div>
+			<a id="towardHeadPage" href="/"><img src="/r/cms/www/default/images/logo_mobile.png" alt="数据猿" style="width:80px;height:39px;vertical-align: middle;"></a>
+			<img src="/r/cms/www/default/images/logojuji_03_mobile.png" style="margin-bottom:0px;width:160px;height:17px;vertical-align: middle;margin-left:10px">
+			<img id="searchImg" src="/r/cms/www/default/images/search.png" onclick="searchKeyword(this);" style="float:right;">
+		</div>
+		<div class="header_biaodan" style="display:none;" onsubmit="return tijiaoSearch()">
+       		<form id="search" action="${base}/search" target="_blank" id="searchForm">
+			 	<input name="q" class="in-text" value="${oldq!'大数据时代'}" type="text" onfocus="if(this.value=='大数据时代')this.value=''"  onkeypress="qkeypress()" onblur="if(this.value=='')this.value='大数据时代'"  maxlength="50" autocomplete="off" />
+			 	<button type="submit" class="search-icon" type="button"></button>
+			 </form>
+       </div>
+	</div>
+	<div class="header_second">
+		<ul class="juzhongchicun">
+	    	<li><a id="index_zixun" href="${base}" class="head-a-underline" target="_blank" onclick="getHeadClick(this)">资讯</a></li>
+	    	<li class="nav_select"><a id="index_zhishu" href="${base}/indexRanking.htm" target="_blank" onclick="getHeadClick(this)">指数</a></li>
+	    	<li><a id="index_huodong" href="${base}/huodongtuijian.htm" target="_blank" onclick="getHeadClick(this)">活动</a></li>
+	    </ul>
+	    <!-- <a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right" style="margin-top:2px;"></a> -->
+	    <a id="offCanvasBtn" href="" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right" style="margin-top:2px;"></a>
+	</div>
+</header>
+<script type="text/javascript">
+	function searchKeyword(lia){
+		var parent = $(lia).parent().parent();
+		parent.children("div:eq(0)").css("display","none");
+		parent.children("div:eq(1)").css("display","block");
+	}
+	
+	function tijiaoSearch(){
+		var searchKeyword = $("input[name=q]").val();
+		if ("大数据时代" == searchKeyword || "" == searchKeyword){
+			var headerFirst = $(".header_first");
+			headerFirst.children("div:eq(0)").css("display","block");
+			headerFirst.children("div:eq(1)").css("display","none");
+			return false;
+		}else{
+			return true;
+		}
+	}
+</script>
+<!---头部开始--->
+<!-- <header class="zjxq_header">
+	<div class="zjxq_z">
+    <div class="zjxq_hs_z juzhongchicun">
+       <div class="logo">
+       		<a href="http://www.datayuan.cn/" title="数据猿"><h1><div style="position: absolute;z-index:-1">数据猿</div><div style="z-index:100;height:100px;"><img src="/r/cms/www/default/images/logo.png" alt="数据猿"></div></h1></a>
+       </div> 
+       <div class="logo_2">
+        	<a href="http://www.datayuan.cn/"><img src="/r/cms/www/default/images/logojuji_03.jpg"></a>
+       </div>
+       <div class="header_biaodan">
+       		<button type="submit" class="search-icon" type="button"></button>
+       </div>
+    </div>
+    </div>
+</header> -->
+<!---头部结束--->
+<!---导航开始--->
+<!-- <nav class="zjxq_nav1111" >
+	<ul class="zjxq_nav juzhongchicun">
+    	<li class="zjxq_navhd"><a href="http://www.datayuan.cn/" class="head-a-underline" target="_blank" onclick="getHeadClick(this)">资讯</a></li>
+    	<li><a href="${base}/indexRanking.htm" target="_blank" onclick="getHeadClick(this)">指数</a></li>
+    	<li><a href="${base}/huodongtuijian.htm" target="_blank" onclick="getHeadClick(this)">活动</a></li>
+    </ul>
+</nav> -->
+<!---导航结束--->

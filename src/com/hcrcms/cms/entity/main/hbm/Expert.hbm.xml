@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hcrcms.cms.entity.main">
+	<class name="Expert" table="jc_expert">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="expertId" type="java.lang.Integer" column="expert_id"><generator class="identity"/></id>
+		<property name="author" column="author" type="java.lang.String" not-null="true" length="100"/>
+		<property name="authorPy" column="author_py" type="java.lang.String" not-null="true" length="100"/>
+		<property name="releaseDate" column="release_date" type="timestamp" not-null="true" length="19"/>
+		<property name="bigImg" column="big_img" type="java.lang.String" not-null="false" length="100" />
+		<property name="smallImg" column="small_img" type="java.lang.String" not-null="false" length="100" />
+		<property name="sort" column="sort" type="java.lang.Integer" not-null="false" length="1"/>
+		<property name="company" column="company" type="java.lang.String" not-null="false" />
+		<property name="description" column="description" type="java.lang.String" not-null="false" />
+		<set name="experts" inverse="true" cascade="all-delete-orphan">
+			<key column="expert_id"/>
+			<one-to-many class="Content"/>
+		</set>
+	</class>
+</hibernate-mapping>

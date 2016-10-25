@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<#include "/common/image_upload.html"/>
+<div class="box-positon">
+	<div class="rpos"><@s.m "global.position"/>: <@s.m "cmsAcquisition.special.topic"/> - <@s.m "global.add"/></div>
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.so';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_save.so" labelWidth="10">
+<@p.text colspan="2" size="100" label="cmsSpecialTopic.name" name="topicName" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsSpecialTopic.short" name="shortName" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsSpecialTopic.keywords" name="keywords" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsSpecialTopic.main.place" name="mainPlace" required="true" class="required" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" size="100" label="cmsSpecialTopic.sub.place" name="subPlace" help="cmsSpecialTopic.sub.place.separate" maxlength="150"/><@p.tr/>
+<@p.text colspan="2" name="startTime" label="cmsSpecialTopic.start.time" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.text colspan="2" name="endTime" label="cmsSpecialTopic.end.time" style="width:140px" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate"/><@p.tr/>
+<@p.td colspan="2"><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

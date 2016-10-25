@@ -1,0 +1,397 @@
+<div class="pl-hf-div">
+   [#list list as c]
+   <div id="commentid${c.id}" class="pl-hf-con">
+   		<div class="pl-hf-con">
+   		[#list c.commentLists as innerext]
+   		[#if innerext_index > 1]
+   			<div class="hf-a" style="display:none;">
+   		[#else]
+   			<div class="hf-a">
+   		[/#if]
+        
+       	   <div class="hf-a-l">
+       	   		[#if c.commentUser??]
+	       	   		[#if c.commentUser.userImg??]
+	            		<a href="javascript:void(0);" style= "cursor:default"><img src="${c.commentUser.userImg}" /></a>
+	            	[#else]
+	            		<a href="javascript:void(0);" style= "cursor:default"><img src="/r/cms/www/default/headPic/pic13.jpg" /></a>
+	            	[/#if]
+	            [#else]
+	            	<a href="javascript:void(0);" style= "cursor:default"><img src="/r/cms/www/default/headPic/pic13.jpg" /></a>
+	            [/#if]
+            </div>
+            <div class="hf-a-r">
+             	<h3><a href="javascript:void(0);" style= "cursor:default">
+             		[#if c.commentUser??]
+             			${c.commentUser.username}&nbsp;:&nbsp;<span style="color:#666;">${c.commentContent}</span>
+             		[#else]
+             			
+             		[/#if]
+             	</a>
+             	<span class="hf-z-div">
+             	<p class="hf-z">
+             		<a href="javascript:void(0);" class="r-a2" onclick="replyCommentFirst(1,this);return false;">回复</a>
+             		<!-- <a href="#" onclick="deleteReplyFirst('${c.id}',1,this);return false;">删除</a> -->
+             	</p>
+             	</span>
+             	</h3>
+             	[#list innerext as cmsext]
+             		[#if cmsext.reply??]
+             			[#if cmsext_index+1 == innerext?size]
+             				<div class="fg-hf-div" style="border:0px dotted #f39a00;">
+             			[#else]
+             				<div class="fg-hf-div">
+             			[/#if]
+             		[#else]
+             			<div class="fg-hf-div" style="display:none;">
+             		[/#if]
+                 <!-- <div class="fg-hf-div"> -->
+                 	<!-- <span class="span-r-t">1</span> -->
+                 	[#if cmsext.reply??]
+                 	<div class="fg-hf-di-l">
+                 		<a href="javascript:void(0);" style= "cursor:default"><img src="${cmsext.anonymousImg}" /></a>
+                     </div>
+                     [/#if]
+                     <div class="fg-hf-di-r">
+                     	 <p><a href="javascript:void(0);" style= "cursor:default">
+                     	 	[#if cmsext.anonymousName??]
+                     	 		<span style="color: #ed7621;">${cmsext.anonymousName?default("")}</span>&nbsp;:&nbsp;${cmsext.reply?default("")}<span style="float:right;">${cmsext_index+2}</span>
+                     	 	[#else]
+                     	 		
+                     	 	[/#if]
+                     	 </a>
+                     	 </p>
+                          <div class="hf-z-div">
+                             <p class="hf-z">
+                             [#if cmsext.reply??]
+                             	<a href="javascript:void(0);" class="r-a2" onclick="replyComment(${cmsext_index+1},this);return false;">回复</a>
+                             [/#if]
+                             </p>
+                             <p>
+                             	[#if cmsext.replayTime??]
+                             		${cmsext.replayTime?string("yyyy-MM-dd HH:mm:ss")}&nbsp;&nbsp;
+                             	[/#if]
+                             </p>
+                          </div>
+                          <!--点击回复出现下面div开始-->
+                         <div class="hf-input-div" id="commext${cmsext_index+1}" style="display:none;">
+                             	<input class="hf-div-in gl-hf-in" type="text" name="reply" />
+                             	[#if cmsext.reply??]
+                             		<input class="hf-div-btn" value="回复" type="button" name="submit" onclick="replySubmit(${c.id},'${c.commentContent}',${cmsext_index+2},${cmsext.rsort?default('1')},this);" />
+                             	[#else]
+                             		<input class="hf-div-btn" value="回复" type="button" name="submit" onclick="replySubmit(${c.id},'${c.commentContent}',${cmsext_index+1},${cmsext.rsort?default('1')},this);" />
+                             	[/#if]
+                         </div>
+                         <!--点击回复出现下面div结束-->
+                     </div> 
+                     <div style="clear:both;"></div>                                
+                 </div>
+                 [/#list]
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+       [/#list]
+       [#if c.commentLists?size > 1]
+		   	<div class="morecommentdiv">
+	           	<a href="javascript:volid(0);" onclick="loadCommentMore(this)">加载更多>></a>
+	        </div>
+		 [/#if]
+       </div>
+   </div>
+   [/#list]
+</div>
+
+<script type="text/javascript">
+	function loadCommentMore(subform){
+		$(subform).parent().parent().children(".hf-a").each(function(k,v){
+			if (k > 1){
+				$(this).css("display","block");
+			}
+		});
+		$(subform).parent().remove();
+	}
+</script>
+
+<script type="text/javascript">
+	Cms.commentReply(function(data) {
+	    if(data.status==0) {
+	    	//alert("回复成功");
+	        $("input[name='text']").val('');
+	        location.href=location.href;
+	    } else if("返回排序号："+data.status==1) {	
+	        alert("验证码错误");
+	        $("#commentCaptcha").click();
+	    } else if(data.status==2) {	
+	        alert("内容不存在");
+	        $("#commentCaptcha").click();
+	    } else if(data.status==3) {	
+	        alert("评论关闭");
+	        $("#commentCaptcha").click();
+	    } else if(data.status==4) {	
+	        alert("需要登录评论");
+	        $("#commentCaptcha").click();
+	    }else if(data.status==5) {	
+	        alert("已经评论过，不能重复评论");
+	        $("#commentCaptcha").click();
+	    } else if(data.status==100) {	
+	        alert("内容不存在");
+	        $("#commentCaptcha").click();
+	    } else if(data.status==101) {	
+	        alert("评论不能为空");
+	        $("#commentCaptcha").click();
+	    } else {
+	        alert("评论失败");
+	        $("#commentCaptcha").click();
+	    }
+	});
+</script>
+<script type="text/javascript">
+	function deleteReplyFirst(commentId,local,delForm){
+		var aj = $.ajax( {  
+		     url:'${base}/commentDelete.jspx',// 跳转到 action  
+		     data:{  
+		    	 commentId : commentId,  
+		    	 local : local
+		     },  
+		     type:'post',  
+		     cache:false,  
+		     dataType:'json',  
+		     success:function(data) {
+		    	 if(data.status == 0 ){  
+		    		 //$(delForm).parent().parent().parent().parent().parent().remove();
+		    		 $(delForm).parent().parent().parent().parent().parent().parent().children(".hf-a").remove();
+		    		 $("#text").val("我想要评论......");
+		    	 }else{
+		    		 $(delForm).parent().parent().parent().parent().parent().parent().children(".hf-a").remove();
+		    		 $("#text").val("我想要评论......");
+		    	 }
+		     }
+		});
+	}
+
+	function deleteReply(commentId,local,delForm){
+		var totalNodes = $(delForm).parent().parent().parent().parent().parent().children(".fg-hf-div");
+		var aj = $.ajax( {  
+		     url:'${base}/commentDeleteReply.jspx',// 跳转到 action  
+		     data:{  
+		    	 commentId : commentId,  
+		    	 local : local
+		     },  
+		     type:'post',  
+		     cache:false,  
+		     dataType:'json',  
+		     success:function(data) {
+		    	 if(data.status == 0 ){  
+		    		 //$(delForm).parent().parent().parent().parent().parent().remove();
+		    		 $(delForm).parent().parent().parent().parent().parent().parent().remove();
+		    	 }else{
+		    		 $(delForm).parent().parent().parent().parent().parent().remove();
+		    	 }
+		     }
+		});
+	}
+	
+	function replyCommentFirst(n,firstComment){
+		$(firstComment).parent().parent().parent().parent().children(".fg-hf-div").children(".fg-hf-di-r").children("#commext"+n).css("display","block");
+		$(firstComment).parent().parent().parent().parent().children(".fg-hf-div").children(".fg-hf-di-r").children("#commext"+n).parent().parent().css("display","block");
+		$(firstComment).parent().parent().parent().parent().children(".fg-hf-div").children(".fg-hf-di-r").children("#commext"+n).children("input[name='reply']").focus();
+	}
+	
+	function replyComment(n,replyLocal){
+		/*if (n <= 1){
+			n = 1;
+		}else{
+			n = n-1;
+		}*/
+		$(replyLocal).parent().parent().siblings("#commext"+n).css("display","block");
+		$(replyLocal).parent().parent().siblings("#commext"+n).children("input[name='reply']").focus();
+	}
+	//local表示内部序号,rLocal表示外部序号(比如:当前有回复插入一条记录,会在上面弹出一个新层)
+	function replySubmit(commentId,commentText,local,rLocal,subForm){
+		//关闭回复框
+		$(subForm).parent().parent().parent().parent().children("h3").children("span").children("p").children("a:first-child").css("display","none");
+		var totalNodes = $(subForm).parent().parent().parent().parent().children(".fg-hf-div");
+		var replyCount = totalNodes.size();
+		var reply = $(subForm).siblings("input[name='reply']").val();
+		//如果回复内容为空,则打开回复框
+		if (reply == null || reply == ''){
+			$(subForm).parent().parent().parent().css("display","none");
+			$(subForm).parent().parent().parent().parent().children("h3").children("span").children("p").children("a:first-child").css("display","block");
+			return false;
+		}
+		$(subForm).siblings("input[name='reply']").val("");
+		//找到上一个回复内容是否为空,如果为空不是新弹层,否则是新弹出层
+		var headDiv = $(subForm).parent().parent().parent().parent().parent();
+	    var operateDiv = headDiv.children(".hf-a-r");
+	    
+	    if (rLocal == null){
+	    	rLocal = 1;
+	    }
+	    
+	    if (local == 1){
+	    	
+	    }else{
+	    	if (operateDiv.children(".fg-hf-div").size() > (local-1)){				//需要插入新层
+		    	rLocal = rLocal + 1;
+		    	//执行插入新层通信
+		    }else{
+		    	//在原来层中继续添加
+		    	
+		    }
+	    }
+	    //alert("local[" + local + "],rLocal[" + rLocal + "]");
+	    var aj = $.ajax( {  
+		     url:'${base}/commentReply.jspx',// 跳转到 action  
+		     data:{  
+		    	 commentId : commentId,  
+		    	 commentText : commentText,  
+		    	 local : local,
+		    	 rLocal : rLocal,
+		    	 reply : reply
+		     },  
+		     type:'post',  
+		     cache:false,  
+		     dataType:'json',  
+		     success:function(data) {  
+		    	 var myDate = new Date();
+		         if(data.status == 0 ){  
+		             $(".hf-input-div").css("display","none");
+		             //1.判定上一个元素ID是否为commext1，如果是就不用在当前层之前插入新层 ，如果不是则需要插入新层
+		             //2.插入新层 ，需要组合之前的回复再加新的回复，在插入到当前层之前
+		             var nDiv;
+		             //alert($(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-2)+")").children(".fg-hf-di-r").children("p").children("a").html());
+		             var haveContentResult = isHaveContent($(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-2)+")").children(".fg-hf-di-r").children("p").children("a").html());
+		             var localcp = local+1;
+		             if (!haveContentResult){
+		            	 nDiv = "<div class=\"fg-hf-div\" style=\"border:1px dotted #f39a00;\"><div class=\"fg-hf-di-l\"><a href=\"javascript:void(0);\" style=\"cursor:default\"><img src=\"/hcrBigDataWeb/r/cms/www/default/headPic/pic"+random()+".jpg\" /></a></div>" +
+	                     "<div class=\"fg-hf-di-r\">" +
+	                     	 "<p><a href=\"javascript:void(0);\" style=\"cursor:default\">" +
+	                     	 	"<span style='color: #ed7621;'>北京的网友</span>&nbsp;:&nbsp;" + reply + "<span style=\"float:right;\">"+localcp+"</span>" +
+	                     	 "</a>" +
+	                     	 "</p>" +
+	                          "<div class=\"hf-z-div\">" +
+	                             "<p class=\"hf-z\"><a href=\"javascript:void(0);\" class=\"r-a2\" onclick=\"replyComment("+local+",this);return false;\">回复</a></p>" +
+	                             "<p>" +
+	                             myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+"&nbsp;&nbsp;" +
+	                             "</p>" +
+	                          "</div>" +
+	                         "<div class=\"hf-input-div\" id=\"commext1\" style=\"display:none;\">" +
+	                             	"<input class=\"hf-div-in gl-hf-in\" type=\"text\" name=\"reply\" />" +
+	                             	"<input class=\"hf-div-btn\" value=\"回复\" type=\"button\" name=\"submit\" onclick=\"replySubmit("+commentId+",'"+commentText+"',"+(local+1)+","+rLocal+",this);\" />" +
+	                         "</div>" +
+	                     "</div>" + 
+	                     "<div style=\"clear:both;\"></div>" +                                
+	                 "</div>";
+		             }else{
+		            	//上一个层的外框显示实线
+			             $(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-2)+")").css("border","1px dotted #f39a00");
+			             nDiv = "<div class=\"fg-hf-div\" style=\"border:0px dotted #f39a00;\"><div class=\"fg-hf-di-l\"><a href=\"javascript:void(0);\" style=\"cursor:default\"><img src=\"/hcrBigDataWeb/r/cms/www/default/headPic/pic"+random()+".jpg\" /></a></div>" +
+		                     "<div class=\"fg-hf-di-r\">" +
+		                     	 "<p><a href=\"javascript:void(0);\" style=\"cursor:default\">" +
+		                     	 	"<span style='color: #ed7621;'>北京的网友</span>&nbsp;:&nbsp;" + reply + "<span style=\"float:right;\">"+localcp+"</span>" +
+		                     	 "</a>" +
+		                     	 "</p>" +
+		                          "<div class=\"hf-z-div\">" +
+		                             "<p class=\"hf-z\"><a href=\"javascript:void(0);\" class=\"r-a2\" onclick=\"replyComment("+local+",this);return false;\">回复</a></p>" +
+		                             "<p>" +
+		                             myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+"&nbsp;&nbsp;" +
+		                             "</p>" +
+		                          "</div>" +
+		                         "<div class=\"hf-input-div\" id=\"commext"+local+"\" style=\"display:none;\">" +
+		                             	"<input class=\"hf-div-in gl-hf-in\" type=\"text\" name=\"reply\" />" +
+		                             	"<input class=\"hf-div-btn\" value=\"回复\" type=\"button\" name=\"submit\" onclick=\"replySubmit("+commentId+",'"+commentText+"',"+(local+1)+","+rLocal+",this);\" />" +
+		                         "</div>" +
+		                     "</div>" + 
+		                     "<div style=\"clear:both;\"></div>" +                                
+		                 "</div>";
+		             }
+		            //alert(nDiv + "       ----------        " + local);
+					if (operateDiv.children(".fg-hf-div").size() <= 1){				//不需要插入新层 
+						$(subForm).parent().parent().parent().after(nDiv);
+			             if (!haveContentResult){
+			            	 if (local <= 1){
+			            		 $(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-1)+")").remove();
+			            	 }
+			             }
+			             //$(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-1)+")").css("border","1px dotted #f39a00");
+			             //下面是清除新增结点后面的结点
+			             //totalNodes.each(function(k,v){
+			            //	 if ((k+1) > (local-1)){
+			            //		 $(this).css("display","none");
+			            //	 }
+			             //});
+		             }else{							//需要插入新层 
+		            	 if (operateDiv.children(".fg-hf-div").size() > (local-1)){
+		            		var wDiv;
+			            	wDiv = headDiv.clone();
+			            	wDiv.empty();
+			            	wDiv.append(headDiv.children(".hf-a-l").clone());
+			            	var operateDivClone = operateDiv.clone();
+			            	operateDivClone.children(".fg-hf-div").each(function(k,v){
+			             		if (k > (local-2)){
+			             			$(this).remove();
+			             		}
+			             	});
+			            	operateDivClone.children(".fg-hf-div").each(function(k,v){				//把要复制的结点的外层数替换
+			            		var text = $(this).children(".fg-hf-di-r").children(".hf-input-div").children(".hf-div-btn").attr("onclick");
+			            		var texts = text.split(",");
+			            		var result = "";
+			            		for (var i=0;i<texts.length;i++){
+			            			if (i == 3){
+			            				result = result + rLocal + ","
+			            			}else{
+			            				result = result + texts[i] + ",";
+			            			}
+			            		}
+			            		result = result.substring(0,result.length-1);
+			            		//alert("修改前["+text+"],修改后["+result+"]");
+			            		$(this).children(".fg-hf-di-r").children(".hf-input-div").children(".hf-div-btn").attr("onclick",result);
+			            	});
+			            	operateDivClone.append(nDiv);
+			             	wDiv.append(operateDivClone);
+			             	//wDiv.append(operateDiv.children("div:eq(3)"));
+			             	wDiv.append($("<div style=\"clear:both;\"></div>"));
+			             	headDiv.before(wDiv);
+		            	 }else{
+		            		 $(subForm).parent().parent().parent().after(nDiv);
+		            		 //$(subForm).parent().parent().parent().parent().children(".fg-hf-div:eq("+(local-1)+")").css("border","1px dotted #f39a00");
+		            	 }
+		             }
+		         }else{
+		        	 $(subForm).siblings("input[name='reply']").val("您回复内容有敏感词汇，请重新回复！");
+		         }
+		      }  
+		 });
+	}
+	
+	$(function(){
+		$("input[name='reply']").focus(function(){
+			$(this).val("");
+		});
+	});
+	
+	function isHaveContent(content){
+		/*var reg = /^(\w|[\u4E00-\u9FA5])*$/;
+		var result = true;
+		if (content.match(reg) == null){
+			result = false
+		}else{
+			result = content.match(reg);
+		}
+		alert("取值是[" + content+"],返回值是[" + result + "]");
+		return result;*/
+		
+		var result = true;
+		content = content.replace(/\n/g,'');
+		content = content.replace(/\s/g,"");
+		if (content.length == 0){
+			result = false;
+		}
+		return result;
+	}
+</script>
+<!-- <script type="text/javascript">
+	$("input[name='reply']").blur(function(){
+		$(this).parent().css("display","none");
+	});
+</script> -->

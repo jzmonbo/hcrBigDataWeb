@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>hcrcms-left</title>
+<#include "/hcrcms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("li").each(function(i){
+		$(this).removeClass();
+		if(i==0){
+			$(this).addClass("leftCurr");
+		}else{
+			$(this).addClass("leftNol");
+		}
+		$(this).click( function () {
+			$("li").each(function(){
+				$(this).removeClass();
+				$(this).addClass("leftNol");
+			});
+			$("h3").each(function(){
+				$(this).next().hide();
+				$(this).removeClass();
+				$(this).addClass("leftNol");
+			});
+			$(this).removeClass();
+			$(this).addClass("leftCurr");
+		});
+	});
+	$("h3").each(function(){
+		$(this).next().hide();
+		$(this).addClass("leftNol");
+		$(this).click( function () {
+			$("h3").each(function(){
+				$(this).next().hide();
+				$(this).removeClass();
+				$(this).addClass("leftNol");
+			});
+			$("li").each(function(){
+				$(this).removeClass();
+				$(this).addClass("leftNol");
+			});
+			$(this).removeClass();
+			$(this).addClass("leftCurr");
+		    $(this).next().show(); 
+		});
+	});
+});
+</script>
+<style>
+h3{ padding:0; margin:0; font-weight:normal; font-size:12px;}
+</style>
+</head>
+<body class="lbody">
+<div class="left">
+	<#include "/hcrcms_sys/date.html"/>
+     <ul class="w-lful">
+		<@cms_perm url="/lucene/v_index.so">
+			<li class="leftCurr"><a href="../lucene/v_index.so" target="rightFrame"><@s.m "cmsLucene.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/task/v_list.so">
+			<li><a href="../task/v_list.so" target="rightFrame"><@s.m "cms.task.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/friendlink/v_list.so">
+			<li><a href="../friendlink/v_list.so" target="rightFrame"><@s.m "cmsFriendlink.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/advertising/v_list.so">
+			<li><a href="../advertising/v_list.so" target="rightFrame"><@s.m "cmsAdvertising.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/file/v_list.so">
+			<li><a href="../file/v_list.so" target="rightFrame"><@s.m "cms.function.attachment"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/content_cycle/v_list.so">
+			<li><a href="../content_cycle/v_list.so" target="rightFrame"><@s.m "contentCycle.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/dictionary/v_list.so">
+			<li><a href="../dictionary/v_list.so" target="rightFrame"><@s.m "cmsDictionary.function"/></a></li>
+		</@cms_perm>
+		<@cms_perm url="/scoregroup/v_list.so">
+			<li><a href="../scoregroup/v_list.so" target="rightFrame"><@s.m "cmsScoreGroup.function"/></a></li>
+		</@cms_perm>
+		
+     </ul>
+			<@cms_perm url="/static/">
+			<h3><@s.m 'cmsStatic.function'/></h3>
+			<div style="margin:0; padding:0;">
+			</@cms_perm>
+				<@cms_perm url="/static/v_index.so">
+				<div class="leftmenuBG"><a href="../static/v_index.so" target="rightFrame"><@s.m "cmsStatic.index"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/static/v_channel.so">
+				<div class="leftmenuBG"><a href="../static/v_channel.so" target="rightFrame"><@s.m "cmsStatic.channel"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/static/v_content.so">
+				<div class="leftmenuBG"><a href="../static/v_content.so" target="rightFrame"><@s.m "cmsStatic.content"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/static/v_reset_generate.so">
+				<div class="leftmenuBG"><a href="../static/v_reset_generate.so" target="rightFrame"><@s.m "cmsContent.regenerate"/></a></div>
+				</@cms_perm>
+			<@cms_perm url="/static/">
+			</div>
+			</@cms_perm>
+			<h3><@s.m 'cmsWords.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/tag/v_list.so">
+				<div class="leftmenuBG"><a href="../tag/v_list.so" target="rightFrame"><@s.m "contentTag.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/sensitivity/v_list.so">
+				<div class="leftmenuBG"><a href="../sensitivity/v_list.so" target="rightFrame"><@s.m "cmsSensitivity.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/keyword/v_list.so">
+				<div class="leftmenuBG"><a href="../keyword/v_list.so" target="rightFrame"><@s.m "cmsKeyword.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/origin/v_list.so">
+				<div class="leftmenuBG"><a href="../origin/v_list.so" target="rightFrame"><@s.m "cmsOrigin.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/searchwords/v_list.so">
+				<div class="leftmenuBG"><a href="../searchwords/v_list.so" target="rightFrame"><@s.m "cmsSearchWords.function"/></a></div>
+				</@cms_perm>
+			</div>
+			<h3><@s.m 'cmsData.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/data/v_list.so">
+				<div class="leftmenuBG"><a href="../${db!}/data/v_list.so" target="rightFrame"><@s.m "db.backup"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/data/v_revert.so">
+				<div class="leftmenuBG"><a href="../${db!}/data/v_revert.so" target="rightFrame"><@s.m "db.revert"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/data/v_listfiles.so">
+				<div class="leftmenuBG"><a href="../${db!}/data/v_listfiles.so" target="rightFrame"><@s.m "db.dir"/></a></div>
+				</@cms_perm>
+			</div>
+			<h3><@s.m 'cmsInteractive.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/comment/v_list.so">
+				<div class="leftmenuBG"><a href="../comment/v_list.so" target="rightFrame"><@s.m "cmsComment.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/vote_topic/v_list.so">
+				<div class="leftmenuBG"><a href="../vote_topic/v_list.so" target="rightFrame"><@s.m "cmsVoteTopic.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/guestbook/v_list.so">
+				<div class="leftmenuBG"><a href="../guestbook/v_list.so" target="rightFrame"><@s.m "cmsGuestbook.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/guestbook_ctg/v_list.so">
+				<div class="leftmenuBG"><a href="../guestbook_ctg/v_list.so" target="rightFrame"><@s.m "cmsGuestbookCtg.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/jobapply/v_list.so">
+				<div class="leftmenuBG"><a href="../jobapply/v_list.so" target="rightFrame"><@s.m "cmsJobApply.function"/></a></div>
+				</@cms_perm>
+			</div>
+			<@cms_perm url="/acquisition/">
+			<h3><@s.m 'cmsAcquisition.function'/></h3>
+			<div style="margin:0; padding:0;">
+			</@cms_perm>
+				<@cms_perm url="/acquisition/v_list.so">
+				<div class="leftmenuBG"><a href="../acquisition/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/acquisition/v_history.so">
+				<div class="leftmenuBG"><a href="../acquisition/v_history.so" target="rightFrame"><@s.m "cmsAcquisition.function.history"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/acquisition/v_progress.so">
+				<div class="leftmenuBG"><a href="../acquisition/v_progress.so" target="rightFrame"><@s.m "cmsAcquisition.function.progress"/></a></div>
+				</@cms_perm>
+			<@cms_perm url="/acquisition/">
+			</div>
+			</@cms_perm>
+			<h3><a href="../expert/v_list.so" target="rightFrame"><@s.m 'cmsAcquisition.expert' /></a></h3>
+			<div></div>
+			<h3><a href="../special/v_list.so" target="rightFrame"><@s.m 'cmsAcquisition.special.topic' /></a></h3>
+			<div></div>
+			<h3><@s.m 'cmsIndex.ranking.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/indexranking/v_list.so">
+				<div class="leftmenuBG"><a href="../indexranking/v_list.so" target="rightFrame"><@s.m 'cmsAcquisition.index.ranking' /></a></div>
+				</@cms_perm>
+				<@cms_perm url="/indexrankinglog/v_list.so">
+				<div class="leftmenuBG"><a href="../indexrankinglog/v_list.so" target="rightFrame"><@s.m 'cmsAcquisition.index.ranking.log' /></a></div>
+				</@cms_perm>
+			</div>
+			<h3><@s.m 'cmsInterLink.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/hot/v_list.so">
+				<div class="leftmenuBG"><a href="../hot/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.hot.spot.navigation"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/toplink/v_list.so">
+				<div class="leftmenuBG"><a href="../toplink/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.top.link"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/siterightlink/v_list.so">
+				<div class="leftmenuBG"><a href="../siterightlink/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.site.right.link"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/articletoplink/v_list.so">
+				<div class="leftmenuBG"><a href="../articletoplink/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.article.top.link"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/articlebottomlink/v_list.so">
+				<div class="leftmenuBG"><a href="../articlebottomlink/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.article.bottom.link"/></a></div>
+				</@cms_perm>
+				<!-- 
+				<@cms_perm url="/cmstags/v_list.so">
+				<div class="leftmenuBG"><a href="../cmstags/v_list.so" target="rightFrame"><@s.m "cmsAcquisition.tags"/></a></div>
+				</@cms_perm>
+				 -->
+			</div>
+			<h3><@s.m 'cmsTopicEnterprise.function'/></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/uploadfile/v_list.so">
+				<div class="leftmenuBG"><a href="../uploadfile/v_list.so" target="rightFrame"><@s.m "cmsResources.upload"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/topicenterprise/v_list.so">
+				<div class="leftmenuBG"><a href="../topicenterprise/v_list.so" target="rightFrame"><@s.m "cmsTopicEnterprise.function"/></a></div>
+				</@cms_perm>
+				<@cms_perm url="/topicreport/v_list.so">
+				<div class="leftmenuBG"><a href="../topicreport/v_list.so" target="rightFrame"><@s.m "cmsTopicReport.function"/></a></div>
+				</@cms_perm>
+			</div>
+			<h3><@s.m 'cmsBoutiqueColumn.function' /></h3>
+			<div style="margin:0; padding:0;">
+				<@cms_perm url="/boutiqueColumn/v_edit.so">
+				<div class="leftmenuBG"><a href="../boutiqueColumn/v_edit.so" target="rightFrame"><@s.m "cmsBoutiqueColumn.function.settime"/></a></div>
+				</@cms_perm>
+			</div>
+</div>
+</body>
+</html>

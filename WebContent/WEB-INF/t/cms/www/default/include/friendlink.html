@@ -1,0 +1,12 @@
+<!---加友情链接-底部版权部分开始--->
+<div class="zjxq_footer1">
+   	<h4>友情链接</h4>
+   	[@cms_friendlink_list]
+   	<ul>
+    [#list tag_list as link]
+    	<li><a href="${link.domain}" onclick="$.get('${base}/friendlink_view.jspx?id=${link.id}')" target="_blank">${link.name}</a></li>
+    [/#list]
+    </ul>
+    [/@cms_friendlink_list]
+</div>
+<!---加友情链接-底部版权部分结束--->

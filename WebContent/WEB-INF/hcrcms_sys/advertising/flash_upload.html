@@ -1,0 +1,27 @@
+<script type="text/javascript">
+//涓婁紶闄勪欢
+function uploadFlash(n) {
+	var af = $('#flashFile'+n);
+	//妫�煡鏄惁閫夋嫨浜嗘枃浠�
+	if(af.val()=='') {
+		$.alert("<@s.m 'global.prompt'/>",'<@s.m "advertising.error.noFileSelected"/>');
+		return;
+	}
+	//灏唂ile绉诲姩鑷充笂浼犺〃鍗�
+	$('#flashContent').empty();
+	$('#flashContent').append(af);
+	//澶嶅埗涓�釜file鏀捐嚦鍘熷
+	$('#ffc'+n).append(af.clone().attr('value',''));
+	//淇敼灞炴�
+	$('#flashFileText'+n).attr('value','');
+	af.attr('id','');
+	//鍏朵粬琛ㄥ崟
+	$('#flashNum').val(n);
+	$('#flashForm').submit();
+}
+</script>
+<form id="flashForm" action="o_upload_flash.so" method="post" enctype="multipart/form-data" target="flash_iframe" style="display:none;width:0px;height:0px;">
+<span id="flashContent"></span>
+<input type="hidden" id="flashNum" name="flashNum"/>
+</form>
+<iframe name="flash_iframe" frameborder="0" border="0" style="display:none;width:0px;height:0px;"></iframe>
